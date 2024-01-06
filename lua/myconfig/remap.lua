@@ -14,8 +14,8 @@ vim.keymap.set({ "n", "v" }, "<C-j>", "5j")
 vim.keymap.set("n", "<C-s>", ":w<CR>")
 
 -- word delete with Ctrl-Backspace or Alt-Backspace
-vim.keymap.set("i", "<C-h>", "<Esc>diwa")
-vim.keymap.set("i", "<A-Bs>", "<Esc>diwa")
+-- vim.keymap.set("i", "<C-h>", "<C-w>")
+-- vim.keymap.set("i", "<A-Bs>", "<C-w>")
 
 -- paste with Ctrl V
 -- vim.keymap.set("i", "<C-v>", '<Esc>"+pa')

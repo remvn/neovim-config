@@ -46,7 +46,7 @@ return {
             lsp_zero.extend_cmp() -- load default cmp config
 
             local cmp = require('cmp')
-            local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+            -- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
             local cmp_action = require('lsp-zero').cmp_action()
             local cmp_format = require('lsp-zero').cmp_format()
 
@@ -77,10 +77,10 @@ return {
                 }),
             })
 
-            cmp.event:on(
-                'confirm_done',
-                cmp_autopairs.on_confirm_done()
-            )
+            -- cmp.event:on(
+            --     'confirm_done',
+            --     cmp_autopairs.on_confirm_done()
+            -- )
         end
     },
 
@@ -129,7 +129,7 @@ return {
                 vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
                 vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
                 vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-                -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+                vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
             end)
 
             require('mason-lspconfig').setup({

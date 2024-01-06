@@ -16,14 +16,9 @@ return {
     'tpope/vim-commentary',
     'tpope/vim-fugitive',
     'romainl/vim-cool',
-    {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = function() require("nvim-autopairs").setup {} end,
-    },
-    {
-        "folke/trouble.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {},
-    }
+    -- {
+    --     "windwp/nvim-autopairs",
+    --     event = "InsertEnter",
+    --     config = function() require("nvim-autopairs").setup {} end,
+    -- },
 }
