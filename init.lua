@@ -18,5 +18,3 @@ require("lazy").setup({
         notify = false
     }
 })
-
--- test 2

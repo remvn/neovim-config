@@ -56,16 +56,6 @@ return {
 
         -- on attach
 
-        local function edit_or_open()
-            local node = api.tree.get_node_under_cursor()
-            if node.nodes ~= nil then
-                api.node.open.edit()
-            else
-                api.node.open.edit()
-                api.tree.close()
-            end
-        end
-
         local on_attach = function(bufnr)
             local function opts(desc)
                 return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
