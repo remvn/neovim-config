@@ -1,12 +1,31 @@
 -- load basic plugin without custom config here
 return {
+    -- {
+    --     "briones-gabriel/darcula-solid.nvim",
+    --     dependencies = "rktjmp/lush.nvim",
+    --     priority = 1000,
+    --     init = function()
+    --         vim.cmd.colorscheme("darcula-solid")
+    --     end,
+    -- },
+    -- {
+    --     "olimorris/onedarkpro.nvim",
+    --     priority = 1000,
+    --     config = function()
+    --         vim.cmd("colorscheme onedark")
+    --     end,
+    -- },
     {
-        "briones-gabriel/darcula-solid.nvim",
-        dependencies = "rktjmp/lush.nvim",
+        "folke/tokyonight.nvim",
+        lazy = false,
         priority = 1000,
-        init = function()
-            vim.cmd.colorscheme("darcula-solid")
-            vim.opt.termguicolors = true
+        opts = {},
+        config = function()
+            require("tokyonight").setup({
+                style = "moon",
+                transparent = false,
+            })
+            vim.cmd("colorscheme tokyonight-moon")
         end,
     },
 
@@ -16,9 +35,9 @@ return {
     'tpope/vim-commentary',
     'tpope/vim-fugitive',
     'romainl/vim-cool',
-    -- {
-    --     "windwp/nvim-autopairs",
-    --     event = "InsertEnter",
-    --     config = function() require("nvim-autopairs").setup {} end,
-    -- },
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function() require("nvim-autopairs").setup {} end,
+    },
 }

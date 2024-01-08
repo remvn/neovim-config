@@ -10,6 +10,4 @@ return {
             other = "O",
         }
     },
-    config = function()
-    end,
 }

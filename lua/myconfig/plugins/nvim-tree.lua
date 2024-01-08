@@ -86,8 +86,8 @@ return {
 
             -- basic function
             vim.keymap.set("n", "<C-t>", api.node.open.tab, opts "Open: New Tab")
-            vim.keymap.set("n", "<C-v>", api.node.open.vertical, opts "Open: Vertical Split")
-            vim.keymap.set("n", "<C-h>", api.node.open.horizontal, opts "Open: Horizontal Split")
+            vim.keymap.set("n", "<leader>vs", api.node.open.vertical, opts "Open: Vertical Split")
+            vim.keymap.set("n", "<leader>hs", api.node.open.horizontal, opts "Open: Horizontal Split")
             vim.keymap.set("n", "a", api.fs.create, opts "Create")
             vim.keymap.set("n", "c", api.fs.copy.node, opts "Copy")
             vim.keymap.set("n", "x", api.fs.cut, opts "Cut")

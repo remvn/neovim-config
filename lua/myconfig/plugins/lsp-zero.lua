@@ -46,7 +46,7 @@ return {
             lsp_zero.extend_cmp() -- load default cmp config
 
             local cmp = require('cmp')
-            -- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+            local cmp_autopairs = require('nvim-autopairs.completion.cmp')
             local cmp_action = require('lsp-zero').cmp_action()
             local cmp_format = require('lsp-zero').cmp_format()
 
@@ -77,10 +77,10 @@ return {
                 }),
             })
 
-            -- cmp.event:on(
-            --     'confirm_done',
-            --     cmp_autopairs.on_confirm_done()
-            -- )
+            cmp.event:on(
+                'confirm_done',
+                cmp_autopairs.on_confirm_done()
+            )
         end
     },
 

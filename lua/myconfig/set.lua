@@ -10,6 +10,9 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "screenline"
+vim.opt.termguicolors = true
 -- vim.opt.colorcolumn = "80"
 
 vim.opt.wrap = false
@@ -17,3 +20,5 @@ vim.opt.wrap = false
 -- disable netrw at start
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- vim.o.statusline = "%{FugitiveStatusline()}"
