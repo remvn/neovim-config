@@ -20,5 +20,3 @@ vim.opt.wrap = false
 -- disable netrw at start
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
--- vim.o.statusline = "%{FugitiveStatusline()}"

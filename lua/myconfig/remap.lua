@@ -3,8 +3,8 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "jk", "<Esc>")
 
 -- move selection
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
 -- fast navigation
 vim.keymap.set({ "n", "v" }, "<C-k>", "5k")
@@ -15,10 +15,6 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 
 -- paste without yanking
 vim.keymap.set("x", "<leader>p", [["_dP]])
-
--- word delete with Ctrl-Backspace or Alt-Backspace
--- vim.keymap.set("i", "<C-h>", "<C-w>")
--- vim.keymap.set("i", "<A-Bs>", "<C-w>")
 
 -- yank to clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])

@@ -3,8 +3,8 @@ require("myconfig.set")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup('HighlightYank', {})
 
+local yank_group = augroup('HighlightYank', { clear = true })
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',

@@ -29,6 +29,8 @@ return {
     --     end,
     -- },
 
+    'nvim-lua/lsp-status.nvim',
+
     -- utility
     'tpope/vim-surround',
     'wellle/targets.vim',
