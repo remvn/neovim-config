@@ -28,14 +28,13 @@ return {
     --         vim.cmd("colorscheme tokyonight-moon")
     --     end,
     -- },
-    "sindrets/diffview.nvim",
-    'nvim-lua/lsp-status.nvim',
 
     -- utility
     'tpope/vim-surround',
     'wellle/targets.vim',
     'tpope/vim-commentary',
     'tpope/vim-fugitive',
+    "sindrets/diffview.nvim",
     'romainl/vim-cool',
     {
         "windwp/nvim-autopairs",
