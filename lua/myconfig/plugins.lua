@@ -28,7 +28,7 @@ return {
     --         vim.cmd("colorscheme tokyonight-moon")
     --     end,
     -- },
-
+    "sindrets/diffview.nvim",
     'nvim-lua/lsp-status.nvim',
 
     -- utility

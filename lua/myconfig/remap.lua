@@ -2,6 +2,12 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "jk", "<Esc>")
 
+-- disable some internal keybindings
+vim.keymap.set("v", "u", "<nop>")
+vim.keymap.set("v", "U", "<nop>")
+vim.keymap.set({ "n", "v" }, "<C-a>", "<nop>")
+vim.keymap.set({ "n", "v" }, "<C-x>", "<nop>")
+
 -- move selection
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
@@ -44,6 +50,7 @@ vim.keymap.set("n", "x", '"_x')
 -- jump out of the bracket
 vim.keymap.set("i", "<C-l>", "<C-o>a")
 
+-- new tmux session
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 local function toggle_qf()
@@ -61,5 +68,4 @@ local function toggle_qf()
         vim.cmd "copen"
     end
 end
-
 vim.keymap.set("n", "<leader>qf", toggle_qf)
