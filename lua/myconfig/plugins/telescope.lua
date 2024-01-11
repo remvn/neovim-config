@@ -16,9 +16,9 @@ return {
                         ['<C-/>'] = "which_key",
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
-                        -- ["<C-h>"] = false,
                         ['<C-v>'] = actions.file_vsplit,
                         ['<C-h>'] = actions.file_split,
+                        ['<M-q>'] = false,
                     },
                 }
             },
