@@ -2,6 +2,10 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
+vim.opt.ignorecase = true
+-- case sensitive search when keyword has
+-- one capital letter
+vim.opt.smartcase = true
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

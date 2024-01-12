@@ -16,10 +16,14 @@ return {
                         ['<C-/>'] = "which_key",
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
-                        ['<C-v>'] = actions.file_vsplit,
-                        ['<C-h>'] = actions.file_split,
                         ['<M-q>'] = false,
                     },
+                    n = {
+                        -- split window, should use another binding
+                        -- use this until something else is found
+                        ['<leader>vs'] = actions.file_vsplit,
+                        ['<leader>hs'] = actions.file_split,
+                    }
                 }
             },
             pickers = {},

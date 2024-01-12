@@ -8,6 +8,10 @@ vim.keymap.set("v", "U", "<nop>")
 vim.keymap.set({ "n", "v" }, "<C-a>", "<nop>")
 vim.keymap.set({ "n", "v" }, "<C-x>", "<nop>")
 
+-- split window
+vim.keymap.set("n", "<leader>vs", vim.cmd.vsplit)
+vim.keymap.set("n", "<leader>hs", vim.cmd.split)
+
 -- move selection
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
