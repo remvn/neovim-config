@@ -56,7 +56,14 @@ return {
                     { name = "path" },
                     { name = 'luasnip', keyword_length = 2 },
                 },
+
+                window = {
+                    -- completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
+
                 formatting = cmp_format,
+
                 mapping = cmp.mapping.preset.insert({
                     -- `Enter` key to confirm completion
                     ['<CR>'] = cmp.mapping.confirm({ select = false }),

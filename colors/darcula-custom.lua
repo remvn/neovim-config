@@ -19,6 +19,7 @@ local spec          = lush.extends({ darcula_solid }).with(function(inject_funct
     return {
         DiagnosticError { fg = red },
 
+        -- Type { fg = orange },
         sym "@type.builtin" { fg = orange },
         sym "@string.escape" { fg = yellow, gui = bf },
         Visual { bg = visual },    -- Visual mode selection
