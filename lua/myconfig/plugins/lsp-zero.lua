@@ -107,13 +107,17 @@ return {
                 info = 'I'
             })
 
+            local servers = {
+                ['null-ls'] = { 'javascript', 'typescript' },
+                ['rust_analyzer'] = { 'rust' },
+                ["gopls"] = { "go" },
+                ["lua_ls"] = { "lua" },
+            }
             lsp_zero.format_on_save({
-                servers = {
-                    ['rust_analyzer'] = { 'rust' },
-                    ['tsserver'] = { 'javascript', 'typescript' },
-                    ["gopls"] = { "go" },
-                    ["lua_ls"] = { "lua" },
-                }
+                servers = servers
+            })
+            lsp_zero.format_mapping('<leader>f', {
+                servers = servers,
             })
 
             lsp_zero.on_attach(function(client, bufnr)
