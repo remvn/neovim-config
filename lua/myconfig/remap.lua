@@ -11,8 +11,8 @@ keymap.set({ "n", "v" }, "<C-a>", "<nop>")
 keymap.set({ "n", "v" }, "<C-x>", "<nop>")
 
 -- split window
-keymap.set("n", "<leader>vs", vim.cmd.vsplit)
-keymap.set("n", "<leader>hs", vim.cmd.split)
+keymap.set("n", "<leader>vs", ":vsplit")
+keymap.set("n", "<leader>hs", ":split")
 
 -- move selection
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
@@ -35,9 +35,6 @@ keymap.set("n", "<leader>Y", [["+Y]])
 -- comment with Ctrl /
 keymap.set("n", "<C-_>", "<Plug>CommentaryLine")
 keymap.set("v", "<C-_>", "<Plug>Commentary")
-
--- format buffer
--- keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- remap ^ and $
 keymap.set("n", "<C-h>", "^")

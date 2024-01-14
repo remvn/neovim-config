@@ -9,13 +9,6 @@ return {
         end,
     },
     -- {
-    --     "olimorris/onedarkpro.nvim",
-    --     priority = 1000,
-    --     config = function()
-    --         vim.cmd("colorscheme onedark")
-    --     end,
-    -- },
-    -- {
     --     "folke/tokyonight.nvim",
     --     lazy = false,
     --     priority = 1000,
@@ -39,7 +32,7 @@ return {
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
-        config = function() require("nvim-autopairs").setup {} end,
+        config = true,
     },
     {
         'nvim-treesitter/playground',
