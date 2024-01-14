@@ -7,7 +7,7 @@ vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.ignorecase = true
-vim.opt.smartcase = true -- case-sensitive when has one captital letter
+vim.opt.smartcase = true -- Case insensitive searching unless /C or capital in search
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

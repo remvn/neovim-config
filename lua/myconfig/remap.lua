@@ -1,61 +1,63 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("i", "jk", "<Esc>")
+local keymap = vim.keymap
+
+keymap.set("n", "<leader>pv", vim.cmd.Ex)
+keymap.set("i", "jk", "<Esc>")
 
 -- disable some internal keybindings
-vim.keymap.set("v", "u", "<nop>")
-vim.keymap.set("v", "U", "<nop>")
-vim.keymap.set({ "n", "v" }, "<C-a>", "<nop>")
-vim.keymap.set({ "n", "v" }, "<C-x>", "<nop>")
+keymap.set("v", "u", "<nop>")
+keymap.set("v", "U", "<nop>")
+keymap.set({ "n", "v" }, "<C-a>", "<nop>")
+keymap.set({ "n", "v" }, "<C-x>", "<nop>")
 
 -- split window
-vim.keymap.set("n", "<leader>vs", vim.cmd.vsplit)
-vim.keymap.set("n", "<leader>hs", vim.cmd.split)
+keymap.set("n", "<leader>vs", vim.cmd.vsplit)
+keymap.set("n", "<leader>hs", vim.cmd.split)
 
 -- move selection
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
 -- fast navigation
-vim.keymap.set({ "n", "v" }, "<C-k>", "5k")
-vim.keymap.set({ "n", "v" }, "<C-j>", "5j")
+keymap.set({ "n", "v" }, "<C-k>", "5k")
+keymap.set({ "n", "v" }, "<C-j>", "5j")
 
 -- save with Ctrl S
-vim.keymap.set("n", "<C-s>", ":w<CR>")
+keymap.set("n", "<C-s>", ":w<CR>")
 
 -- paste without yanking
-vim.keymap.set("x", "<leader>p", [["_dP]])
+keymap.set("x", "<leader>p", [["_dP]])
 
 -- yank to clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+keymap.set("n", "<leader>Y", [["+Y]])
 
 -- comment with Ctrl /
-vim.keymap.set("n", "<C-_>", "<Plug>CommentaryLine")
-vim.keymap.set("v", "<C-_>", "<Plug>Commentary")
+keymap.set("n", "<C-_>", "<Plug>CommentaryLine")
+keymap.set("v", "<C-_>", "<Plug>Commentary")
 
 -- format buffer
--- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- remap ^ and $
-vim.keymap.set("n", "<C-h>", "^")
-vim.keymap.set("n", "<C-l>", "$")
+keymap.set("n", "<C-h>", "^")
+keymap.set("n", "<C-l>", "$")
 
 -- newline without insert mode
-vim.keymap.set("n", "<A-k>", "O<Esc>j")
-vim.keymap.set("n", "<A-j>", "o<Esc>k")
+keymap.set("n", "<A-k>", "O<Esc>j")
+keymap.set("n", "<A-j>", "o<Esc>k")
 
 -- better J
-vim.keymap.set("n", "J", "mzJ`z")
+keymap.set("n", "J", "mzJ`z")
 
 -- no yank at x
-vim.keymap.set("n", "x", '"_x')
+keymap.set("n", "x", '"_x')
 
 -- jump out of the bracket
-vim.keymap.set("i", "<C-l>", "<C-o>a")
+keymap.set("i", "<C-l>", "<C-o>a")
 
 -- new tmux session
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 local function toggle_qf()
     local qf_exists = false
@@ -72,4 +74,4 @@ local function toggle_qf()
         vim.cmd "copen"
     end
 end
-vim.keymap.set("n", "<leader>qf", toggle_qf)
+keymap.set("n", "<leader>qf", toggle_qf)
