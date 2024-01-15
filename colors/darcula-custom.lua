@@ -61,6 +61,7 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         -- Type { fg = orange },
         sym "@type.builtin" { fg = orange },
         sym "@string.escape" { fg = yellow, gui = bold },
+        sym "@punctuation.special" { fg = yellow, gui = bold },
         Visual { bg = visual },    -- Visual mode selection
         VisualNOS { bg = visual }, -- Visual mode selection when Vim is "Not Owning the Selection".
 
@@ -81,14 +82,16 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         NvimTreeFileIgnored { fg = comment },
         NvimTreeFileDirty { fg = yellow },
 
+        NvimTreeFolderIgnored { fg = comment },
+        NvimTreeFolderStaged { fg = blue }, -- file name
+        NvimTreeFolderNew { fg = blue },
+        NvimTreeFolderDirty { fg = blue },
+
         -- telescope
         TelescopePromptCounter { fg = fg },
 
         -- neo-tree
         NeoTreeTitleBar { fg = comment },
-
-        -- TODO test this later
-        sym "@punctuation.special" { fg = yellow, gui = bold },
     }
 end)
 

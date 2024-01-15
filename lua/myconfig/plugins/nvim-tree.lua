@@ -65,23 +65,18 @@ local plugin = {
             vim.keymap.set("n", "[e", api.node.navigate.diagnostics.prev, opts "Prev Diagnostic")
             vim.keymap.set("n", "g?", api.tree.toggle_help, opts "Help")
             vim.keymap.set("n", "m", api.marks.toggle, opts "Toggle Bookmark")
-            -- TODO what is this?
-            vim.keymap.set("n", "S", api.tree.search_node, opts "Search")
+            vim.keymap.set("n", "S", api.tree.search_node, opts "Search") -- TODO what is this?
             vim.keymap.set("n", "P", api.node.navigate.parent, opts "Parent Directory")
             vim.keymap.set("n", "E", api.tree.expand_all, opts "Expand All")
             vim.keymap.set("n", "W", api.tree.collapse_all, opts "Collapse")
 
             -- filters
-
-            -- show files with git status
-            vim.keymap.set("n", "C", api.tree.toggle_git_clean_filter, opts "Toggle Git Clean")
-            vim.keymap.set("n", "F", api.live_filter.clear, opts "Clean Filter")
             vim.keymap.set("n", "f", api.live_filter.start, opts "Filter")
-
-            -- TODO what is this?
+            vim.keymap.set("n", "F", api.live_filter.clear, opts "Clear filter")
+            vim.keymap.set("n", "C", api.tree.toggle_git_clean_filter, opts "Toggle Git Clean")
+            vim.keymap.set("n", "I", api.tree.toggle_gitignore_filter, opts "Toggle Git Ignore")
             -- vim.keymap.set("n", "H", api.tree.toggle_custom_filter, opts "Toggle Hidden")
             -- vim.keymap.set("n", "H", api.tree.toggle_hidden_filter, opts "Toggle Dotfiles")
-            -- vim.keymap.set("n", "I", api.tree.toggle_gitignore_filter, opts "Toggle Git Ignore")
             -- vim.keymap.set("n", "B", api.tree.toggle_no_buffer_filter, opts "Toggle No Buffer")
 
             -- basic function
@@ -110,13 +105,9 @@ local plugin = {
             view = tree_view,
             diagnostics = {
                 enable = true,
-                show_on_dirs = false,
+                show_on_dirs = true,
                 show_on_open_dirs = true,
                 debounce_delay = 50,
-                severity = {
-                    min = vim.diagnostic.severity.HINT,
-                    max = vim.diagnostic.severity.ERROR,
-                },
                 icons = {
                     hint = "H",
                     info = "I",
@@ -126,13 +117,12 @@ local plugin = {
             },
             filters = {
                 git_ignored = false,
-                custom = { "^\\.git" }
+                custom = { "^\\.git$" }
             },
             git = {
-                show_on_dirs = false,
+                show_on_dirs = true,
             },
             renderer = {
-                add_trailing = false,
                 highlight_git = true,
                 indent_markers = {
                     enable = true,
