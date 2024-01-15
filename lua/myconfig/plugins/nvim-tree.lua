@@ -1,4 +1,4 @@
-return {
+local plugin = {
     "nvim-tree/nvim-tree.lua",
     version = "*",
     lazy = false,
@@ -108,7 +108,62 @@ return {
 
         tree.setup({
             view = tree_view,
+            diagnostics = {
+                enable = true,
+                show_on_dirs = false,
+                show_on_open_dirs = true,
+                debounce_delay = 50,
+                severity = {
+                    min = vim.diagnostic.severity.HINT,
+                    max = vim.diagnostic.severity.ERROR,
+                },
+                icons = {
+                    hint = "H",
+                    info = "I",
+                    warning = "W",
+                    error = "E",
+                },
+            },
+            filters = {
+                git_ignored = false,
+                custom = { "^\\.git" }
+            },
+            git = {
+                show_on_dirs = false,
+            },
+            renderer = {
+                add_trailing = false,
+                highlight_git = true,
+                indent_markers = {
+                    enable = true,
+                    inline_arrows = false
+                },
+                icons = {
+                    git_placement = "after",
+                    modified_placement = "after",
+                    diagnostics_placement = "signcolumn",
+                    bookmarks_placement = "signcolumn",
+                    show = {
+                        folder_arrow = false,
+                    },
+                    glyphs = {
+                        git = {
+                            -- Change type
+                            unmerged  = "",
+                            deleted   = "",
+                            renamed   = "󰁕",
+                            -- Status type
+                            untracked = "",
+                            ignored   = "",
+                            unstaged  = "",
+                            staged    = "",
+                        },
+                    },
+                },
+            },
             on_attach = on_attach,
         })
     end,
 }
+
+return plugin
