@@ -82,8 +82,8 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         NvimTreeFileIgnored { fg = comment },
         NvimTreeFileDirty { fg = yellow },
 
-        NvimTreeFolderIgnored { fg = comment },
-        NvimTreeFolderStaged { fg = blue }, -- file name
+        NvimTreeFolderIgnored { fg = comment }, -- folder name
+        NvimTreeFolderStaged { fg = blue },
         NvimTreeFolderNew { fg = blue },
         NvimTreeFolderDirty { fg = blue },
 
