@@ -10,11 +10,11 @@ local plugin = {
         local api = require("nvim-tree.api")
 
         -- view (floating tree)
-
-        local HEIGHT_RATIO = 0.8 -- You can change this
-        local WIDTH_RATIO = 0.5  -- You can change this too
-
+        local HEIGHT_RATIO = 0.8
+        local WIDTH_RATIO = 0.5
         local tree_view = {
+            -- number = true,
+            -- relativenumber = true,
             float = {
                 enable = true,
                 open_win_config = function()
@@ -43,7 +43,6 @@ local plugin = {
         }
 
         -- smart toggle
-
         local nvimTreeFocusOrToggle = function()
             local currentBuf = vim.api.nvim_get_current_buf()
             local currentBufFt = vim.api.nvim_get_option_value("filetype", { buf = currentBuf })
@@ -55,7 +54,6 @@ local plugin = {
         end
 
         -- on attach
-
         local on_attach = function(bufnr)
             local function opts(desc)
                 return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
