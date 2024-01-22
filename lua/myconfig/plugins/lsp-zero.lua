@@ -115,7 +115,7 @@ return {
             })
 
             local servers = {
-                ['null-ls'] = { 'javascript', 'typescript' },
+                ['null-ls'] = { 'javascript', 'typescript', 'yaml', 'yml' },
                 ['rust_analyzer'] = { 'rust' },
                 ["gopls"] = { "go" },
                 ["lua_ls"] = { "lua" },
