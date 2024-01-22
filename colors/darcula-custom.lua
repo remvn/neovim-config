@@ -64,6 +64,7 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         sym "@punctuation.special" { fg = yellow, gui = bold },
         Visual { bg = visual },    -- Visual mode selection
         VisualNOS { bg = visual }, -- Visual mode selection when Vim is "Not Owning the Selection".
+        -- MatchParen { fg = yellow, bg = mid, gui = bold },
 
         -- nvim-tree
         NvimTreeNormal { fg = fg, bg = bg },
