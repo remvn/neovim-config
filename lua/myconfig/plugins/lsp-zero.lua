@@ -43,7 +43,9 @@ return {
         },
         config = function()
             local lsp_zero = require("lsp-zero")
-            lsp_zero.extend_cmp() -- load default cmp config
+            lsp_zero.extend_cmp({
+                set_mappings = false,
+            }) -- load default cmp config
 
             local cmp = require('cmp')
             local cmp_autopairs = require('nvim-autopairs.completion.cmp')
@@ -51,6 +53,11 @@ return {
             local cmp_format = require('lsp-zero').cmp_format()
 
             cmp.setup({
+                preselect = cmp.PreselectMode.Item,
+                completion = {
+                    completeopt = 'menu,menuone,preview',
+                },
+
                 sources = {
                     { name = "nvim_lsp" },
                     { name = "path" },
@@ -66,7 +73,7 @@ return {
 
                 mapping = cmp.mapping.preset.insert({
                     -- `Enter` key to confirm completion
-                    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
 
                     -- Ctrl+Space to trigger completion menu
                     ['<C-Space>'] = cmp.mapping.complete(),
@@ -115,7 +122,10 @@ return {
             })
 
             local servers = {
-                ['null-ls'] = { 'javascript', 'typescript', 'yaml', 'yml' },
+                ['null-ls'] = {
+                    'javascript', 'typescript', 'yaml', 'yml',
+                    'vue'
+                },
                 ['rust_analyzer'] = { 'rust' },
                 ["gopls"] = { "go" },
                 ["lua_ls"] = { "lua" },
