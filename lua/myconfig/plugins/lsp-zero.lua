@@ -55,7 +55,7 @@ return {
             cmp.setup({
                 preselect = cmp.PreselectMode.Item,
                 completion = {
-                    completeopt = 'menu,menuone,preview',
+                    completeopt = 'menu,menuone',
                 },
 
                 sources = {

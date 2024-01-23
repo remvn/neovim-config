@@ -49,6 +49,10 @@ return {
         config = true,
     },
     {
+        "windwp/nvim-ts-autotag",
+        config = true,
+    },
+    {
         'nvim-treesitter/playground',
         dependencies = { "nvim-treesitter/nvim-treesitter" }
     },
