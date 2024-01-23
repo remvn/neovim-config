@@ -120,12 +120,8 @@ return {
                 ["gopls"] = { "go" },
                 ["lua_ls"] = { "lua" },
             }
-            lsp_zero.format_on_save({
-                servers = servers
-            })
-            lsp_zero.format_mapping('<leader>f', {
-                servers = servers,
-            })
+            lsp_zero.format_on_save({ servers = servers })
+            lsp_zero.format_mapping('<leader>f', { servers = servers, })
 
             lsp_zero.on_attach(function(client, bufnr)
                 local opts = { buffer = bufnr, remap = false }
@@ -143,6 +139,7 @@ return {
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
             end)
 
+            require("mason").setup()
             require('mason-lspconfig').setup({
                 ensure_installed = {
                     'tsserver', 'lua_ls', 'gopls', 'golangci_lint_ls', 'bashls'
@@ -158,5 +155,31 @@ return {
                 },
             })
         end,
-    }
+    },
+    {
+        "ray-x/go.nvim",
+        dependencies = {
+            "ray-x/guihua.lua",
+            "neovim/nvim-lspconfig",
+            "nvim-treesitter/nvim-treesitter",
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+        },
+        config = function()
+            require("go").setup({
+                disable_defaults = true,
+                lsp_cfg = false,
+                go = 'go',
+                goimport = 'gopls',
+                fillstruct = 'gopls',
+                gofmt = 'gofumpt',
+                tag_transform = 'snakecase',
+                tag_options = '',
+                diagnostic = false,
+            })
+        end,
+        event = { "CmdlineEnter" },
+        ft = { "go", 'gomod' },
+        build = ':lua require("go.install").update_all_sync()',
+    },
 }
