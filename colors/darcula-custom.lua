@@ -59,18 +59,32 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         DiagnosticError { fg = red },
 
         -- Type { fg = orange },
+        sym "@type" { fg = fg },
         sym "@type.builtin" { fg = orange },
-        sym "@string.escape" { fg = yellow, gui = bold },
+        sym "@type.definition" { fg = fg },
+        sym "@variable.parameter" { fg = fg },
+        sym "@variable.builtin" { fg = fg },
+        sym "@string.escape" { fg = yellow, gui = "bold" },
         sym "@punctuation.special" { fg = orange },
         sym "@tag.delimiter" { fg = yellow },
         sym "@tag.attribute" { fg = fg },
+        sym "@namespace" { fg = fg },
         Visual { bg = visual },    -- Visual mode selection
         VisualNOS { bg = visual }, -- Visual mode selection when Vim is "Not Owning the Selection".
+
+        -- typescript
+        sym "@lsp.type.type.typescript" { fg = blue },
+        typeScriptPredefinedType { fg = blue },
+        typeScriptEndColons { fg = orange },
+        typeScriptCall { fg = fg },
+        typeScriptGlobalMethod { fg = yellow },
+
+        markdownCode { fg = purple },
 
         -- nvim-tree
         NvimTreeNormal { fg = fg, bg = bg },
         NvimTreeNormalFloat { fg = fg, bg = bg },
-        NvimTreeRootFolder { fg = fg, gui = "bold, italic" },
+        NvimTreeRootFolder { fg = fg, gui = "bold,italic" },
         NvimTreeModifiedFile { fg = yellow },
         NvimTreeFolderIcon { fg = blue },
         NvimTreeCursorLineNr { fg = faded },

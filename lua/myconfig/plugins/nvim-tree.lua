@@ -92,6 +92,7 @@ local plugin = {
             vim.keymap.set("n", "gy", api.fs.copy.absolute_path, opts "Copy Absolute Path")
             vim.keymap.set("n", "<leader>cd", api.tree.change_root_to_node, opts "CD")
             vim.keymap.set("n", "<CR>", api.node.open.edit, opts "Open")
+            vim.keymap.set("n", "q", api.node.open.edit, opts "Open")
             vim.keymap.set("n", "r", api.fs.rename, opts "Rename")
             vim.keymap.set("n", "<C-r>", api.fs.rename_sub, opts "Rename: Omit Filename")
             vim.keymap.set("n", "<C-c>", api.tree.close, opts "Close tree")

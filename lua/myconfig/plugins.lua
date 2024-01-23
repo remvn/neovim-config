@@ -33,6 +33,9 @@ return {
                 },
                 hint_enable = false
             })
+            vim.keymap.set("n", "<leader>ls", function()
+                require('lsp_signature').toggle_float_win()
+            end)
         end,
     },
 
