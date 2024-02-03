@@ -5,6 +5,9 @@ keymap.set("n", "<leader>pv", vim.cmd.Ex)
 keymap.set("i", "jk", "<Esc>")
 keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
 
+-- git
+keymap.set("n", "<leader>gs", "<cmd>G<cr>")
+
 -- disable some internal keybindings
 keymap.set("v", "u", "<nop>")
 keymap.set("v", "U", "<nop>")
@@ -12,8 +15,8 @@ keymap.set({ "n", "v" }, "<C-a>", "<nop>")
 keymap.set({ "n", "v" }, "<C-x>", "<nop>")
 
 -- split window
-keymap.set("n", "<leader>vs", ":vsplit<CR>")
-keymap.set("n", "<leader>hs", ":split<CR>")
+keymap.set("n", "<leader>vs", "<cmd>vsplit<CR>")
+keymap.set("n", "<leader>hs", "<cmd>split<CR>")
 
 -- move selection
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
