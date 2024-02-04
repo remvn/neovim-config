@@ -68,7 +68,7 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         sym "@punctuation.special" { fg = orange },
         sym "@tag.delimiter" { fg = yellow },
         sym "@tag.attribute" { fg = fg },
-        sym "@namespace" { fg = fg },
+        sym "@namespace" { fg = green },
         Visual { bg = visual },    -- Visual mode selection
         VisualNOS { bg = visual }, -- Visual mode selection when Vim is "Not Owning the Selection".
 
