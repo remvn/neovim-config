@@ -12,8 +12,8 @@ vim.opt.termguicolors = true
 vim.opt.wrap = false
 -- vim.opt.colorcolumn = "80"
 
--- vim.opt.splitbelow = true -- put new windows below current
--- vim.opt.splitright = true -- put new windows right of current
+vim.opt.splitbelow = true -- put new windows below current
+vim.opt.splitright = true -- put new windows right of current
 
 vim.opt.ignorecase = true -- case insensitive searching
 vim.opt.smartcase = true  -- case insensitive searching unless /C or capital in search

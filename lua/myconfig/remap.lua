@@ -6,7 +6,7 @@ keymap.set("i", "jk", "<Esc>")
 keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
 
 -- git
-keymap.set("n", "<leader>gs", "<cmd>G<cr>")
+keymap.set("n", "<leader>gs", "<cmd>G<cr><C-w>K")
 
 -- disable some internal keybindings
 keymap.set("v", "u", "<nop>")
