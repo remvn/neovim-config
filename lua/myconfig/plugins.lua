@@ -5,6 +5,7 @@ return {
         dependencies = "rktjmp/lush.nvim",
         priority = 1000,
         init = function()
+            -- see ../../colors/darcula-custom.lua
             vim.cmd.colorscheme("darcula-custom")
         end,
     },
@@ -62,7 +63,13 @@ return {
     {
         'norcalli/nvim-colorizer.lua',
         config = function()
-            require('colorizer').setup({})
+            require('colorizer').setup({
+                'javascript',
+                'typescript',
+                'vue',
+                'css',
+                'lua',
+            })
         end,
     },
 }
