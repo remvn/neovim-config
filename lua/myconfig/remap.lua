@@ -41,8 +41,8 @@ keymap.set("n", "<C-_>", "<Plug>CommentaryLine")
 keymap.set("v", "<C-_>", "<Plug>Commentary")
 
 -- remap ^ and $
-keymap.set({ "n", "v" }, "<C-h>", "^")
-keymap.set({ "n", "v" }, "<C-l>", "$")
+keymap.set({ "n", "v", "o" }, "<C-h>", "^")
+keymap.set({ "n", "v", "o" }, "<C-l>", "$")
 
 -- newline without insert mode
 keymap.set("n", "<A-k>", "O<Esc>j")
