@@ -1,6 +1,7 @@
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
+vim.opt.updatetime = 1000
 
 vim.opt.number = true
 vim.opt.relativenumber = true

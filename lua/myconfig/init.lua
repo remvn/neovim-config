@@ -16,10 +16,12 @@ autocmd('TextYankPost', {
     end,
 })
 
-vim.opt.updatetime = 1000
-local reload_buffer_group = augroup("AutoReloadBuffer", { clear = true })
-autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
-    group = reload_buffer_group,
-    pattern = '*',
-    command = 'checktime'
+local branch_watcher = augroup("BranchWatcher", { clear = true })
+autocmd('User', {
+    group = branch_watcher,
+    pattern = 'FugitiveChanged',
+    callback = function()
+        print("git changed ")
+        vim.cmd('checktime')
+    end,
 })
