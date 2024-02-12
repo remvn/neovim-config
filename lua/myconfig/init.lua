@@ -15,13 +15,3 @@ autocmd('TextYankPost', {
         })
     end,
 })
-
--- local branch_watcher = augroup("BranchWatcher", { clear = true })
--- autocmd('User', {
---     group = branch_watcher,
---     pattern = 'FugitiveChanged',
---     callback = function()
---         print("git changed ")
---         vim.cmd('checktime')
---     end,
--- })
