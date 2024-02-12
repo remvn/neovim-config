@@ -12,8 +12,11 @@ return {
 
         -- call cmp.setup with default
         -- mapping, sources, snippet
+        -- FIXME: consider removing this later
         lsp_zero.extend_cmp({
             set_mappings = false,
+            set_lsp_source = false,
+            use_luasnip = true,
         })
 
         local cmp = require('cmp')

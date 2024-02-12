@@ -1,4 +1,7 @@
--- load order: lsp-zero -> nvim-lspconfig & cmp -> mason
+-- load order:
+-- lsp-zero utils
+-- nvim-lspconfig & cmp
+-- mason (config lsp servers with mason)
 
 return {
     -- lsp utils functions
