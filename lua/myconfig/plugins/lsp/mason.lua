@@ -17,8 +17,9 @@ return {
             automatic_installation = true,
             handlers = {
                 -- lsp-zero already handle these config below:
-                -- * cmp-nvim-lsp capabilities is set with hook
-                -- * on_attach is set with LspAttach autocmd
+                -- * cmp-nvim-lsp capabilities
+                -- * on_attach func
+                -- see: lua/myconfig/plugins/lsp/lsp-config.lua
                 -- therefore default_setup only call empty setup
                 -- under the hood.
                 lsp_zero.default_setup,

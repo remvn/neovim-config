@@ -23,14 +23,15 @@ return {
             'hrsh7th/cmp-nvim-lsp',
         },
         config = function()
-            -- load on_attach func with LspAttach autocmd
+            -- plugin init func create a LspAttach autocmd to
+            -- call on_attach func
             local lsp_zero = require("lsp-zero")
-            -- set cmp-nvim-lsp capability via hook
+
+            -- set cmp-nvim-lsp capabilities with lspconfig hook
             lsp_zero.extend_lspconfig()
 
             vim.g.lsp_zero_ui_float_border = 'single'
             vim.g.lsp_zero_ui_signcolumn = 1
-
             lsp_zero.set_sign_icons({
                 error = 'E',
                 warn = 'W',
