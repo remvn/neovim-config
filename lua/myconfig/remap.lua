@@ -17,10 +17,8 @@ keymap.set({ "n", "v" }, "<C-x>", "<nop>")
 -- split window
 keymap.set("n", "<leader>vs", "<cmd>vsplit<CR>")
 keymap.set("n", "<leader>hs", "<cmd>split<CR>")
-keymap.set("n", "<A-h>", "2<C-w><")
-keymap.set("n", "<A-l>", "2<C-w>>")
-keymap.set("n", "<A-k>", "2<C-w>+")
-keymap.set("n", "<A-j>", "2<C-w>-")
+vim.cmd("cnoreabbrev hres resize")
+vim.cmd("cnoreabbrev vres vertical resize")
 
 -- move selection
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
