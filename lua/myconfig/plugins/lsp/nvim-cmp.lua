@@ -26,8 +26,9 @@ return {
         cmp.setup({
             preselect = cmp.PreselectMode.Item,
             completion = {
-                -- some filetype dont show cmp menu automatically
-                -- when typing without this option
+                -- some filetype do not preselect first item
+                -- when using it without this option
+                -- maybe this is caused by 'noselect' in default config
                 completeopt = 'menu,menuone',
             },
             sources = {
