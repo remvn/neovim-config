@@ -5,7 +5,7 @@ keymap.set("n", "<leader>pv", vim.cmd.Ex)
 keymap.set("i", "jk", "<Esc>")
 keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
 
--- git
+-- git status
 keymap.set("n", "<leader>gs", "<cmd>G<cr><C-w>K")
 
 -- disable some internal keybindings
@@ -17,6 +17,10 @@ keymap.set({ "n", "v" }, "<C-x>", "<nop>")
 -- split window
 keymap.set("n", "<leader>vs", "<cmd>vsplit<CR>")
 keymap.set("n", "<leader>hs", "<cmd>split<CR>")
+keymap.set("n", "<A-h>", "2<C-w><")
+keymap.set("n", "<A-l>", "2<C-w>>")
+keymap.set("n", "<A-k>", "2<C-w>+")
+keymap.set("n", "<A-j>", "2<C-w>-")
 
 -- move selection
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
@@ -45,8 +49,8 @@ keymap.set({ "n", "v", "o" }, "<C-h>", "^")
 keymap.set({ "n", "v", "o" }, "<C-l>", "$")
 
 -- newline without insert mode
-keymap.set("n", "<A-k>", "O<Esc>j")
-keymap.set("n", "<A-j>", "o<Esc>k")
+-- keymap.set("n", "<A-k>", "O<Esc>j")
+-- keymap.set("n", "<A-j>", "o<Esc>k")
 
 -- better J
 keymap.set("n", "J", "mzJ`z")
