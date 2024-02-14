@@ -47,8 +47,9 @@ keymap.set({ "n", "v", "o" }, "<C-h>", "^")
 keymap.set({ "n", "v", "o" }, "<C-l>", "$")
 
 -- newline without insert mode
--- keymap.set("n", "<A-k>", "O<Esc>j")
--- keymap.set("n", "<A-j>", "o<Esc>k")
+-- MUST use [[ ]] without empty space
+keymap.set("n", "<A-j>", 'o<Esc>0"_Dk')
+keymap.set("n", "<A-k>", 'O<Esc>0"_Dj')
 
 -- better J
 keymap.set("n", "J", "mzJ`z")
