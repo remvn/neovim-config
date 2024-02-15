@@ -5,7 +5,9 @@ return {
         'hrsh7th/nvim-cmp',
     },
     config = function()
-        require("nvim-autopairs").setup()
+        local pairs = require("nvim-autopairs")
+        pairs.setup()
+        pairs.remove_rule([["]])
 
         -- If you want insert `(` after select function or method item
         local cmp_autopairs = require('nvim-autopairs.completion.cmp')
