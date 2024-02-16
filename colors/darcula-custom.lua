@@ -67,6 +67,7 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         -- VisualNOS { bg = visual }, -- Visual mode selection when Vim is "Not Owning the Selection".
 
         -- Treesitter
+        Type { fg = orange },
         sym "@type" { fg = fg },
         sym "@type.builtin" { fg = orange },
         sym "@type.definition" { fg = fg },

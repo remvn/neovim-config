@@ -20,6 +20,10 @@ keymap.set("n", "<leader>hs", "<cmd>split<CR>")
 vim.cmd("cnoreabbrev hres resize")
 vim.cmd("cnoreabbrev vres vertical resize")
 
+-- tab selection
+keymap.set("n", "[t", "<cmd>tabprevious<CR>")
+keymap.set("n", "]t", "<cmd>tabnext<CR>")
+
 -- move selection
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
