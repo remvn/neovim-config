@@ -3,6 +3,7 @@ local keymap = vim.keymap
 
 keymap.set("n", "<leader>pv", vim.cmd.Ex)
 keymap.set("i", "jk", "<Esc>")
+keymap.set("t", "jk", "<C-\\><C-n>") -- terminal
 keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
 
 -- git status
@@ -41,7 +42,11 @@ keymap.set("x", "<leader>p", [["_dP]])
 -- yank to clipboard
 keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 keymap.set("n", "<leader>Y", [["+Y]])
-keymap.set("n", "<leader>ya", [[ggVG"+y]])
+keymap.set("n", "<leader>wa", [[ggVG"+y]])
+keymap.set("n", "<leader>wf", function()
+    -- can't remap nvim treesitter textobjects
+    vim.api.nvim_feedkeys([[vaf"+y]], "v", true)
+end)
 
 -- comment with Ctrl /
 keymap.set("n", "<C-_>", "<Plug>CommentaryLine")

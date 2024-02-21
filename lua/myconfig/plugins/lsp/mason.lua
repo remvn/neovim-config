@@ -8,6 +8,7 @@ return {
     lazy = false,
     config = function()
         local lsp_zero = require("lsp-zero")
+        local lspconfig = require("lspconfig")
 
         require("mason").setup()
         require('mason-lspconfig').setup({
