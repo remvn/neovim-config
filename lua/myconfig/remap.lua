@@ -41,6 +41,7 @@ keymap.set("x", "<leader>p", [["_dP]])
 -- yank to clipboard
 keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 keymap.set("n", "<leader>Y", [["+Y]])
+keymap.set("n", "<leader>ya", [[ggVG"+y]])
 
 -- comment with Ctrl /
 keymap.set("n", "<C-_>", "<Plug>CommentaryLine")
