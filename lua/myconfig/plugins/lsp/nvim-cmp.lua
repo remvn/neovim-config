@@ -5,10 +5,12 @@ return {
         'VonHeikemen/lsp-zero.nvim',
         'hrsh7th/cmp-nvim-lsp',
         'L3MON4D3/LuaSnip',
+        'saadparwaiz1/cmp_luasnip',
         "hrsh7th/cmp-path",
     },
     config = function()
         local lsp_zero = require("lsp-zero")
+        local luasnip = require("luasnip")
 
         -- call cmp.setup with default
         -- mapping, sources, snippet
@@ -58,6 +60,23 @@ return {
                 -- Scroll up and down in the completion documentation
                 ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),
+
+                -- Supertab snippet
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if luasnip.expand_or_jumpable() then
+                        luasnip.expand_or_jump()
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    if luasnip.jumpable(-1) then
+                        luasnip.jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
             }),
         })
     end
