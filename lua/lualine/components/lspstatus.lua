@@ -1,12 +1,19 @@
 local M = require('lualine.component'):extend()
 
-function M:init(options)
-    options.icon = options.icon or "󰌘"
+local modules = require('lualine_require').lazy_require {
+    highlight = 'lualine.highlight',
+    utils = 'lualine.utils.utils',
+}
+
+M.init = function(self, options)
+    if not options.icon then
+        options.icon = "󰌵"
+    end
     options.split = options.split or ", "
     M.super.init(self, options)
 end
 
-function M:update_status()
+M.update_status = function(self)
     local buf_clients = vim.lsp.buf_get_clients()
     local null_ls_installed, null_ls = pcall(require, "null-ls")
     local buf_client_names = {}
