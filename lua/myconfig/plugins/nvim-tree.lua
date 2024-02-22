@@ -138,12 +138,12 @@ local plugin = {
                     glyphs = {
                         git = {
                             unmerged  = "",
-                            deleted   = "",
-                            renamed   = "", -- 󰁕
-                            untracked = "",
-                            unstaged  = "", -- 
+                            deleted   = "", -- 
+                            renamed   = "󰁕", -- 󰁕 
+                            untracked = "", -- 
+                            unstaged  = "", -- 
+                            staged    = "󰄭",
                             ignored   = "",
-                            staged    = "",
                         },
                     },
                 },

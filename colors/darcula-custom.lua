@@ -102,7 +102,7 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         NvimTreeGitMergeIcon { fg = purple },
         NvimTreeGitNewIcon { fg = green },
         NvimTreeGitRenamedIcon { fg = orange },
-        NvimTreeGitStagedIcon { fg = fg },
+        NvimTreeGitStagedIcon { fg = green },
 
         NvimTreeGitFolderDeletedHL { NvimTreeFolderName },
         NvimTreeGitFolderDirtyHL { NvimTreeFolderName },
