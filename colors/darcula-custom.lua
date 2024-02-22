@@ -60,6 +60,7 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         -- Misc
         DiagnosticError { fg = red },
         markdownCode { fg = purple },
+        LspSignatureActiveParameter { bg = visual },
 
         -- Common syntax highlight
         -- Type { fg = orange },
