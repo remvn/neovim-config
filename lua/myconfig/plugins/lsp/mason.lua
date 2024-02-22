@@ -22,7 +22,7 @@ return {
                 -- * on_attach func
                 -- see: lua/myconfig/plugins/lsp/lsp-config.lua
                 -- therefore default_setup only call empty setup
-                -- under the hood.
+                -- under the hood. (I guess)
                 lsp_zero.default_setup,
                 lua_ls = function()
                     -- config lua_ls for neovim
