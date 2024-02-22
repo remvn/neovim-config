@@ -64,12 +64,11 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         UfoLineCount { fg = purple },
 
         -- Common syntax highlight
-        -- Type { fg = orange },
-        Visual { bg = visual }, -- Visual mode selection
-        -- VisualNOS { bg = visual }, -- Visual mode selection when Vim is "Not Owning the Selection".
+        Type { fg = orange },
+        Visual { bg = visual },    -- Visual mode selection
+        VisualNOS { bg = visual }, -- Visual mode selection when Vim is "Not Owning the Selection".
 
         -- Treesitter
-        Type { fg = orange },
         sym "@type" { fg = fg },
         sym "@type.builtin" { fg = orange },
         sym "@type.definition" { fg = fg },
@@ -93,32 +92,31 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         NvimTreeNormalFloat { fg = fg, bg = bg },
         NvimTreeRootFolder { fg = fg, gui = "bold,italic" },
         NvimTreeModifiedFile { fg = yellow },
-        NvimTreeFolderIcon { fg = blue },
         NvimTreeCursorLineNr { fg = faded },
+        NvimTreeFolderName { fg = blue },
+        NvimTreeFolderIcon { NvimTreeFolderName },
 
-        NvimTreeGitNew { fg = green }, -- git icon
-        NvimTreeGitDeleted { fg = red },
-        NvimTreeFileRenamed { fg = yellow },
-        NvimTreeFileMerge { fg = yellow },
+        NvimTreeGitDeletedIcon { fg = red },
+        NvimTreeGitDirtyIcon { fg = yellow },
+        NvimTreeGitIgnoredIcon { fg = comment },
+        NvimTreeGitMergeIcon { fg = purple },
+        NvimTreeGitNewIcon { fg = green },
+        NvimTreeGitRenamedIcon { fg = orange },
+        NvimTreeGitStagedIcon { fg = fg },
 
-        NvimTreeFileStaged { fg = fg }, -- file name
-        NvimTreeFileNew { fg = green },
-        NvimTreeFileIgnored { fg = comment },
-        NvimTreeFileDirty { fg = yellow },
-
-        NvimTreeFolderIgnored { fg = comment }, -- folder name
-        NvimTreeFolderStaged { fg = blue },
-        NvimTreeFolderNew { fg = blue },
-        NvimTreeFolderDirty { fg = blue },
+        NvimTreeGitFolderDeletedHL { NvimTreeFolderName },
+        NvimTreeGitFolderDirtyHL { NvimTreeFolderName },
+        NvimTreeGitFolderIgnoredHL { fg = comment },
+        NvimTreeGitFolderMergeHL { NvimTreeFolderName },
+        NvimTreeGitFolderNewHL { NvimTreeFolderName },
+        NvimTreeGitFolderRenamedHL { NvimTreeFolderName },
+        NvimTreeGitFolderStagedHL { NvimTreeFolderName },
 
         -- Telescope
         TelescopePromptCounter { fg = fg },
         TelescopeBorder { fg = mid, bg = bg },
         TelescopeTitle { fg = fg },
         TelescopeNormal { bg = bg },
-
-        -- Neo-tree
-        NeoTreeTitleBar { fg = comment },
     }
 end)
 
