@@ -60,6 +60,7 @@ return {
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
                 vim.keymap.set("n", "gh", function() vim.lsp.buf.hover() end, opts)
                 vim.keymap.set("n", "gH", function() vim.lsp.buf.references() end, opts)
+                vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
                 vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, opts)
                 vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
                 vim.keymap.set("n", "<leader>r", function() vim.lsp.buf.rename() end, opts)
