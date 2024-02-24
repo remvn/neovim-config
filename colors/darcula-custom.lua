@@ -69,9 +69,9 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         VisualNOS { bg = visual }, -- Visual mode selection when Vim is "Not Owning the Selection".
 
         -- Treesitter
-        sym "@type" { fg = fg },
+        sym "@type" { fg = blue },
         sym "@type.builtin" { fg = orange },
-        sym "@type.definition" { fg = fg },
+        sym "@type.definition" { fg = blue },
         sym "@variable.parameter" { fg = fg },
         sym "@variable.builtin" { fg = fg },
         sym "@string.escape" { fg = yellow, gui = "bold" },
@@ -79,6 +79,10 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         sym "@tag.delimiter" { fg = yellow },
         sym "@tag.attribute" { fg = fg },
         sym "@namespace" { fg = green },
+
+        -- Golang
+        sym "@punctuation.delimiter.go" { fg = fg },
+        sym "@variable.member.go" { fg = purple },
 
         -- Typescript
         sym "@lsp.type.type.typescript" { fg = blue },

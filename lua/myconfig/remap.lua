@@ -9,7 +9,7 @@ keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
 -- git status
 keymap.set("n", "<leader>gs", "<cmd>G<cr><C-w>K")
 
--- disable some internal keybindings
+-- disable some default mappings
 keymap.set("v", "u", "<nop>")
 keymap.set("v", "U", "<nop>")
 keymap.set({ "n", "v" }, "<C-a>", "<nop>")
@@ -36,7 +36,9 @@ keymap.set({ "n", "v" }, "<C-j>", "5j")
 -- save with Ctrl S
 keymap.set("n", "<C-s>", ":w<CR>")
 
--- paste without yanking
+keymap.set("n", "<leader>sub", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]])
+
+-- paste without yanking in visual mode
 keymap.set("x", "<leader>p", [["_dP]])
 
 -- yank to clipboard
