@@ -42,7 +42,7 @@ return {
                 -- completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
             },
-            formatting = cmp_format,
+            -- formatting = cmp_format,
             mapping = cmp.mapping.preset.insert({
                 -- `Enter` key to confirm completion
                 ['<CR>'] = cmp.mapping.confirm({ select = true }),

@@ -62,6 +62,8 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         markdownCode { fg = purple },
         LspSignatureActiveParameter { bg = visual },
         UfoLineCount { fg = purple },
+        CmpItemAbbrMatch { fg = blue },
+        CmpItemAbbrMatchFuzzy = { fg = blue },
 
         -- Common syntax highlight
         Type { fg = orange },
