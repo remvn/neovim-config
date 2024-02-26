@@ -2,15 +2,14 @@
 return {
     'tpope/vim-surround',
     'wellle/targets.vim',
-    -- 'tpope/vim-commentary',
     'tpope/vim-fugitive',
     'sindrets/diffview.nvim',
     'romainl/vim-cool',
-    -- install without yarn or npm
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
+        -- install without yarn or npm
         build = function() vim.fn["mkdp#util#install"]() end,
     },
     {
