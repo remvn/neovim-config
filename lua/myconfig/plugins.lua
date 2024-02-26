@@ -1,6 +1,8 @@
 -- load basic plugin without custom config here
 return {
     'tpope/vim-surround',
+    'tpope/vim-unimpaired',
+    'tpope/vim-repeat',
     'wellle/targets.vim',
     'tpope/vim-fugitive',
     'sindrets/diffview.nvim',

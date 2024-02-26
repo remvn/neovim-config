@@ -15,6 +15,7 @@ return {
         vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, {})
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
         vim.keymap.set('n', '<leader>lg', builtin.live_grep, {})
+        vim.keymap.set("n", "gr", builtin.lsp_references, {})
         vim.keymap.set('n', '<leader>ps', function()
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)

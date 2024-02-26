@@ -1,4 +1,4 @@
-return {
+local plugin = {
     "ray-x/go.nvim",
     dependencies = {
         "ray-x/guihua.lua",
@@ -14,13 +14,16 @@ return {
         require("go").setup({
             disable_defaults = true,
             lsp_cfg = false,
+            lsp_codelens = false,
+            diagnostic = false,
             go = 'go',
             goimport = 'gopls',
             fillstruct = 'gopls',
             gofmt = 'gofumpt',
             tag_transform = 'snakecase',
             tag_options = '',
-            diagnostic = false,
         })
     end,
 }
+
+return plugin
