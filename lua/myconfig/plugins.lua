@@ -6,6 +6,13 @@ return {
     'tpope/vim-fugitive',
     'sindrets/diffview.nvim',
     'romainl/vim-cool',
+    -- install without yarn or npm
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",

@@ -10,7 +10,7 @@ keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
 keymap.set("n", "<leader>gs", "<cmd>G<cr><C-w>K")
 
 -- disable some default mappings
-keymap.set("n", "<Tab>", "<nop>")
+keymap.set("n", "<Tab>", "<nop>") -- this also disable Ctrl+I, use Ctrl+tab instead
 keymap.set("v", "u", "<nop>")
 keymap.set("v", "U", "<nop>")
 keymap.set({ "n", "v" }, "<C-a>", "<nop>")
@@ -37,6 +37,7 @@ keymap.set({ "n", "v" }, "<C-j>", "5j")
 -- save with Ctrl S
 keymap.set("n", "<C-s>", ":w<CR>")
 
+-- replace the word under cursor globally
 keymap.set("n", "<leader>sub", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]])
 
 -- paste without yanking in visual mode
