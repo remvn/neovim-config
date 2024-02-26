@@ -1,3 +1,26 @@
+local function has_value(tab, val)
+    for _, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+    return false
+end
+
+local function tabout()
+    local _, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local char = vim.api.nvim_get_current_line():sub(col + 1, col + 1)
+    local arr = { [["]], [[']], "`", ")", "]", "}" }
+    local right = vim.api.nvim_replace_termcodes(
+        '<right>', true, false, true
+    )
+    if has_value(arr, char) then
+        vim.api.nvim_feedkeys(right, "i", true)
+        return true
+    end
+    return false
+end
+
 return {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -14,11 +37,10 @@ return {
 
         -- call cmp.setup with default
         -- mapping, sources, snippet
-        -- FIXME: consider removing this later
         lsp_zero.extend_cmp({
             set_mappings = false,
             set_lsp_source = false,
-            use_luasnip = true,
+            use_luasnip = true, -- expand luasnip
         })
 
         local cmp = require('cmp')
@@ -66,7 +88,9 @@ return {
                     if luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
                     else
-                        fallback()
+                        if tabout() == false then
+                            fallback()
+                        end
                     end
                 end, { "i", "s" }),
 

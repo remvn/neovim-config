@@ -10,6 +10,7 @@ keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
 keymap.set("n", "<leader>gs", "<cmd>G<cr><C-w>K")
 
 -- disable some default mappings
+keymap.set("n", "<Tab>", "<nop>")
 keymap.set("v", "u", "<nop>")
 keymap.set("v", "U", "<nop>")
 keymap.set({ "n", "v" }, "<C-a>", "<nop>")
@@ -49,10 +50,6 @@ keymap.set("n", "<leader>wf", function()
     -- can't remap nvim treesitter textobjects
     vim.api.nvim_feedkeys([[vaf"+y]], "v", true)
 end)
-
--- comment with Ctrl /
-keymap.set("n", "<C-_>", "<Plug>CommentaryLine")
-keymap.set("v", "<C-_>", "<Plug>Commentary")
 
 -- remap ^ and $
 keymap.set({ "n", "v", "o" }, "<C-h>", "^")
