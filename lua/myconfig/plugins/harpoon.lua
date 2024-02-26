@@ -27,8 +27,8 @@ return {
             title = " Harpoon ",
             ui_max_width = 70,
         }
-        vim.keymap.set("n", "<A-1>", function() harpoon.ui:toggle_quick_menu(harpoon:list(), window_opts) end)
 
+        vim.keymap.set("n", "<A-1>", function() harpoon.ui:toggle_quick_menu(harpoon:list(), window_opts) end)
         vim.keymap.set("n", "<A-q>", function() harpoon:list():select(1) end)
         vim.keymap.set("n", "<A-w>", function() harpoon:list():select(2) end)
         vim.keymap.set("n", "<A-a>", function() harpoon:list():select(3) end)

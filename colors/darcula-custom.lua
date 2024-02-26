@@ -93,6 +93,12 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         typeScriptCall { fg = fg },
         typeScriptGlobalMethod { fg = yellow },
 
+        -- Harpoon
+        HarpoonActive { fg = 'black', bg = blue },
+        HarpoonInactive { fg = fg, bg = overbg },
+        HarpoonNumberActive { HarpoonActive, gui = "bold" },
+        HarpoonNumberInactive { HarpoonInactive, gui = "bold" },
+
         -- Nvim-tree
         NvimTreeNormal { fg = fg, bg = bg },
         NvimTreeNormalFloat { fg = fg, bg = bg },
