@@ -1,3 +1,5 @@
+local tabout = require("myconfig.tabout")
+
 vim.g.mapleader = " "
 local keymap = vim.keymap
 
@@ -5,6 +7,9 @@ keymap.set("n", "<leader>pv", vim.cmd.Ex)
 keymap.set("i", "jk", "<Esc>")
 keymap.set("t", "jk", "<C-\\><C-n>") -- terminal
 keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
+
+-- jump out of bracket with tab
+tabout.set_keymap()
 
 -- git status
 keymap.set("n", "<leader>gs", "<cmd>G<cr><C-w>K")
@@ -25,6 +30,8 @@ vim.cmd("cnoreabbrev vres vertical resize")
 -- tab selection
 keymap.set("n", "[t", "<cmd>tabprevious<CR>")
 keymap.set("n", "]t", "<cmd>tabnext<CR>")
+vim.cmd("cnoreabbrev tnew tabnew")
+vim.cmd("cnoreabbrev tclose tabclose")
 
 -- move selection
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
