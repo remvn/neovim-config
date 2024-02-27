@@ -9,7 +9,7 @@ keymap.set("t", "jk", "<C-\\><C-n>") -- terminal
 keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
 
 -- jump out of bracket with tab
-tabout.set_keymap()
+tabout:set_keymap()
 
 -- git status
 keymap.set("n", "<leader>gs", "<cmd>G<cr><C-w>K")

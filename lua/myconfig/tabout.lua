@@ -9,7 +9,7 @@ local function has_value(tab, val)
     return false
 end
 
-M.exec = function()
+function M:exec()
     local _, col = unpack(vim.api.nvim_win_get_cursor(0))
     local char = vim.api.nvim_get_current_line():sub(col + 1, col + 1)
     local arr = { [["]], [[']], "`", ")", "]", "}" }
@@ -23,12 +23,12 @@ M.exec = function()
     return false
 end
 
-M.set_keymap = function(self)
+function M:set_keymap()
     vim.keymap.set("i", "<Tab>", function()
         local tab = vim.api.nvim_replace_termcodes(
             '<tab>', true, false, true
         )
-        if self.exec() == false then
+        if self:exec() == false then
             vim.api.nvim_feedkeys(tab, "n", false)
         end
     end)
