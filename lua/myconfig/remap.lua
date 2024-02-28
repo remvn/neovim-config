@@ -1,5 +1,7 @@
 local tabout = require("myconfig.tabout")
 
+-- check :h map-mode for mode alias
+
 vim.g.mapleader = " "
 local keymap = vim.keymap
 
@@ -16,10 +18,10 @@ keymap.set("n", "<leader>gs", "<cmd>G<cr><C-w>K")
 
 -- disable some default mappings
 keymap.set("n", "<Tab>", "<nop>") -- this also disable Ctrl+I, use Ctrl+tab instead
-keymap.set("v", "u", "<nop>")
-keymap.set("v", "U", "<nop>")
-keymap.set({ "n", "v" }, "<C-a>", "<nop>")
-keymap.set({ "n", "v" }, "<C-x>", "<nop>")
+keymap.set("x", "u", "<nop>")
+keymap.set("x", "U", "<nop>")
+keymap.set({ "n", "x" }, "<C-a>", "<nop>")
+keymap.set({ "n", "x" }, "<C-x>", "<nop>")
 
 -- split window
 keymap.set("n", "<leader>vs", "<cmd>vsplit<CR>")
@@ -34,8 +36,8 @@ vim.cmd("cnoreabbrev tnew tabnew")
 vim.cmd("cnoreabbrev tclose tabclose")
 
 -- move selection
-keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
-keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+keymap.set("x", "<A-j>", ":m '>+1<CR>gv=gv")
+keymap.set("x", "<A-k>", ":m '<-2<CR>gv=gv")
 
 -- fast navigation
 keymap.set({ "n", "v" }, "<C-k>", "5k")

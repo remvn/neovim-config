@@ -63,6 +63,21 @@ return {
                 section_separators = { left = '', right = '' },
                 component_separators = { left = '', right = '' },
             },
+            tabline = {
+                lualine_a = {
+                    {
+                        "tabs",
+                        mode = 3,
+                        tabs_color = {
+                            active = 'lualine_z_insert',     -- Color for active tab.
+                            inactive = 'lualine_a_inactive', -- Color for inactive tab.
+                        },
+                        symbols = {
+                            modified = ' [+]', -- Text to show when the file is modified.
+                        },
+                    },
+                }
+            },
             sections = {
                 lualine_a = {
                     {
@@ -97,5 +112,7 @@ return {
                 lualine_z = { 'location' }
             }
         })
+
+        vim.opt.showtabline = 1
     end
 }
