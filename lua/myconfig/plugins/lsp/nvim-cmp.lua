@@ -62,13 +62,13 @@ return {
 
                 -- Supertab snippet
                 ["<C-l>"] = cmp.mapping(function(fallback)
-                    if luasnip.expand_or_jumpable() then
+                    if luasnip.expand_or_locally_jumpable() then
                         luasnip.expand_or_jump()
                     end
                 end, { "i", "s" }),
 
                 ["<C-h>"] = cmp.mapping(function(fallback)
-                    if luasnip.jumpable(-1) then
+                    if luasnip.locally_jumpable(-1) then
                         luasnip.jump(-1)
                     end
                 end, { "i", "s" }),
