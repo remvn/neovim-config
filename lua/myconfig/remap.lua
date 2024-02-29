@@ -17,7 +17,6 @@ tabout:set_keymap()
 keymap.set("n", "<leader>gs", "<cmd>G<cr><C-w>K")
 
 -- disable some default mappings
-keymap.set("n", "<Tab>", "<nop>") -- this also disable Ctrl+I, use Ctrl+tab instead
 keymap.set("x", "u", "<nop>")
 keymap.set("x", "U", "<nop>")
 keymap.set({ "n", "x" }, "<C-a>", "<nop>")
@@ -58,7 +57,7 @@ keymap.set("n", "<leader>Y", [["+Y]])
 keymap.set("n", "<leader>wa", [[ggVG"+y]])
 keymap.set("n", "<leader>wf", function()
     -- can't remap nvim treesitter textobjects
-    vim.api.nvim_feedkeys([[vaf"+y]], "v", true)
+    vim.api.nvim_feedkeys([[vaf"+y]], "m", true)
 end)
 
 -- remap ^ and $
