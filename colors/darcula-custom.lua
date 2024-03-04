@@ -87,8 +87,6 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         sym "@variable.member.go" { fg = purple },
 
         -- Typescript
-        sym "@lsp.type.type.typescript" { fg = blue },
-        typeScriptPredefinedType { fg = blue },
         typeScriptEndColons { fg = orange },
         typeScriptCall { fg = fg },
         typeScriptGlobalMethod { fg = yellow },
