@@ -106,6 +106,9 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         sym "@markup.list.checked" { fg = green },     -- todo notes
         sym "@markup.list.unchecked" { fg = comment }, -- todo notes
 
+        -- Git
+        sym "@string.special.url.gitcommit" { fg = fg },
+
         -- Harpoon
         HarpoonActive { fg = 'black', bg = blue },
         HarpoonInactive { fg = fg, bg = overbg },
