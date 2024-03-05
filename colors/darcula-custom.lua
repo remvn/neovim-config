@@ -87,13 +87,13 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         typeScriptGlobalMethod { fg = yellow },
 
         -- Markdown
-        sym "@markup" { fg = fg },                                        -- For strings considerated text in a markup language.
-        sym "@markup.heading" { fg = blue, gui = "bold" },                -- titles like: # Example
-        sym "@markup.strong" { fg = fg, gui = "bold" },                   -- bold
-        sym "@markup.italic" { fg = fg, gui = "italic" },                 -- italic
-        sym "@markup.strikethrough" { fg = fg, gui = "strikethrough" },   -- strikethrough text
-        sym "@markup.underline" { gui = "underline" },                    -- underlined text
-        sym "@markup.raw" { fg = orange },                                -- used for inline code in markdown and for doc in python (""")
+        sym "@markup" { fg = fg }, -- For strings considerated text in a markup language.
+        sym "@markup.heading" { fg = blue, gui = "bold" },
+        sym "@markup.strong" { fg = fg, gui = "bold" },
+        sym "@markup.italic" { fg = fg, gui = "italic" },
+        sym "@markup.strikethrough" { fg = fg, gui = "strikethrough" },
+        sym "@markup.underline" { gui = "underline" },
+        sym "@markup.raw" { fg = orange },                                -- inline code
 
         sym "@markup.math" { fg = blue },                                 -- math environments (e.g. `$ ... $` in LaTeX)
         sym "@markup.environment" { fg = purple },                        -- text environments of markup languages
