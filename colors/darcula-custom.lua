@@ -54,7 +54,6 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
     return {
         -- Misc
         DiagnosticError { fg = red },
-        markdownCode { fg = purple },
         LspSignatureActiveParameter { bg = visual },
         UfoLineCount { fg = purple },
         CmpItemAbbrMatch { fg = blue },
@@ -105,6 +104,8 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         sym "@markup.list" { fg = comment },
         sym "@markup.list.checked" { fg = green },     -- todo notes
         sym "@markup.list.unchecked" { fg = comment }, -- todo notes
+
+        markdownCode { fg = yellow },
 
         -- Git
         sym "@string.special.url.gitcommit" { fg = fg },
