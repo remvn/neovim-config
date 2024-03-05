@@ -105,7 +105,7 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         sym "@markup.list.checked" { fg = green },     -- todo notes
         sym "@markup.list.unchecked" { fg = comment }, -- todo notes
 
-        markdownCode { fg = yellow },
+        markdownCode { fg = purple },
 
         -- Git
         sym "@string.special.url.gitcommit" { fg = fg },
