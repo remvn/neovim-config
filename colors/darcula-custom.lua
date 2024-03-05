@@ -18,10 +18,9 @@ local c7 = c6.lighten(80)
 
 
 -- Background
-local bg     = c0 -- base background #262627
-local overbg = c1 -- other backgrounds
-local subtle = c2 -- out-of-buffer elements
-
+local bg      = c0 -- base background #262627
+local overbg  = c1 -- other backgrounds
+local subtle  = c2 -- out-of-buffer elements
 
 -- Elements
 local fg      = hsl(210, 7, 82)  -- #ced1d4
@@ -33,8 +32,7 @@ local mid     = c2.lighten(10) -- either foreground or background
 local faded   = fg.darken(45)  -- non-important text elements
 local pop     = c7
 
--- primary colors: orange, yellow, white
-
+-- Primary colors: orange, yellow, white
 -- Color palette
 local red     = hsl(1, 77, 62)   -- #e95653
 local salmon  = hsl(10, 90, 70)  -- #f7856e
@@ -50,11 +48,8 @@ local purple  = hsl(279, 30, 62) -- #a781bb
 local magenta = hsl(310, 40, 70) -- #d194c7
 
 
--- GUI options
-local bold, italic, underline = 'bold', 'italic', 'underline'
-
 ---@diagnostic disable: undefined-global
-local spec                    = lush.extends({ darcula_solid }).with(function(inject_functions)
+local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
     local sym = inject_functions.sym
     return {
         -- Misc
@@ -93,12 +88,12 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
 
         -- Markdown
         sym "@markup" { fg = fg },                                        -- For strings considerated text in a markup language.
+        sym "@markup.heading" { fg = blue, gui = "bold" },                -- titles like: # Example
         sym "@markup.strong" { fg = fg, gui = "bold" },                   -- bold
         sym "@markup.italic" { fg = fg, gui = "italic" },                 -- italic
         sym "@markup.strikethrough" { fg = fg, gui = "strikethrough" },   -- strikethrough text
         sym "@markup.underline" { gui = "underline" },                    -- underlined text
-
-        sym "@markup.heading" { fg = blue, gui = "bold" },                -- titles like: # Example
+        sym "@markup.raw" { fg = orange },                                -- used for inline code in markdown and for doc in python (""")
 
         sym "@markup.math" { fg = blue },                                 -- math environments (e.g. `$ ... $` in LaTeX)
         sym "@markup.environment" { fg = purple },                        -- text environments of markup languages
@@ -107,9 +102,7 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         sym "@markup.link" { fg = purple },                               -- text references, footnotes, citations, etc.
         sym "@markup.link.url" { fg = purple, gui = "italic,underline" }, -- urls, links and emails
 
-        sym "@markup.raw" { fg = orange },                                -- used for inline code in markdown and for doc in python (""")
-
-        sym "@markup.list" { fg = orange },
+        sym "@markup.list" { fg = comment },
         sym "@markup.list.checked" { fg = green },     -- todo notes
         sym "@markup.list.unchecked" { fg = comment }, -- todo notes
 
