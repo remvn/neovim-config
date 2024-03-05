@@ -93,7 +93,7 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         sym "@markup.italic" { fg = fg, gui = "italic" },
         sym "@markup.strikethrough" { fg = fg, gui = "strikethrough" },
         sym "@markup.underline" { gui = "underline" },
-        sym "@markup.raw" { fg = orange },                                -- inline code
+        sym "@markup.raw" { fg = fg },                                    -- inline code
 
         sym "@markup.math" { fg = blue },                                 -- math environments (e.g. `$ ... $` in LaTeX)
         sym "@markup.environment" { fg = purple },                        -- text environments of markup languages
