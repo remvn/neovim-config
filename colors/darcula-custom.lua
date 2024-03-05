@@ -91,6 +91,28 @@ local spec                    = lush.extends({ darcula_solid }).with(function(in
         typeScriptCall { fg = fg },
         typeScriptGlobalMethod { fg = yellow },
 
+        -- Markdown
+        sym "@markup" { fg = fg },                                        -- For strings considerated text in a markup language.
+        sym "@markup.strong" { fg = fg, gui = "bold" },                   -- bold
+        sym "@markup.italic" { fg = fg, gui = "italic" },                 -- italic
+        sym "@markup.strikethrough" { fg = fg, gui = "strikethrough" },   -- strikethrough text
+        sym "@markup.underline" { gui = "underline" },                    -- underlined text
+
+        sym "@markup.heading" { fg = blue, gui = "bold" },                -- titles like: # Example
+
+        sym "@markup.math" { fg = blue },                                 -- math environments (e.g. `$ ... $` in LaTeX)
+        sym "@markup.environment" { fg = purple },                        -- text environments of markup languages
+        sym "@markup.environment.name" { fg = purple },                   -- text indicating the type of an environment
+
+        sym "@markup.link" { fg = purple },                               -- text references, footnotes, citations, etc.
+        sym "@markup.link.url" { fg = purple, gui = "italic,underline" }, -- urls, links and emails
+
+        sym "@markup.raw" { fg = orange },                                -- used for inline code in markdown and for doc in python (""")
+
+        sym "@markup.list" { fg = orange },
+        sym "@markup.list.checked" { fg = green },     -- todo notes
+        sym "@markup.list.unchecked" { fg = comment }, -- todo notes
+
         -- Harpoon
         HarpoonActive { fg = 'black', bg = blue },
         HarpoonInactive { fg = fg, bg = overbg },
