@@ -51,6 +51,9 @@ keymap.set("n", "<leader>sub", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]])
 -- paste without yanking in visual mode
 keymap.set("x", "<leader>p", [["_dP]])
 
+-- yank line without newline
+keymap.set("n", "<leader>yl", "^y$")
+
 -- yank to clipboard
 keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 keymap.set("n", "<leader>Y", [["+Y]])
