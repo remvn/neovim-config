@@ -24,7 +24,7 @@ vim.opt.tabstop = 4      -- tab length (display)
 vim.opt.softtabstop = 4  -- tab length (editing)
 vim.opt.shiftwidth = 4   -- tab length when auto indent (>> or <<)
 vim.opt.smartindent = true
-vim.opt.smarttab = true
+-- autoindent, smarttab is default true
 
 -- disable netrw at startup
 vim.g.loaded_netrw = 1
