@@ -58,7 +58,6 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         UfoLineCount { fg = purple },
         CmpItemAbbrMatch { fg = blue },
         CmpItemAbbrMatchFuzzy = { fg = blue },
-        LuaLineDiffAdd { fg = green }, -- '#9db871'
 
         -- Common syntax highlight
         Type { fg = orange },
@@ -110,6 +109,8 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
 
         -- Git
         sym "@string.special.url.gitcommit" { fg = fg },
+        LuaLineDiffAdd { fg = green }, -- '#9db871'
+        GitSignsCurrentLineBlame { fg = comment },
 
         -- Harpoon
         HarpoonActive { fg = 'black', bg = blue },
