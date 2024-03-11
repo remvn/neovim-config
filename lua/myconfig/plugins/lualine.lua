@@ -86,23 +86,27 @@ return {
                         file_status = true,
                     },
                     {
-                        'diff'
-                    }
+                        'diagnostics',
+                        sources = { 'nvim_diagnostic' },
+                        -- symbols = {
+                        --     error = " ",
+                        --     warn = " ",
+                        --     hint = " ",
+                        --     info = " ",
+                        -- },
+                        symbols = { error = 'E:', warn = 'W:', info = 'I:', hint = 'H:' },
+                    },
                 },
                 lualine_b = {},
                 lualine_c = {},
                 lualine_x = {
-                    {
-                        'diagnostics',
-                        sources = { 'nvim_diagnostic' },
-                        symbols = { error = 'E:', warn = 'W:', info = 'I:', hint = 'H:' },
-                    },
+                    { 'diff' },
                     { 'branch', icon = '' },
                     'filetype',
                     {
                         'lspstatus',
                         icon = {
-                            '󰌵', -- 󰌘
+                            '󰌵',
                             color = { fg = colors.yellow },
                         },
                         fmt = trunc(120, 4, 60, false)

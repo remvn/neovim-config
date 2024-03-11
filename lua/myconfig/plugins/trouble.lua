@@ -1,17 +1,10 @@
 return {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-        signs = {
-            error = "E",
-            warning = "W",
-            hint = "H",
-            information = "I",
-            other = "O",
-        }
-    },
     config = function()
-        require("trouble").setup()
+        require("trouble").setup({
+            use_diagnostic_signs = true,
+        })
 
         vim.keymap.set("n", "<leader>tt", function()
             require("trouble").toggle()

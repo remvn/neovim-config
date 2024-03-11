@@ -58,6 +58,7 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         UfoLineCount { fg = purple },
         CmpItemAbbrMatch { fg = blue },
         CmpItemAbbrMatchFuzzy = { fg = blue },
+        LuaLineDiffAdd { fg = green }, -- '#9db871'
 
         -- Common syntax highlight
         Type { fg = orange },

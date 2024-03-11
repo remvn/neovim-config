@@ -7,7 +7,7 @@ local modules = require('lualine_require').lazy_require {
 
 M.init = function(self, options)
     if not options.icon then
-        options.icon = "󰌵"
+        options.icon = "󰌘"
     end
     options.split = options.split or ", "
     M.super.init(self, options)

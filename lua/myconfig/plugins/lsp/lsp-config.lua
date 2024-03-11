@@ -33,13 +33,17 @@ return {
             -- set cmp-nvim-lsp capabilities with lspconfig hook
             lsp_zero.extend_lspconfig()
 
-            vim.g.lsp_zero_ui_float_border = 'single'
+            vim.g.lsp_zero_ui_float_border = 'solid'
             vim.g.lsp_zero_ui_signcolumn = 1
             lsp_zero.set_sign_icons({
                 error = 'E',
                 warn = 'W',
                 hint = 'H',
                 info = 'I'
+                -- error = "",
+                -- warn = "",
+                -- hint = "",
+                -- info = "",
             })
 
             local servers = {
