@@ -74,9 +74,6 @@ keymap.set("n", "J", "mzJ`z")
 -- no yank at x
 keymap.set("n", "x", '"_x')
 
--- jump out of the bracket
-keymap.set("i", "<C-l>", "<C-o>a")
-
 -- new tmux session
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
