@@ -57,11 +57,7 @@ keymap.set("n", "<leader>yl", "^y$")
 -- yank to clipboard
 keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 keymap.set("n", "<leader>Y", [["+Y]])
-keymap.set("n", "<leader>wa", [[ggVG"+y]])
-keymap.set("n", "<leader>wf", function()
-    -- can't remap nvim treesitter textobjects
-    vim.api.nvim_feedkeys([[vaf"+y]], "m", true)
-end)
+keymap.set("n", "<leader>wf", [[ggVG"+y]])
 
 -- remap ^ and $
 keymap.set({ "n", "v", "o" }, "<C-h>", "^")
