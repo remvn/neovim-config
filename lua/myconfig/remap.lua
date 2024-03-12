@@ -14,7 +14,8 @@ keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
 tabout:set_keymap()
 
 -- git status
-keymap.set("n", "<leader>gs", "<cmd>tabnew<cr><cmd>G<cr><C-w>K")
+-- keymap.set("n", "<leader>gs", "<cmd>G<cr><C-w>K")
+keymap.set("n", "<leader>gs", "<cmd>tabnew<cr><cmd>LualineRenameTab Fugitive  <cr><cmd>G<cr><C-w>K")
 
 -- disable some default mappings
 keymap.set("x", "u", "<nop>")
