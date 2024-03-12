@@ -59,42 +59,20 @@ local plugin = {
                 return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
             end
 
-            vim.keymap.set("n", "]e", api.node.navigate.diagnostics.next, opts "Next Diagnostic")
-            vim.keymap.set("n", "[e", api.node.navigate.diagnostics.prev, opts "Prev Diagnostic")
-            vim.keymap.set("n", "g?", api.tree.toggle_help, opts "Help")
-            vim.keymap.set("n", "m", api.marks.toggle, opts "Toggle Bookmark")
-            vim.keymap.set("n", "S", api.tree.search_node, opts "Search") -- TODO what is this?
-            vim.keymap.set("n", "P", api.node.navigate.parent, opts "Parent Directory")
-            vim.keymap.set("n", "E", api.tree.expand_all, opts "Expand All")
-            vim.keymap.set("n", "W", api.tree.collapse_all, opts "Collapse")
+            api.config.mappings.default_on_attach(bufnr)
+            vim.keymap.del("n", "<C-x>", { buffer = bufnr })
+            vim.keymap.del("n", "<C-v>", { buffer = bufnr })
+            vim.keymap.del("n", "<C-e>", { buffer = bufnr })
 
-            -- filters
-            vim.keymap.set("n", "f", api.live_filter.start, opts "Filter")
-            vim.keymap.set("n", "F", api.live_filter.clear, opts "Clear filter")
-            vim.keymap.set("n", "C", api.tree.toggle_git_clean_filter, opts "Toggle Git Clean")
-            vim.keymap.set("n", "I", api.tree.toggle_gitignore_filter, opts "Toggle Git Ignore")
-            -- vim.keymap.set("n", "H", api.tree.toggle_custom_filter, opts "Toggle Hidden")
-            -- vim.keymap.set("n", "H", api.tree.toggle_hidden_filter, opts "Toggle Dotfiles")
-            -- vim.keymap.set("n", "B", api.tree.toggle_no_buffer_filter, opts "Toggle No Buffer")
-
-            -- basic function
-            vim.keymap.set("n", "<C-t>", api.node.open.tab, opts "Open: New Tab")
+            vim.keymap.set("n", "]d", api.node.navigate.diagnostics.next, opts "Next Diagnostic")
+            vim.keymap.set("n", "[d", api.node.navigate.diagnostics.prev, opts "Prev Diagnostic")
             vim.keymap.set("n", "<leader>vs", api.node.open.vertical, opts "Open: Vertical Split")
             vim.keymap.set("n", "<leader>hs", api.node.open.horizontal, opts "Open: Horizontal Split")
-            vim.keymap.set("n", "a", api.fs.create, opts "Create")
-            vim.keymap.set("n", "c", api.fs.copy.node, opts "Copy")
-            vim.keymap.set("n", "x", api.fs.cut, opts "Cut")
-            vim.keymap.set("n", "p", api.fs.paste, opts "Paste")
-            vim.keymap.set("n", "d", api.fs.remove, opts "Delete")
-            vim.keymap.set("n", "D", api.fs.trash, opts "Trash")
-            vim.keymap.set("n", "y", api.fs.copy.filename, opts "Copy Name")
-            vim.keymap.set("n", "Y", api.fs.copy.relative_path, opts "Copy Relative Path")
-            vim.keymap.set("n", "gy", api.fs.copy.absolute_path, opts "Copy Absolute Path")
-            vim.keymap.set("n", "<leader>cd", api.tree.change_root_to_node, opts "CD")
             vim.keymap.set("n", "<CR>", api.node.open.edit, opts "Open")
             vim.keymap.set("n", "q", api.node.open.edit, opts "Open")
-            vim.keymap.set("n", "r", api.fs.rename, opts "Rename")
-            vim.keymap.set("n", "<C-r>", api.fs.rename_sub, opts "Rename: Omit Filename")
+            vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts "Open")
+            vim.keymap.set("n", "<3-LeftMouse>", "<Nop>")
+            vim.keymap.set("n", "<4-LeftMouse>", "<Nop>")
             vim.keymap.set("n", "<C-c>", api.tree.close, opts "Close tree")
         end
 
