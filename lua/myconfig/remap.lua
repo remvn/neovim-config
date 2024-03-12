@@ -32,6 +32,7 @@ vim.cmd("cnoreabbrev vres vertical resize")
 -- tab selection
 keymap.set("n", "[t", "<cmd>tabprevious<CR>")
 keymap.set("n", "]t", "<cmd>tabnext<CR>")
+keymap.set("n", "tq", "<cmd>tabclose<cr>")
 vim.cmd("cnoreabbrev tnew tabnew")
 vim.cmd("cnoreabbrev tclose tabclose")
 
