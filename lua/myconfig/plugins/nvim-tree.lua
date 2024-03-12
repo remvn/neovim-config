@@ -73,6 +73,7 @@ local plugin = {
             vim.keymap.set("n", "q", api.node.open.edit, opts "Open")
             vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts "Open")
             vim.keymap.set("n", "<3-LeftMouse>", "<Nop>")
+            vim.keymap.set("n", "<4-LeftMouse>", api.node.open.edit, opts "Open")
             vim.keymap.set("n", "<C-c>", api.tree.close, opts "Close tree")
         end
 
