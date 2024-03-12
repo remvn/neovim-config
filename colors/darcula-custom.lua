@@ -126,6 +126,7 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         NvimTreeCursorLineNr { fg = faded },
         NvimTreeFolderName { fg = blue },
         NvimTreeFolderIcon { NvimTreeFolderName },
+        NvimTreeBookmarkIcon { fg = magenta },
 
         NvimTreeGitDeletedIcon { fg = red },
         NvimTreeGitDirtyIcon { fg = yellow },

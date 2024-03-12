@@ -37,6 +37,7 @@ local plugin = {
                     }
                 end,
             },
+            -- width = 40,
             width = function()
                 return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
             end,
@@ -68,7 +69,7 @@ local plugin = {
             vim.keymap.set("n", "[d", api.node.navigate.diagnostics.prev, opts "Prev Diagnostic")
             vim.keymap.set("n", "<leader>vs", api.node.open.vertical, opts "Open: Vertical Split")
             vim.keymap.set("n", "<leader>hs", api.node.open.horizontal, opts "Open: Horizontal Split")
-            vim.keymap.set("n", "<CR>", api.node.open.edit, opts "Open")
+            vim.keymap.set("n", "<leader>cd", api.tree.change_root_to_node, opts "CD")
             vim.keymap.set("n", "q", api.node.open.edit, opts "Open")
             vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts "Open")
             vim.keymap.set("n", "<3-LeftMouse>", "<Nop>")
@@ -112,11 +113,12 @@ local plugin = {
                     git_placement = "after",
                     modified_placement = "after",
                     diagnostics_placement = "signcolumn",
-                    bookmarks_placement = "signcolumn",
+                    bookmarks_placement = "after",
                     show = {
                         folder_arrow = false,
                     },
                     glyphs = {
+                        bookmark = "",
                         git = {
                             unmerged  = "",
                             deleted   = "", -- 
