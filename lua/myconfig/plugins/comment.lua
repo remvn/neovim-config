@@ -31,6 +31,10 @@ return {
                 enable_autocmd = false,
             }
             require('Comment').setup {
+                mappings = {
+                    basic = false,
+                    extra = false,
+                },
                 pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
             }
             local api = require('Comment.api')
@@ -39,7 +43,7 @@ return {
             vim.keymap.set('n', '<C-\\>', api.toggle.blockwise.current)
 
             local esc = vim.api.nvim_replace_termcodes(
-                '<ESC>', true, false, true
+                '<Esc>', true, false, true
             )
 
             vim.keymap.set('x', '<C-_>', function()
