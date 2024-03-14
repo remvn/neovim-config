@@ -7,7 +7,6 @@ return {
     "tpope/vim-fugitive",
     "sindrets/diffview.nvim",
     "romainl/vim-cool",
-    "folke/neodev.nvim",
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

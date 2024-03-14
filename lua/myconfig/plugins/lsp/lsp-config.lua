@@ -24,8 +24,11 @@ return {
         dependencies = {
             "VonHeikemen/lsp-zero.nvim",
             "hrsh7th/cmp-nvim-lsp",
+            "folke/neodev.nvim",
         },
         config = function()
+            require("neodev").setup({})
+
             -- plugin init func create a LspAttach autocmd to
             -- call on_attach func
             local lsp_zero = require("lsp-zero")
