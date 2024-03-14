@@ -1,18 +1,21 @@
 -- load basic plugin without custom config here
 return {
-    'tpope/vim-surround',
-    'tpope/vim-unimpaired',
-    'tpope/vim-repeat',
-    'wellle/targets.vim',
-    'tpope/vim-fugitive',
-    'sindrets/diffview.nvim',
-    'romainl/vim-cool',
+    "tpope/vim-surround",
+    "tpope/vim-unimpaired",
+    "tpope/vim-repeat",
+    "wellle/targets.vim",
+    "tpope/vim-fugitive",
+    "sindrets/diffview.nvim",
+    "romainl/vim-cool",
+    "folke/neodev.nvim",
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
         -- install without yarn or npm
-        build = function() vim.fn["mkdp#util#install"]() end,
+        build = function()
+            vim.fn["mkdp#util#install"]()
+        end,
     },
     {
         "windwp/nvim-autopairs",
@@ -24,18 +27,18 @@ return {
         config = true,
     },
     {
-        'nvim-treesitter/playground',
-        dependencies = { "nvim-treesitter/nvim-treesitter" }
+        "nvim-treesitter/playground",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
     {
-        'norcalli/nvim-colorizer.lua',
+        "norcalli/nvim-colorizer.lua",
         config = function()
-            require('colorizer').setup({
-                'javascript',
-                'typescript',
-                'vue',
-                'css',
-                'lua',
+            require("colorizer").setup({
+                "javascript",
+                "typescript",
+                "vue",
+                "css",
+                "lua",
             })
         end,
     },
