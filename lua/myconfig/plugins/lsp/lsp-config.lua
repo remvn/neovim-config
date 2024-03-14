@@ -53,6 +53,7 @@ return {
                 ["null-ls"] = {
                     "javascript",
                     "typescript",
+                    "json",
                     "yaml",
                     "yml",
                     "vue",

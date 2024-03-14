@@ -1,9 +1,9 @@
 return {
-    'williamboman/mason.nvim',
+    "williamboman/mason.nvim",
     dependencies = {
-        'VonHeikemen/lsp-zero.nvim',
-        'neovim/nvim-lspconfig',
-        'williamboman/mason-lspconfig.nvim',
+        "VonHeikemen/lsp-zero.nvim",
+        "neovim/nvim-lspconfig",
+        "williamboman/mason-lspconfig.nvim",
     },
     lazy = false,
     config = function()
@@ -11,9 +11,13 @@ return {
         local lspconfig = require("lspconfig")
 
         require("mason").setup()
-        require('mason-lspconfig').setup({
+        require("mason-lspconfig").setup({
             ensure_installed = {
-                'tsserver', 'lua_ls', 'gopls', 'golangci_lint_ls', 'bashls'
+                "tsserver",
+                "lua_ls",
+                "gopls",
+                "golangci_lint_ls",
+                "bashls",
             },
             automatic_installation = true,
             handlers = {
@@ -27,7 +31,7 @@ return {
                 lua_ls = function()
                     -- config lua_ls for neovim
                     local lua_opts = lsp_zero.nvim_lua_ls()
-                    require('lspconfig').lua_ls.setup(lua_opts)
+                    require("lspconfig").lua_ls.setup(lua_opts)
                 end,
             },
         })
