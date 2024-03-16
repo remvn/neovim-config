@@ -1,6 +1,6 @@
 local plugin = {
     "nvim-tree/nvim-tree.lua",
-    dir = "~/forks/nvim-tree.lua",
+    -- dir = "~/forks/nvim-tree.lua",
     version = "*",
     lazy = false,
     dependencies = {
