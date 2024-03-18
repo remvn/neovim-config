@@ -39,10 +39,7 @@ return {
             vim.g.lsp_zero_ui_float_border = "solid"
             vim.g.lsp_zero_ui_signcolumn = 1
             lsp_zero.set_sign_icons({
-                -- error = "",
-                -- warn = "",
-                -- hint = "",
-                -- info = "",
+                -- error = "", warn = "", hint = "", info = "",
                 error = "E",
                 warn = "W",
                 hint = "H",
