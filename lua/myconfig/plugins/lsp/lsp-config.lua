@@ -39,14 +39,14 @@ return {
             vim.g.lsp_zero_ui_float_border = "solid"
             vim.g.lsp_zero_ui_signcolumn = 1
             lsp_zero.set_sign_icons({
-                error = "E",
-                warn = "W",
-                hint = "H",
-                info = "I",
                 -- error = "",
                 -- warn = "",
                 -- hint = "",
                 -- info = "",
+                error = "E",
+                warn = "W",
+                hint = "H",
+                info = "I",
             })
 
             local servers = {
@@ -54,6 +54,7 @@ return {
                     "javascript",
                     "typescript",
                     "json",
+                    "jsonc",
                     "yaml",
                     "yml",
                     "vue",
@@ -72,21 +73,28 @@ return {
                 vim.keymap.set("n", "gd", function()
                     vim.lsp.buf.definition()
                 end, opts)
+
                 vim.keymap.set("n", "gh", function()
                     vim.lsp.buf.hover()
                 end, opts)
+
                 vim.keymap.set("n", "gH", function()
                     vim.lsp.buf.references()
                 end, opts)
+
                 vim.keymap.set("n", "gi", function()
                     vim.lsp.buf.implementation()
                 end, opts)
+
                 vim.keymap.set("n", "<leader>ws", function()
+                    ---@diagnostic disable-next-line: missing-parameter
                     vim.lsp.buf.workspace_symbol()
                 end, opts)
+
                 vim.keymap.set("n", "<leader>ca", function()
                     vim.lsp.buf.code_action()
                 end, opts)
+
                 vim.keymap.set("n", "<leader>r", function()
                     vim.lsp.buf.rename()
                 end, opts)
@@ -94,12 +102,15 @@ return {
                 vim.keymap.set("n", "<leader>of", function()
                     vim.diagnostic.open_float()
                 end, opts)
+
                 vim.keymap.set("n", "[d", function()
                     vim.diagnostic.goto_next()
                 end, opts)
+
                 vim.keymap.set("n", "]d", function()
                     vim.diagnostic.goto_prev()
                 end, opts)
+
                 vim.keymap.set("i", "<C-k>", function()
                     vim.lsp.buf.signature_help()
                 end, opts)
