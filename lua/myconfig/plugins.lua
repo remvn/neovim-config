@@ -8,15 +8,6 @@ return {
     "sindrets/diffview.nvim",
     "romainl/vim-cool",
     {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = true,
-    },
-    {
-        "windwp/nvim-ts-autotag",
-        config = true,
-    },
-    {
         "nvim-treesitter/playground",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
