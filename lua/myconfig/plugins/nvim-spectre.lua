@@ -25,7 +25,7 @@ return {
             desc = "spectre: search current word",
         })
 
-        vim.keymap.set("v", "<leader>sp", function()
+        vim.keymap.set("n", "<leader>sp", function()
             spectre.open_file_search({ select_word = true })
         end, {
             desc = "spectre: search on current file",
