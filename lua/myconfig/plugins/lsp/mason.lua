@@ -30,7 +30,6 @@ return {
                 -- therefore default_setup only call empty setup
                 -- under the hood. (I guess)
                 lsp_zero.default_setup,
-                volar = lsp_zero.noop,
             },
         })
 
@@ -54,14 +53,18 @@ return {
                 languages = filetypes,
             }
 
+            local tsserverFiletypes = lspconfig.tsserver.filetypes
+            vim.list_extend(tsserverFiletypes, { "vue" })
             lspconfig.tsserver.setup({
-                filetypes = filetypes,
+                filetypes = tsserverFiletypes,
                 init_options = {
                     plugins = {
                         vue_plugin,
                     },
                 },
             })
+
+            -- print(vim.inspect(lspconfig.tsserver.manager.config.init_options))
         end
     end,
 }
