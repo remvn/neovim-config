@@ -1,6 +1,6 @@
 local plugin = {
     "nvim-tree/nvim-tree.lua",
-    -- dir = "~/forks/nvim-tree.lua",
+    dir = "~/forks/nvim-tree.lua",
     version = "*",
     lazy = false,
     dependencies = {
@@ -26,7 +26,8 @@ local plugin = {
                     local window_w_int = math.floor(window_w)
                     local window_h_int = math.floor(window_h)
                     local center_x = (screen_w - window_w) / 2
-                    local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
+                    local center_y = ((vim.opt.lines:get() - window_h) / 2)
+                        - vim.opt.cmdheight:get()
                     return {
                         border = "rounded",
                         relative = "editor",
@@ -57,7 +58,13 @@ local plugin = {
         -- on attach
         local on_attach = function(bufnr)
             local function opts(desc)
-                return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+                return {
+                    desc = "nvim-tree: " .. desc,
+                    buffer = bufnr,
+                    noremap = true,
+                    silent = true,
+                    nowait = true,
+                }
             end
 
             api.config.mappings.default_on_attach(bufnr)
@@ -68,7 +75,12 @@ local plugin = {
             vim.keymap.set("n", "]d", api.node.navigate.diagnostics.next, opts("Next Diagnostic"))
             vim.keymap.set("n", "[d", api.node.navigate.diagnostics.prev, opts("Prev Diagnostic"))
             vim.keymap.set("n", "<leader>vs", api.node.open.vertical, opts("Open: Vertical Split"))
-            vim.keymap.set("n", "<leader>hs", api.node.open.horizontal, opts("Open: Horizontal Split"))
+            vim.keymap.set(
+                "n",
+                "<leader>hs",
+                api.node.open.horizontal,
+                opts("Open: Horizontal Split")
+            )
             vim.keymap.set("n", "<leader>cd", api.tree.change_root_to_node, opts("CD"))
             vim.keymap.set("n", "q", api.node.open.edit, opts("Open"))
             vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
