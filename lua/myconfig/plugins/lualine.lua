@@ -127,6 +127,6 @@ return {
             },
         })
 
-        vim.opt.showtabline = 0
+        vim.opt.showtabline = 1
     end,
 }
