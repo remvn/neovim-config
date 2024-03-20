@@ -7,20 +7,27 @@ return {
         harpoon:setup({})
         harpoon:extend({
             UI_CREATE = function(cx)
+                vim.opt.number = true
+                vim.opt.relativenumber = true
+                local opts = {
+                    buffer = cx.bufnr,
+                }
+
                 vim.keymap.set("n", "<leader>vs", function()
                     harpoon.ui:select_menu_item({ vsplit = true })
-                end, { buffer = cx.bufnr })
+                end, opts)
 
                 vim.keymap.set("n", "<leader>hs", function()
                     harpoon.ui:select_menu_item({ split = true })
-                end, { buffer = cx.bufnr })
+                end, opts)
 
                 vim.keymap.set("n", "<C-c>", function()
                     harpoon.ui:close_menu()
-                end, { buffer = cx.bufnr })
+                end, opts)
 
-                vim.opt.number = true
-                vim.opt.relativenumber = true
+                vim.keymap.set("n", "q", function()
+                    harpoon.ui:select_menu_item()
+                end, opts)
             end,
         })
 
