@@ -42,38 +42,38 @@ return {
         })
 
         -- vue support through tsserver plugin
-        local has_volar, volar = pcall(mason_registry.get_package, "vue-language-server")
-        if has_volar then
-            local vueFiletypes = {
-                "typescript",
-                "javascript",
-                "vue",
-            }
-            local vue_ts_plugin_path = volar:get_install_path()
-                .. "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
-            local vue_plugin = {
-                name = "@vue/typescript-plugin",
-                location = vue_ts_plugin_path,
-                languages = vueFiletypes,
-            }
-
-            local tsserverFiletypes = {
-                "javascript",
-                "javascriptreact",
-                "javascript.jsx",
-                "typescript",
-                "typescriptreact",
-                "typescript.tsx",
-                "vue",
-            }
-            lspconfig.tsserver.setup({
-                filetypes = tsserverFiletypes,
-                init_options = {
-                    plugins = {
-                        vue_plugin,
-                    },
-                },
-            })
-        end
+        -- local has_volar, volar = pcall(mason_registry.get_package, "vue-language-server")
+        -- if has_volar then
+        --     local vueFiletypes = {
+        --         "typescript",
+        --         "javascript",
+        --         "vue",
+        --     }
+        --     local vue_ts_plugin_path = volar:get_install_path()
+        --         .. "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
+        --     local vue_plugin = {
+        --         name = "@vue/typescript-plugin",
+        --         location = vue_ts_plugin_path,
+        --         languages = vueFiletypes,
+        --     }
+        --
+        --     local tsserverFiletypes = {
+        --         "javascript",
+        --         "javascriptreact",
+        --         "javascript.jsx",
+        --         "typescript",
+        --         "typescriptreact",
+        --         "typescript.tsx",
+        --         "vue",
+        --     }
+        --     lspconfig.tsserver.setup({
+        --         filetypes = tsserverFiletypes,
+        --         init_options = {
+        --             plugins = {
+        --                 vue_plugin,
+        --             },
+        --         },
+        --     })
+        -- end
     end,
 }
