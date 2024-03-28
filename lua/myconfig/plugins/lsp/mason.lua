@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
     "williamboman/mason.nvim",
     dependencies = {
@@ -39,12 +40,11 @@ return {
             tsserver = lsp_zero.noop,
         })
 
-        -- config lua_ls for neovim
+        -- luals
         local lua_opts = lsp_zero.nvim_lua_ls()
         lspconfig.lua_ls.setup(lua_opts)
 
-        -- vue support for css and html
-        ---@diagnostic disable-next-line: missing-fields
+        -- volar
         lspconfig.volar.setup({
             init_options = {
                 vue = {
@@ -52,6 +52,10 @@ return {
                 },
             },
         })
+
+        -- tsserver
+        ---@type lspconfig.options.tsserver
+        local ts_options = {}
 
         -- vue support through tsserver plugin
         local has_volar, volar = pcall(mason_registry.get_package, "vue-language-server")
@@ -72,18 +76,17 @@ return {
                 "typescript.tsx",
                 "vue",
             }
-            ---@diagnostic disable-next-line: missing-fields
-            lspconfig.tsserver.setup({
+
+            ---@type lspconfig.options.tsserver
+            local options = {
                 filetypes = tsserverFiletypes,
                 init_options = {
-                    plugins = {
-                        vue_plugin,
-                    },
+                    plugins = { vue_plugin },
                 },
-            })
-        else
-            ---@diagnostic disable-next-line: missing-fields
-            lspconfig.tsserver.setup({})
+            }
+            ts_options = vim.tbl_deep_extend("force", ts_options, options)
         end
+
+        lspconfig.tsserver.setup(ts_options)
     end,
 }
