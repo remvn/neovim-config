@@ -36,56 +36,54 @@ return {
             lsp_zero.default_setup,
             lua_ls = lsp_zero.noop,
             volar = lsp_zero.noop,
+            tsserver = lsp_zero.noop,
         })
 
         -- config lua_ls for neovim
         local lua_opts = lsp_zero.nvim_lua_ls()
         lspconfig.lua_ls.setup(lua_opts)
 
-        -- vue support rollback
+        -- vue support for css and html
+        ---@diagnostic disable-next-line: missing-fields
         lspconfig.volar.setup({
-            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
             init_options = {
                 vue = {
-                    hybridMode = false,
+                    hybridMode = true,
                 },
             },
-            settings = {},
         })
 
         -- vue support through tsserver plugin
-        -- local has_volar, volar = pcall(mason_registry.get_package, "vue-language-server")
-        -- if has_volar then
-        --     local vueFiletypes = {
-        --         "typescript",
-        --         "javascript",
-        --         "vue",
-        --     }
-        --     local vue_ts_plugin_path = volar:get_install_path()
-        --         .. "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
-        --     local vue_plugin = {
-        --         name = "@vue/typescript-plugin",
-        --         location = vue_ts_plugin_path,
-        --         languages = vueFiletypes,
-        --     }
-        --
-        --     local tsserverFiletypes = {
-        --         "javascript",
-        --         "javascriptreact",
-        --         "javascript.jsx",
-        --         "typescript",
-        --         "typescriptreact",
-        --         "typescript.tsx",
-        --         "vue",
-        --     }
-        --     lspconfig.tsserver.setup({
-        --         filetypes = tsserverFiletypes,
-        --         init_options = {
-        --             plugins = {
-        --                 vue_plugin,
-        --             },
-        --         },
-        --     })
-        -- end
+        local has_volar, volar = pcall(mason_registry.get_package, "vue-language-server")
+        if has_volar then
+            local vue_ls_path = volar:get_install_path() .. "/node_modules/@vue/language-server"
+            local vue_plugin = {
+                name = "@vue/typescript-plugin",
+                location = vue_ls_path,
+                languages = { "vue" },
+            }
+
+            local tsserverFiletypes = {
+                "javascript",
+                "typescript",
+                "javascriptreact",
+                "typescriptreact",
+                "javascript.jsx",
+                "typescript.tsx",
+                "vue",
+            }
+            ---@diagnostic disable-next-line: missing-fields
+            lspconfig.tsserver.setup({
+                filetypes = tsserverFiletypes,
+                init_options = {
+                    plugins = {
+                        vue_plugin,
+                    },
+                },
+            })
+        else
+            ---@diagnostic disable-next-line: missing-fields
+            lspconfig.tsserver.setup({})
+        end
     end,
 }
