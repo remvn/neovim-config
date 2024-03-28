@@ -34,7 +34,7 @@ return {
             -- therefore default_setup only call empty setup
             -- under the hood. (I guess)
             lsp_zero.default_setup,
-            lua_fs = lsp_zero.noop,
+            lua_ls = lsp_zero.noop,
             volar = lsp_zero.noop,
         })
 
