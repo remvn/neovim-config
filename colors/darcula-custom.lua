@@ -119,7 +119,7 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         CmpItemKindSnippet({ fg = salmon }),
         CmpItemKindModule({ fg = green }),
         CmpItemKindVariable({ fg = fg }),
-        CmpItemKindText({ fg = comment }),
+        CmpItemKindText({ fg = fg }),
 
         -- Nvim-tree
         NvimTreeNormal({ fg = fg, bg = bg }),

@@ -22,7 +22,6 @@ return {
 
         local cmp = require("cmp")
         local cmp_action = require("lsp-zero").cmp_action()
-        local cmp_format = require("lsp-zero").cmp_format()
 
         cmp.setup({
             preselect = cmp.PreselectMode.Item,
@@ -41,7 +40,6 @@ return {
                 -- completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
             },
-            -- formatting = cmp_format,
             mapping = cmp.mapping.preset.insert({
                 -- `Enter` key to confirm completion
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
