@@ -12,8 +12,7 @@ return {
                 expandable_indicator = true,
                 fields = { "abbr", "menu", "kind" },
                 format = lspkind.cmp_format({
-                    preset = "codicons",
-                    mode = "symbol_text", -- show only symbol annotations
+                    mode = "symbol_text",
                     maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
                     -- can also be a function to dynamically calculate max width such as
                     -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
