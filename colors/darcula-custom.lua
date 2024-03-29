@@ -49,8 +49,6 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         DiagnosticError({ fg = red }),
         LspSignatureActiveParameter({ bg = visual }),
         UfoLineCount({ fg = purple }),
-        CmpItemAbbrMatch({ fg = blue }),
-        CmpItemAbbrMatchFuzzy = { fg = blue },
 
         -- Common syntax highlight
         Type({ fg = orange }),
@@ -112,12 +110,16 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         HarpoonNumberInactive({ HarpoonInactive, gui = "bold" }),
 
         -- cmp
+        CmpItemAbbrMatch({ fg = blue }),
+        CmpItemAbbrMatchFuzzy({ fg = blue }),
         CmpItemKindMethod({ fg = yellow }),
         CmpItemKindFunction({ fg = yellow }),
         CmpItemKindField({ fg = purple }),
+        CmpItemKindProperty({ fg = purple }),
         CmpItemKindSnippet({ fg = salmon }),
         CmpItemKindModule({ fg = green }),
         CmpItemKindVariable({ fg = fg }),
+        CmpItemKindText({ fg = comment }),
 
         -- Nvim-tree
         NvimTreeNormal({ fg = fg, bg = bg }),
