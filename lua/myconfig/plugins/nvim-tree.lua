@@ -68,18 +68,11 @@ local plugin = {
 
             api.config.mappings.default_on_attach(bufnr)
             vim.keymap.del("n", "<C-x>", { buffer = bufnr })
-            vim.keymap.del("n", "<C-v>", { buffer = bufnr })
             vim.keymap.del("n", "<C-e>", { buffer = bufnr })
 
+            vim.keymap.set("n", "<C-h>", api.node.open.horizontal, opts("Open: Horizontal Split"))
             vim.keymap.set("n", "]d", api.node.navigate.diagnostics.next, opts("Next Diagnostic"))
             vim.keymap.set("n", "[d", api.node.navigate.diagnostics.prev, opts("Prev Diagnostic"))
-            vim.keymap.set("n", "<leader>vs", api.node.open.vertical, opts("Open: Vertical Split"))
-            vim.keymap.set(
-                "n",
-                "<leader>hs",
-                api.node.open.horizontal,
-                opts("Open: Horizontal Split")
-            )
             vim.keymap.set("n", "<leader>cd", api.tree.change_root_to_node, opts("CD"))
             vim.keymap.set("n", "q", api.node.open.edit, opts("Open"))
             vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
@@ -90,7 +83,7 @@ local plugin = {
 
         vim.keymap.set("n", "<C-e>", nvimTreeFocusOrToggle)
 
-        tree.setup({
+        tree.setup {
             view = tree_view,
             diagnostics = {
                 enable = true,
@@ -143,7 +136,7 @@ local plugin = {
                 },
             },
             on_attach = on_attach,
-        })
+        }
     end,
 }
 
