@@ -98,7 +98,7 @@ return {
         local progress = { "progress" }
         local location = { "location" }
 
-        require("lualine").setup({
+        require("lualine").setup {
             options = {
                 theme = theme,
                 section_separators = { left = "", right = "" },
@@ -125,7 +125,7 @@ return {
                 lualine_y = { progress },
                 lualine_z = { location },
             },
-        })
+        }
 
         vim.opt.showtabline = 1
     end,
