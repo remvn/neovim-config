@@ -48,8 +48,8 @@ return {
                 ["<C-Space>"] = cmp.mapping.complete(),
 
                 -- Navigate between snippet placeholder
-                ["<C-f>"] = cmp_action.luasnip_jump_forward(),
-                ["<C-b>"] = cmp_action.luasnip_jump_backward(),
+                -- ["<C-f>"] = cmp_action.luasnip_jump_forward(),
+                -- ["<C-b>"] = cmp_action.luasnip_jump_backward(),
 
                 ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
                 ["<C-j>"] = cmp.mapping.select_next_item({ behavior = "select" }),

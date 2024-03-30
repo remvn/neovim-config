@@ -38,7 +38,6 @@ local plugin = {
                     }
                 end,
             },
-            -- width = 40,
             width = function()
                 return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
             end,
