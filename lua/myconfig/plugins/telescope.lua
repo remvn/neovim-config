@@ -3,6 +3,7 @@ return {
     tag = "0.1.5",
     dependencies = {
         "nvim-lua/plenary.nvim",
+        "folke/trouble.nvim",
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
@@ -18,7 +19,7 @@ return {
         vim.keymap.set("n", "<leader>lg", builtin.live_grep, {})
         vim.keymap.set("n", "gr", builtin.lsp_references, {})
         vim.keymap.set("n", "<leader>ps", function()
-            builtin.grep_string({ search = vim.fn.input("Grep > ") })
+            builtin.grep_string { search = vim.fn.input("Grep > ") }
         end)
         vim.keymap.set("n", "<leader>pw", builtin.grep_string, {})
     end,
@@ -26,6 +27,7 @@ return {
         local telescope = require("telescope")
         local actions = require("telescope.actions")
         local telescopeConfig = require("telescope.config")
+        local trouble = require("trouble.providers.telescope")
 
         -- Clone the default Telescope configuration
         local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
@@ -33,7 +35,7 @@ return {
         table.insert(vimgrep_arguments, "--glob")
         table.insert(vimgrep_arguments, "!**/.git/*")
 
-        telescope.setup({
+        telescope.setup {
             defaults = {
                 vimgrep_arguments = vimgrep_arguments,
                 mappings = {
@@ -44,6 +46,7 @@ return {
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
                         ["<C-h>"] = actions.file_split,
+                        ["<C-e>"] = trouble.open_with_trouble,
                         ["<M-q>"] = false,
                     },
                 },
@@ -60,7 +63,7 @@ return {
                 },
             },
             extensions = {},
-        })
+        }
 
         telescope.load_extension("fzf")
     end,

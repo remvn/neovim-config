@@ -28,8 +28,8 @@ return {
             "folke/neoconf.nvim",
         },
         config = function()
-            require("neoconf").setup({})
-            require("neodev").setup({})
+            require("neoconf").setup {}
+            require("neodev").setup {}
 
             -- plugin init func create a LspAttach autocmd to
             -- call on_attach func
@@ -40,13 +40,13 @@ return {
 
             vim.g.lsp_zero_ui_float_border = "solid"
             vim.g.lsp_zero_ui_signcolumn = 1
-            lsp_zero.set_sign_icons({
+            lsp_zero.set_sign_icons {
                 -- error = "", warn = "", hint = "", info = "",
                 error = "E",
                 warn = "W",
                 hint = "H",
                 info = "I",
-            })
+            }
 
             local servers = {
                 ["null-ls"] = {
@@ -63,7 +63,7 @@ return {
                 ["gopls"] = { "go" },
                 -- ["lua_ls"] = { "lua" },
             }
-            lsp_zero.format_on_save({ servers = servers })
+            lsp_zero.format_on_save { servers = servers }
             lsp_zero.format_mapping("<leader>f", { servers = servers })
 
             local lsp_command = require("myconfig.lsp-command")
@@ -72,9 +72,9 @@ return {
 
                 lsp_command.register_tsserver_cmd(client, bufnr)
 
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                -- vim.keymap.set("n", "gH", vim.lsp.buf.references, opts)
                 vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "gH", vim.lsp.buf.references, opts)
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
                 vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, opts)
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)

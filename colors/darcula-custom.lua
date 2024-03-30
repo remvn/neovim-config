@@ -104,6 +104,9 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         LuaLineDiffAdd { fg = green }, -- '#9db871'
         GitSignsCurrentLineBlame { fg = comment },
 
+        -- Trouble
+        TroublePreview { bg = visual },
+
         -- Harpoon
         HarpoonActive { fg = "black", bg = blue },
         HarpoonInactive { fg = fg, bg = overbg },
