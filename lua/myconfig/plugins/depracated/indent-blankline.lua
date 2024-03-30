@@ -5,13 +5,15 @@ local plugin = {
     config = function()
         require("ibl").setup({
             scope = {
+                enabled = true,
                 show_start = false,
+                char = "▏",
             },
             indent = {
-                char = '▏'
-            }
+                char = " ",
+            },
         })
-    end
+    end,
 }
 
-return {}
+return plugin
