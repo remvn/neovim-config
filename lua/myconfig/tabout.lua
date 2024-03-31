@@ -13,9 +13,7 @@ function M:exec()
     local _, col = unpack(vim.api.nvim_win_get_cursor(0))
     local char = vim.api.nvim_get_current_line():sub(col + 1, col + 1)
     local arr = { [["]], [[']], "`", ")", "]", "}" }
-    local right = vim.api.nvim_replace_termcodes(
-        '<right>', true, false, true
-    )
+    local right = vim.api.nvim_replace_termcodes("<right>", true, false, true)
     if has_value(arr, char) then
         vim.api.nvim_feedkeys(right, "i", false)
         return true
@@ -25,9 +23,7 @@ end
 
 function M:set_keymap()
     vim.keymap.set("i", "<Tab>", function()
-        local tab = vim.api.nvim_replace_termcodes(
-            '<tab>', true, false, true
-        )
+        local tab = vim.api.nvim_replace_termcodes("<tab>", true, false, true)
         if self:exec() == false then
             vim.api.nvim_feedkeys(tab, "n", false)
         end

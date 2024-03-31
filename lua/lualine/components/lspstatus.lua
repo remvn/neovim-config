@@ -14,7 +14,7 @@ M.init = function(self, options)
 end
 
 M.update_status = function(self)
-    local buf_clients = vim.lsp.get_active_clients()
+    local buf_clients = vim.lsp.get_active_clients { bufnr = 0 }
     local null_ls_installed, null_ls = pcall(require, "null-ls")
     local buf_client_names = {}
     for _, client in pairs(buf_clients) do
