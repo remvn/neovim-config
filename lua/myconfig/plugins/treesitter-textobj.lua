@@ -1,7 +1,8 @@
 return {
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    require('nvim-treesitter.configs').setup {
+    ---@diagnostic disable-next-line: missing-fields
+    require("nvim-treesitter.configs").setup({
         textobjects = {
             select = {
                 enable = true,
@@ -14,9 +15,16 @@ return {
                     ["af"] = { query = "@function.outer", desc = "Select outside function" },
                     ["if"] = { query = "@function.inner", desc = "Select inside function" },
                     ["ac"] = { query = "@class.outer", desc = "Select around class" },
-                    ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+                    ["ic"] = {
+                        query = "@class.inner",
+                        desc = "Select inner part of a class region",
+                    },
                     -- You can also use captures from other query groups like `locals.scm`
-                    ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+                    ["as"] = {
+                        query = "@scope",
+                        query_group = "locals",
+                        desc = "Select language scope",
+                    },
                 },
 
                 -- You can choose the select mode (default is charwise 'v')
@@ -27,9 +35,9 @@ return {
                 -- and should return the mode ('v', 'V', or '<c-v>') or a table
                 -- mapping query_strings to modes.
                 selection_modes = {
-                    ['@parameter.outer'] = 'v',
-                    ['@function.outer'] = 'V',
-                    ['@class.outer'] = 'V',
+                    ["@parameter.outer"] = "v",
+                    ["@function.outer"] = "V",
+                    ["@class.outer"] = "V",
                 },
 
                 -- If you set this to `true` (default is `false`) then any textobject is
@@ -44,5 +52,5 @@ return {
                 include_surrounding_whitespace = false,
             },
         },
-    }
+    }),
 }

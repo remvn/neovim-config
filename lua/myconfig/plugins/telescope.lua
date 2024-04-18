@@ -17,11 +17,13 @@ return {
         vim.keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, {})
         vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
         vim.keymap.set("n", "<leader>lg", builtin.live_grep, {})
-        vim.keymap.set("n", "gr", builtin.lsp_references, {})
         vim.keymap.set("n", "<leader>ps", function()
-            builtin.grep_string { search = vim.fn.input("Grep > ") }
+            builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
         vim.keymap.set("n", "<leader>pw", builtin.grep_string, {})
+
+        -- lsp keymap
+        vim.keymap.set("n", "gr", builtin.lsp_references, {})
     end,
     config = function()
         local telescope = require("telescope")
@@ -35,7 +37,7 @@ return {
         table.insert(vimgrep_arguments, "--glob")
         table.insert(vimgrep_arguments, "!**/.git/*")
 
-        telescope.setup {
+        telescope.setup({
             defaults = {
                 vimgrep_arguments = vimgrep_arguments,
                 mappings = {
@@ -63,7 +65,7 @@ return {
                 },
             },
             extensions = {},
-        }
+        })
 
         telescope.load_extension("fzf")
     end,

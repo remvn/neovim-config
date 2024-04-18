@@ -3,21 +3,22 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         local trouble = require("trouble")
-        trouble.setup {
+        trouble.setup({
             use_diagnostic_signs = true,
-        }
+        })
 
         vim.keymap.set("n", "<leader>ef", function()
             trouble.toggle()
         end)
 
         vim.keymap.set("n", "]e", function()
-            trouble.next { skip_groups = true, jump = true }
+            trouble.next({ skip_groups = true, jump = true })
         end)
         vim.keymap.set("n", "[e", function()
-            trouble.previous { skip_groups = true, jump = true }
+            trouble.previous({ skip_groups = true, jump = true })
         end)
 
+        -- #lsp-keymap
         vim.keymap.set("n", "<leader>wd", function()
             trouble.toggle("workspace_diagnostics")
         end)
