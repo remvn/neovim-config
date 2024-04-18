@@ -5,6 +5,9 @@ return {
         local trouble = require("trouble")
         trouble.setup({
             use_diagnostic_signs = true,
+            signs = {
+                other = "",
+            },
         })
 
         vim.keymap.set("n", "<leader>ef", function()

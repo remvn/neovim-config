@@ -13,7 +13,7 @@ return {
                     buffer = cx.bufnr,
                 }
 
-                vim.keymap.set("n", "<leader>vs", function()
+                vim.keymap.set("n", "<C-v>", function()
                     harpoon.ui:select_menu_item({ vsplit = true })
                 end, opts)
 

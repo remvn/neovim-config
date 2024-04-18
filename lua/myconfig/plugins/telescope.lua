@@ -22,7 +22,7 @@ return {
         end)
         vim.keymap.set("n", "<leader>pw", builtin.grep_string, {})
 
-        -- lsp keymap
+        -- #lsp-keymap
         vim.keymap.set("n", "gr", builtin.lsp_references, {})
     end,
     config = function()
