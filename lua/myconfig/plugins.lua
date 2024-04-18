@@ -4,7 +4,6 @@ return {
     "tpope/vim-repeat",
     "wellle/targets.vim",
     "tpope/vim-fugitive",
-    "sindrets/diffview.nvim",
     "romainl/vim-cool",
     {
         "nvim-treesitter/playground",
