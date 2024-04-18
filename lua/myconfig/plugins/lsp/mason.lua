@@ -5,6 +5,7 @@ return {
         "VonHeikemen/lsp-zero.nvim",
         "neovim/nvim-lspconfig",
         "williamboman/mason-lspconfig.nvim",
+        "b0o/schemastore.nvim",
     },
     lazy = false,
     config = function()
@@ -15,7 +16,7 @@ return {
         local mason_lsp = require("mason-lspconfig")
 
         mason.setup()
-        mason_lsp.setup({
+        mason_lsp.setup {
             ensure_installed = {
                 "tsserver",
                 "volar",
@@ -25,9 +26,9 @@ return {
                 "bashls",
             },
             automatic_installation = true,
-        })
+        }
 
-        mason_lsp.setup_handlers({
+        mason_lsp.setup_handlers {
             -- lsp-zero already handle these config below:
             -- * cmp-nvim-lsp capabilities
             -- * on_attach func
@@ -38,20 +39,31 @@ return {
             lua_ls = lsp_zero.noop,
             volar = lsp_zero.noop,
             tsserver = lsp_zero.noop,
-        })
+            jsonls = lsp_zero.noop,
+        }
 
         -- luals
         local lua_opts = lsp_zero.nvim_lua_ls()
         lspconfig.lua_ls.setup(lua_opts)
 
+        -- jsonls
+        lspconfig.jsonls.setup {
+            settings = {
+                json = {
+                    schemas = require("schemastore").json.schemas(),
+                    validate = { enable = true },
+                },
+            },
+        }
+
         -- volar
-        lspconfig.volar.setup({
+        lspconfig.volar.setup {
             init_options = {
                 vue = {
                     hybridMode = true,
                 },
             },
-        })
+        }
 
         -- tsserver
         ---@type lspconfig.options.tsserver
