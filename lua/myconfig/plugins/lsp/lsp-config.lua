@@ -46,7 +46,6 @@ return {
                 warn = "W",
                 hint = "H",
                 info = "I",
-                other = "O",
             })
 
             local servers = {
@@ -62,7 +61,6 @@ return {
                 },
                 ["rust_analyzer"] = { "rust" },
                 ["gopls"] = { "go" },
-                -- ["lua_ls"] = { "lua" },
             }
             lsp_zero.format_on_save({ servers = servers })
             lsp_zero.format_mapping("<leader>f", { servers = servers })
