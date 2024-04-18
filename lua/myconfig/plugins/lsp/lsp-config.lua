@@ -69,7 +69,7 @@ return {
             lsp_zero.on_attach(function(client, bufnr)
                 local opts = { buffer = bufnr, remap = false }
 
-                lsp_command.register_tsserver_cmd(client, bufnr)
+                lsp_command.register_lsp_cmd(client, bufnr)
 
                 -- #lsp-keymap
                 -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)

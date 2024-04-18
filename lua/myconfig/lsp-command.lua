@@ -13,7 +13,7 @@ function tsserver.organize_imports(bufnr)
     vim.cmd(":w")
 end
 
-function M.register_tsserver_cmd(client, bufnr)
+function M.register_lsp_cmd(client, bufnr)
     if client.name == "tsserver" then
         vim.api.nvim_create_user_command("OrganizeImports", function()
             tsserver.organize_imports(bufnr)
