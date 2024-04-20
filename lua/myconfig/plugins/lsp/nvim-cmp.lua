@@ -9,19 +9,22 @@ return {
         "hrsh7th/cmp-path",
     },
     config = function()
-        local lsp_zero = require("lsp-zero")
         local luasnip = require("luasnip")
 
-        -- call cmp.setup with default
-        -- mapping, sources, snippet
-        lsp_zero.extend_cmp({
-            set_mappings = false,
-            set_lsp_source = false,
-            use_luasnip = true, -- expand luasnip
-        })
+        -- local lsp_zero = require("lsp-zero")
+        -- lsp_zero.extend_cmp({
+        --     set_mappings = false,
+        --     set_lsp_source = false,
+        --     use_luasnip = false, -- expand luasnip
+        -- })
 
         local cmp = require("cmp")
         cmp.setup({
+            snippet = {
+                expand = function(args)
+                    require("luasnip").lsp_expand(args.body)
+                end,
+            },
             preselect = cmp.PreselectMode.Item,
             completion = {
                 -- some filetype do not preselect first item
