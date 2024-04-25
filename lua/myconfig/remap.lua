@@ -22,8 +22,8 @@ keymap.set(
 )
 
 -- disable some default mappings
-keymap.set("x", "u", "<nop>")
-keymap.set("x", "U", "<nop>")
+-- keymap.set("x", "u", "<nop>")
+-- keymap.set("x", "U", "<nop>")
 keymap.set({ "n", "x" }, "<C-a>", "<nop>")
 keymap.set({ "n", "x" }, "<C-x>", "<nop>")
 

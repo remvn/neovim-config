@@ -11,19 +11,21 @@ return {
     },
     init = function()
         local builtin = require("telescope.builtin")
-        vim.keymap.set("n", "<C-p>", builtin.find_files, {})
-        vim.keymap.set("n", "<leader>pf", builtin.git_files, {})
-        vim.keymap.set("n", "<leader>pb", builtin.current_buffer_fuzzy_find, {})
-        vim.keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, {})
-        vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
-        vim.keymap.set("n", "<leader>lg", builtin.live_grep, {})
-        vim.keymap.set("n", "<leader>ps", function()
+        local keymap = vim.keymap
+        keymap.set("n", "<C-p>", builtin.find_files, {})
+        keymap.set("n", "<leader>pf", builtin.git_files, {})
+        keymap.set("n", "<leader>ls", builtin.buffers, {})
+        keymap.set("n", "<leader>pb", builtin.current_buffer_fuzzy_find, {})
+        keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, {})
+        keymap.set("n", "<leader>vh", builtin.help_tags, {})
+        keymap.set("n", "<leader>lg", builtin.live_grep, {})
+        keymap.set("n", "<leader>ps", function()
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
-        vim.keymap.set("n", "<leader>pw", builtin.grep_string, {})
+        keymap.set("n", "<leader>pw", builtin.grep_string, {})
 
         -- #lsp-keymap
-        vim.keymap.set("n", "gr", builtin.lsp_references, {})
+        keymap.set("n", "gr", builtin.lsp_references, {})
     end,
     config = function()
         local telescope = require("telescope")
@@ -44,10 +46,9 @@ return {
                     i = {
                         -- actions.which_key shows the mappings for your picker,
                         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
-                        ["<C-/>"] = actions.which_key,
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
-                        ["<C-h>"] = actions.file_split,
+                        ["<C-s>"] = actions.file_split,
                         ["<C-e>"] = trouble.open_with_trouble,
                         ["<M-q>"] = false,
                     },
@@ -61,6 +62,13 @@ return {
                         "--hidden",
                         "--glob",
                         "!**/.git/*",
+                    },
+                },
+
+                buffers = {
+                    mappings = {
+                        i = { ["<c-d>"] = actions.delete_buffer },
+                        n = { ["<c-d>"] = actions.delete_buffer },
                     },
                 },
             },

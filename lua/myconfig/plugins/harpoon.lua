@@ -17,11 +17,12 @@ return {
                     harpoon.ui:select_menu_item({ vsplit = true })
                 end, opts)
 
-                vim.keymap.set("n", "<leader>hs", function()
+                vim.keymap.set("n", "<C-s>", function()
                     harpoon.ui:select_menu_item({ split = true })
                 end, opts)
 
                 vim.keymap.set("n", "<C-c>", function()
+                    harpoon.ui:save()
                     harpoon.ui:close_menu()
                 end, opts)
 
@@ -37,10 +38,10 @@ return {
             ui_max_width = 70,
         }
 
-        vim.keymap.set("n", "<leader>a", function()
+        vim.keymap.set("n", "<leader>ma", function()
             harpoon:list():append()
         end)
-        vim.keymap.set("n", "<leader>ls", function()
+        vim.keymap.set("n", "<leader>ms", function()
             harpoon.ui:toggle_quick_menu(harpoon:list(), window_opts)
         end)
         vim.keymap.set("n", "<A-q>", function()
