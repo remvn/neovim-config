@@ -37,8 +37,14 @@ return {
             -- under the hood. (I guess)
             lsp_zero.default_setup,
             jsonls = lsp_zero.noop,
-            -- volar = lsp_zero.noop,
-            -- tsserver = lsp_zero.noop,
+            volar = lsp_zero.noop,
+            tsserver = lsp_zero.noop,
+        })
+
+        -- TODO: https://theosteiner.de/using-volars-takeover-mode-in-neovims-native-lsp-client
+        -- use neoconf to enable volar & disable tsserver
+        lspconfig.volar.setup({
+            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
         })
 
         -- jsonls
