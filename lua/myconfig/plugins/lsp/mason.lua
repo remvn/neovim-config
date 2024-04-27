@@ -36,9 +36,9 @@ return {
             -- therefore default_setup only call empty setup
             -- under the hood. (I guess)
             lsp_zero.default_setup,
-            volar = lsp_zero.noop,
-            tsserver = lsp_zero.noop,
             jsonls = lsp_zero.noop,
+            -- volar = lsp_zero.noop,
+            -- tsserver = lsp_zero.noop,
         })
 
         -- jsonls
@@ -51,7 +51,7 @@ return {
             },
         })
 
-        -- volar
+        --[[ -- volar
         lspconfig.volar.setup({
             init_options = {
                 vue = {
@@ -94,6 +94,6 @@ return {
             ts_options = vim.tbl_deep_extend("force", ts_options, options)
         end
 
-        lspconfig.tsserver.setup(ts_options)
+        lspconfig.tsserver.setup(ts_options) ]]
     end,
 }

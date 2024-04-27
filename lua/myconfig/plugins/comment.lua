@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
     {
         "folke/todo-comments.nvim",
@@ -27,16 +28,16 @@ return {
         lazy = false,
         config = function()
             vim.g.skip_ts_context_commentstring_module = true
-            require("ts_context_commentstring").setup {
+            require("ts_context_commentstring").setup({
                 enable_autocmd = false,
-            }
-            require("Comment").setup {
+            })
+            require("Comment").setup({
                 mappings = {
                     basic = false,
                     extra = false,
                 },
                 pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-            }
+            })
             local api = require("Comment.api")
 
             vim.keymap.set("n", "<C-_>", api.toggle.linewise.current)

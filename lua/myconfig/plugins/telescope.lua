@@ -32,6 +32,15 @@ return {
         local actions = require("telescope.actions")
         local telescopeConfig = require("telescope.config")
         local trouble = require("trouble.providers.telescope")
+        local action_state = require("telescope.actions.state")
+
+        local delete_buffer = function(prompt_bufnr)
+            local current_picker = action_state.get_current_picker(prompt_bufnr)
+            current_picker:delete_selection(function(selection)
+                local ok = pcall(vim.api.nvim_buf_delete, selection.bufnr, { force = true })
+                return ok
+            end)
+        end
 
         -- Clone the default Telescope configuration
         local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
@@ -67,8 +76,8 @@ return {
 
                 buffers = {
                     mappings = {
-                        i = { ["<c-d>"] = actions.delete_buffer },
-                        n = { ["<c-d>"] = actions.delete_buffer },
+                        i = { ["<c-d>"] = delete_buffer },
+                        n = { ["<c-d>"] = delete_buffer },
                     },
                 },
             },
