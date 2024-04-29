@@ -1,9 +1,17 @@
-return {
+local plugin = {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     ---@diagnostic disable-next-line: missing-fields
     require("nvim-treesitter.configs").setup({
         textobjects = {
+            -- prevent move and swap section add default mapping
+            move = {
+                enable = true,
+            },
+            swap = {
+                enable = true,
+            },
+
             select = {
                 enable = true,
 
@@ -20,11 +28,11 @@ return {
                         desc = "Select inner part of a class region",
                     },
                     -- You can also use captures from other query groups like `locals.scm`
-                    ["as"] = {
-                        query = "@scope",
-                        query_group = "locals",
-                        desc = "Select language scope",
-                    },
+                    -- ["as"] = {
+                    --     query = "@scope",
+                    --     query_group = "locals",
+                    --     desc = "Select language scope",
+                    -- },
                 },
 
                 -- You can choose the select mode (default is charwise 'v')
@@ -54,3 +62,5 @@ return {
         },
     }),
 }
+
+return plugin
