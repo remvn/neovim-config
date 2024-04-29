@@ -5,16 +5,22 @@ local tabout = require("myconfig.tabout")
 vim.g.mapleader = " "
 local keymap = vim.keymap
 
-keymap.set("n", "<leader>pv", vim.cmd.Ex)
 keymap.set("i", "jk", "<Esc>")
 keymap.set("t", "jk", "<C-\\><C-n>") -- terminal
 keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
+
+-- experimental
+keymap.set("n", "cn", "*``cgn")
+keymap.set("n", "cN", "*``cgN")
+-- store selection in search register and record macro
+keymap.set("x", "qi", [[y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>gvqi]])
+-- select next match and apply macro
+keymap.set("n", "<F8>", "gn@i")
 
 -- jump out of bracket with tab
 tabout:set_keymap()
 
 -- git status
--- keymap.set("n", "<leader>gs", "<cmd>G<cr><C-w>K")
 keymap.set(
     "n",
     "<leader>gs",
@@ -22,8 +28,6 @@ keymap.set(
 )
 
 -- disable some default mappings
--- keymap.set("x", "u", "<nop>")
--- keymap.set("x", "U", "<nop>")
 keymap.set({ "n", "x" }, "<C-a>", "<nop>")
 keymap.set({ "n", "x" }, "<C-x>", "<nop>")
 

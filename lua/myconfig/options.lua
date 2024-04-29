@@ -9,6 +9,7 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = "screenline" -- screenline,number
 vim.opt.termguicolors = true
 vim.opt.wrap = false
+vim.opt.wildcharm = ("\t"):byte()
 -- vim.opt.colorcolumn = "80"
 
 vim.opt.splitbelow = true -- put new windows below current
