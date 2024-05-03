@@ -14,6 +14,9 @@ return {
             -- Disable automatic setup, we are doing it manually
             vim.g.lsp_zero_extend_cmp = 0
             vim.g.lsp_zero_extend_lspconfig = 0
+
+            vim.g.lsp_zero_ui_signcolumn = 1
+            vim.g.lsp_zero_ui_float_border = "rounded"
         end,
     },
 
@@ -38,8 +41,6 @@ return {
             -- set cmp-nvim-lsp capabilities with lspconfig hook
             lsp_zero.extend_lspconfig()
 
-            vim.g.lsp_zero_ui_float_border = "solid"
-            vim.g.lsp_zero_ui_signcolumn = 1
             lsp_zero.set_sign_icons({
                 -- error = "", warn = "", hint = "", info = "",
                 error = "E",
