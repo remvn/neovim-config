@@ -33,11 +33,11 @@ return {
         vim.keymap.set("n", "<leader>ld", function()
             trouble.toggle("document_diagnostics")
         end)
-        vim.keymap.set("n", "gH", function()
-            trouble.toggle("lsp_references")
-        end)
-        vim.keymap.set("n", "gd", function()
-            trouble.toggle("lsp_definitions")
-        end)
+        -- vim.keymap.set("n", "gH", function()
+        --     trouble.toggle("lsp_references")
+        -- end)
+        -- vim.keymap.set("n", "gd", function()
+        --     trouble.toggle("lsp_definitions")
+        -- end)
     end,
 }

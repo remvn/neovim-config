@@ -49,6 +49,7 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         DiagnosticError({ fg = red }),
         LspSignatureActiveParameter({ bg = visual }),
         UfoLineCount({ fg = purple }),
+        BqfPreviewFloat({ bg = bg, blend = 0 }),
 
         -- Common syntax highlight
         Type({ fg = orange }),

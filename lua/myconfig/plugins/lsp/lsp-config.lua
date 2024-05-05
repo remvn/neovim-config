@@ -73,8 +73,8 @@ return {
                 lsp_command.register_lsp_cmd(client, bufnr)
 
                 -- #lsp-keymap
-                -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                -- vim.keymap.set("n", "gH", vim.lsp.buf.references, opts)
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "gH", vim.lsp.buf.references, opts)
                 -- references see: plugins/telescope.lua
                 -- definition see: plugins/trouble.lua
                 vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
