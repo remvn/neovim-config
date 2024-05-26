@@ -5,8 +5,4 @@ return {
     "wellle/targets.vim",
     "tpope/vim-fugitive",
     "romainl/vim-cool",
-    {
-        "nvim-treesitter/playground",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-    },
 }

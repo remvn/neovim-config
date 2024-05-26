@@ -40,6 +40,8 @@ return {
 
             -- set cmp-nvim-lsp capabilities with lspconfig hook
             lsp_zero.extend_lspconfig()
+            -- vim.lsp.handlers["textDocument/hover"] =
+            --     vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded", max_width = 100 })
 
             lsp_zero.set_sign_icons({
                 -- error = "", warn = "", hint = "", info = "",

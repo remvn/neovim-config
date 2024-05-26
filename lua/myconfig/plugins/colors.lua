@@ -1,3 +1,14 @@
+-- darcula
+-- tokyonight
+-- kagawana
+-- monokai
+-- ayu
+-- gruvbox
+-- dracula
+-- onedark
+-- catppuchin
+-- sonokai
+
 return {
     {
         "briones-gabriel/darcula-solid.nvim",
@@ -14,8 +25,8 @@ return {
     --     priority = 1000,
     --     opts = {},
     --     config = function()
-    --         vim.cmd.colorscheme("tokyonight-night")
-    --     end
+    --         vim.cmd.colorscheme("tokyonight")
+    --     end,
     -- },
     -- {
     --     "olimorris/onedarkpro.nvim",
