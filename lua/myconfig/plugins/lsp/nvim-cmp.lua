@@ -4,9 +4,9 @@ return {
     dependencies = {
         "VonHeikemen/lsp-zero.nvim",
         "hrsh7th/cmp-nvim-lsp",
-        "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-path",
+        "saadparwaiz1/cmp_luasnip",
+        "L3MON4D3/LuaSnip",
     },
     config = function()
         local luasnip = require("luasnip")
@@ -22,7 +22,7 @@ return {
         cmp.setup({
             snippet = {
                 expand = function(args)
-                    require("luasnip").lsp_expand(args.body)
+                    luasnip.lsp_expand(args.body)
                 end,
             },
             preselect = cmp.PreselectMode.Item,
