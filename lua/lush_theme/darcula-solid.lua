@@ -184,78 +184,76 @@ return lush(function(injected_functions)
         Italic({ gui = italic }),
         Ignore({ fg = faded }), --  left blank, hidden  |hl-Ignore|
         Error({ fg = red }), --  any erroneous construct
-        Todo({ gui = bold }), --  anything that needs extra attention
+        Todo({ gui = bold }), -- anything that needs extra attention
 
         ---- TREESITTER ----------------------------------------------------------------
+
+        -- Identifiers
+        sym("@variable")({ fg = fg }), -- Any variable name that does not have another highlight
+        sym("@variable.builtin")({ Constant }), -- Variable names that are defined by the languages like `this` or `self`.
+        sym("@variable.parameter")({ fg = fg }),
+        sym("@variable.parameter.builtin")({ Constant }),
+        sym("@variable.member")({ fg = purple }),
 
         sym("@constant")({ Constant }),
         sym("@constant.builtin")({ Constant, gui = italic }), -- constant that are built in the language: `nil` in Lua.
         sym("@constant.macro")({ Constant, gui = bold }), -- constants that are defined by macros: `NULL` in C.
-        sym("@number")({ Number }),
-        sym("@float")({ Float }),
-        sym("@boolean")({ Boolean }),
-        sym("@character")({ Character }),
-        sym("@string")({ String }),
-        sym("@string.regex")({ Character }),
-        sym("@string.escape")({ fg = yellow, gui = bold }),
-        sym("@symbol")({ fg = green, gui = italic }), -- For identifiers referring to symbols or atoms.
 
-        sym("@field")({ fg = purple }),
-        sym("@property")({ fg = purple }),
-        sym("@parameter")({ fg = fg }),
-        sym("@parameter.reference")({ fg = fg }),
-        sym("@variable")({ fg = fg }), -- Any variable name that does not have another highlight
-        sym("@variable.builtin")({ Constant, gui = italic }), -- Variable names that are defined by the languages like `this` or `self`.
-        sym("@variable.member")({ fg = purple }),
-
-        sym("@function")({ Function }),
-        sym("@function.builtin")({ Function }),
-        sym("@function.macro")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
-        sym("@method")({ Function }),
-        sym("@constructor")({ fg = fg }), -- For constructor: `{}` in Lua and Java constructors.
-        sym("@keyword.function")({ Keyword }),
-
-        sym("@keyword")({ Keyword }),
-        sym("@conditional")({ Conditional }),
-        sym("@repeat")({ Repeat }),
+        sym("@module")({ fg = green }), -- identifiers referring to modules and namespaces.
+        sym("@module.builtin")({ fg = green }), -- identifiers referring to modules and namespaces.
         sym("@label")({ Label }),
-        sym("@operator")({ Operator }),
-        sym("@exception")({ Exception }),
 
-        sym("@namespace")({ PreProc }), -- identifiers referring to modules and namespaces.
-        sym("@annotation")({ PreProc }), -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information
-        sym("@attribute")({ PreProc }), -- Unstable
-        sym("@include")({ PreProc }), -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
+        -- Literals
+        sym("@string")({ String }),
+        sym("@string.documentaion")({ String }),
+        sym("@string.regexp")({ Character }),
+        sym("@string.escape")({ fg = yellow, gui = bold }),
+        sym("@string.special")({ fg = green, gui = italic }), -- other special strings (e.g. dates)
+        sym("@string.special.url")({ fg = blue }), -- URIs (e.g. hyperlinks)
+        sym("@string.special.symbol")({ fg = green, gui = italic }), -- symbols or atoms
+        sym("@string.special.path")({ fg = fg }), -- symbols or atoms
 
+        sym("@character")({ Character }),
+        sym("@character.special")({ Character }),
+
+        sym("@boolean")({ Boolean }),
+        sym("@number")({ Number }),
+        sym("@number.float")({ Float }),
+
+        -- Types
         sym("@type")({ fg = blue }),
         sym("@type.builtin")({ Constant }),
         sym("@type.definition")({ fg = blue }),
 
+        sym("@attribute")({ PreProc }),
+        sym("@attribute.builtin")({ PreProc }),
+        sym("@property")({ fg = purple }),
+
+        -- Functions
+        sym("@function")({ Function }),
+        sym("@function.builtin")({ Function }),
+        sym("@function.call")({ Function }),
+        sym("@function.macro")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
+
+        sym("@function.method")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
+        sym("@function.method.call")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
+
+        sym("@constructor")({ fg = fg }), -- For constructor: `{}` in Lua and Java constructors.
+        sym("@operator")({ Operator }),
+
+        -- Keywords
+        sym("@keyword")({ Keyword }),
+        sym("@keyword.function")({ Keyword }),
+
+        -- Punctuation
         sym("@punctuation.delimiter")({ fg = fg }), -- delimiters ie: `.`
-        sym("@punctuation.bracket")({ fg = fg }), -- brackets and parens.
-        sym("@punctuation.special")({ Delimiter }), -- special punctutation that does not fall in the catagories before.
+        sym("@punctuation.bracket")({ fg = fg }),
+        sym("@punctuation.special")({ Delimiter }), -- special symbols (e.g. `{}` in string interpolation)
 
+        -- Comments
         sym("@comment")({ Comment }),
-        sym("@tag")({ Tag }), -- Tags like html tag names.
-        sym("@tag.delimiter")({ fg = yellow }),
-        sym("@tag.attribute")({ fg = fg }),
-        sym("@text")({ fg = fg }),
-        sym("@text.emphasis")({ fg = fg, gui = italic }),
-        sym("@text.underline")({ fg = fg, gui = underline }),
-        sym("@text.strike")({ Comment, gui = underline }),
-        sym("@text.strong")({ fg = fg, gui = bold }),
-        sym("@text.title")({ fg = orange }), -- Text that is part of a title
-        sym("@text.literal")({ String }), -- Literal text
-        sym("@text.uri")({ fg = green, gui = italic }), -- Any URI like a link or email
 
-        sym("@error")({ fg = red }), -- syntax/parser errors.
-
-        -- Typescript
-        sym("@lsp.type.type.typescript")({ fg = blue }),
-        sym("@lsp.type.class.typescript")({ fg = blue }),
-        sym("@lsp.type.property.typescript")({ fg = purple }),
-
-        -- Markdown
+        -- Markup
         sym("@markup")({ fg = fg }), -- For strings considerated text in a markup language.
         sym("@markup.heading")({ fg = blue, gui = "bold" }),
         sym("@markup.strong")({ fg = fg, gui = "bold" }),
@@ -274,6 +272,31 @@ return lush(function(injected_functions)
         markdownCode({ fg = purple }),
         markdownLinkText({ fg = fg }),
 
+        sym("@tag")({ Tag }), -- Tags like html tag names.
+        sym("@tag.attribute")({ fg = fg }),
+        sym("@tag.delimiter")({ fg = yellow }),
+
+        -- Undefined
+        sym("@repeat")({ Repeat }),
+        sym("@exception")({ Exception }),
+        sym("@annotation")({ PreProc }), -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information
+        sym("@include")({ PreProc }), -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
+
+        -- DEPRECATED
+        -- sym("@text")({ fg = fg }),
+        -- sym("@text.emphasis")({ fg = fg, gui = italic }),
+        -- sym("@text.underline")({ fg = fg, gui = underline }),
+        -- sym("@text.strike")({ Comment, gui = underline }),
+        -- sym("@text.strong")({ fg = fg, gui = bold }),
+        -- sym("@text.title")({ fg = orange }), -- Text that is part of a title
+        -- sym("@text.literal")({ String }), -- Literal text
+        -- sym("@text.uri")({ fg = green, gui = italic }), -- Any URI like a link or email
+
+        -- Typescript
+        sym("@lsp.type.type.typescript")({ fg = blue }),
+        sym("@lsp.type.class.typescript")({ fg = blue }),
+        sym("@lsp.type.property.typescript")({ fg = purple }),
+
         -- Misc
         LspSignatureActiveParameter({ bg = visual }),
         UfoLineCount({ fg = purple }),
@@ -291,8 +314,8 @@ return lush(function(injected_functions)
         -- Harpoon
         HarpoonActive({ fg = black, bg = blue }),
         HarpoonInactive({ fg = fg, bg = overbg }),
-        HarpoonNumberActive({ HarpoonActive, gui = "bold" }),
-        HarpoonNumberInactive({ HarpoonInactive, gui = "bold" }),
+        HarpoonNumberActive({ HarpoonActive, gui = bold }),
+        HarpoonNumberInactive({ HarpoonInactive, gui = bold }),
 
         -- Cmp
         CmpItemAbbrMatch({ fg = blue }),
