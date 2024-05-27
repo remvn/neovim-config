@@ -50,6 +50,9 @@ return {
 
         telescope.setup({
             defaults = {
+                layout_config = {
+                    horizontal = { preview_width = 0.45 },
+                },
                 vimgrep_arguments = vimgrep_arguments,
                 mappings = {
                     i = {

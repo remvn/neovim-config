@@ -70,7 +70,7 @@ local plugin = {
             vim.keymap.del("n", "<C-x>", { buffer = bufnr })
             vim.keymap.del("n", "<C-e>", { buffer = bufnr })
 
-            vim.keymap.set("n", "<C-h>", api.node.open.horizontal, opts("Open: Horizontal Split"))
+            vim.keymap.set("n", "<C-s>", api.node.open.horizontal, opts("Open: Horizontal Split"))
             vim.keymap.set("n", "]d", api.node.navigate.diagnostics.next, opts("Next Diagnostic"))
             vim.keymap.set("n", "[d", api.node.navigate.diagnostics.prev, opts("Prev Diagnostic"))
             vim.keymap.set("n", "<leader>cd", api.tree.change_root_to_node, opts("CD"))
