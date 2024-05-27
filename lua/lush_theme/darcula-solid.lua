@@ -88,7 +88,7 @@ return lush(function(injected_functions)
         Visual({ bg = visual }), -- Visual mode selection
         VisualNOS({ bg = visual }), -- Visual mode selection when Vim is "Not Owning the Selection".
 
-        ModeMsg({ fg = faded }), -- 'showmode' message (e.g. "-- INSERT -- ")
+        ModeMsg({ fg = fg }), -- 'showmode' message (e.g. "-- INSERT -- ")
         MsgArea({ Normal }), -- Area for messages and cmdline
         MsgSeparator({ fg = orange }), -- Separator for scrolled messages `msgsep` flag of 'display'
         MoreMsg({ fg = green }), -- |more-prompt|
@@ -103,8 +103,6 @@ return lush(function(injected_functions)
         DiffDelete({ fg = red }),
         DiffChange({ fg = yellow.da(20) }),
         DiffText({ DiffChange, gui = underline }),
-        DiffAdded({ DiffAdd }),
-        DiffRemoved({ DiffDelete }),
 
         SpellBad({ fg = red, gui = underline }),
         SpellCap({ fg = magenta, gui = underline }),
@@ -117,28 +115,17 @@ return lush(function(injected_functions)
         LspReferenceRead({ bg = mid }), -- highlighting "read" references
         LspReferenceWrite({ bg = mid }), -- highlighting "write" references
 
-        -- base highlight groups. Other LspDiagnostic highlights link to these by default (except Underline)
-        LspDiagnosticsDefaultError({ fg = red }),
-        LspDiagnosticsDefaultWarning({ fg = yellow }),
-        LspDiagnosticsDefaultInformation({ fg = fg }),
-        LspDiagnosticsDefaultHint({ fg = teal }),
+        DiagnosticError({ fg = red }),
+        DiagnosticWarn({ fg = yellow }),
+        DiagnosticInfo({ fg = fg }),
+        DiagnosticHint({ fg = fg }),
+        DiagnosticOk({ fg = green }),
 
-        --LspDiagnosticsVirtualTextError       { };    -- "Error" diagnostic virtual text
-        --LspDiagnosticsVirtualTextWarning     { };    -- "Warning" diagnostic virtual text
-        --LspDiagnosticsVirtualTextInformation { };    -- "Information" diagnostic virtual text
-        --LspDiagnosticsVirtualTextHint        { };    -- "Hint" diagnostic virtual text
-        LspDiagnosticsUnderlineError({ gui = underline }), -- underline "Error" diagnostics
-        LspDiagnosticsUnderlineWarning({ gui = underline }), -- underline "Warning" diagnostics
-        LspDiagnosticsUnderlineInformation({ gui = underline }), -- underline "Information" diagnostics
-        LspDiagnosticsUnderlineHint({ gui = underline }), -- underline "Hint" diagnostics
-        --LspDiagnosticsFloatingError          { };    -- color "Error" diagnostic messages in diagnostics float
-        --LspDiagnosticsFloatingWarning        { };    -- color "Warning" diagnostic messages in diagnostics float
-        --LspDiagnosticsFloatingInformation    { };    -- color "Information" diagnostic messages in diagnostics float
-        --LspDiagnosticsFloatingHint           { };    -- color "Hint" diagnostic messages in diagnostics float
-        --LspDiagnosticsSignError              { };    -- "Error" signs in sign column
-        --LspDiagnosticsSignWarning            { };    -- "Warning" signs in sign column
-        --LspDiagnosticsSignInformation        { };    -- "Information" signs in sign column
-        --LspDiagnosticsSignHint               { };    -- "Hint" signs in sign column
+        DiagnosticUnderlineError({ gui = underline }),
+        DiagnosticUnderlineWarn({ gui = underline }),
+        DiagnosticUnderlineInfo({ gui = underline }),
+        DiagnosticUnderlineHint({ gui = underline }),
+        DiagnosticUnderlineOk({ gui = underline }),
 
         ---- Standard highlight groups -------------------------------------------------
         -- See :help group-name
@@ -186,7 +173,9 @@ return lush(function(injected_functions)
         Error({ fg = red }), --  any erroneous construct
         Todo({ gui = bold }), -- anything that needs extra attention
 
-        ---- TREESITTER ----------------------------------------------------------------
+        ---- Treesitter ----------------------------------------------------------------
+        -- see: https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
+        -- for more information
 
         -- Identifiers
         sym("@variable")({ fg = fg }), -- Any variable name that does not have another highlight
@@ -305,8 +294,10 @@ return lush(function(injected_functions)
 
         -- Git
         sym("@string.special.url.gitcommit")({ fg = fg }),
-        LuaLineDiffAdd({ fg = green }), -- '#9db871'
         GitSignsCurrentLineBlame({ fg = comment }),
+        LuaLineDiffAdd({ fg = green }),
+        LuaLineDiffDelete({ fg = red }),
+        LuaLineDiffChange({ fg = yellow }),
 
         -- Trouble
         TroublePreview({ bg = visual }),
