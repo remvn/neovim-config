@@ -69,16 +69,13 @@ local spec = lush.extends({ darcula_solid }).with(function(inject_functions)
         sym("@tag.delimiter")({ fg = yellow }),
         sym("@tag.attribute")({ fg = fg }),
         sym("@namespace")({ fg = green }),
-
-        -- Golang
-        sym("@punctuation.delimiter.go")({ fg = fg }),
-        sym("@variable.member.go")({ fg = purple }),
+        sym("@punctuation.delimiter")({ fg = fg }),
+        sym("@variable.member")({ fg = purple }),
 
         -- Typescript
         sym("@lsp.type.type.typescript")({ fg = blue }),
         sym("@lsp.type.class.typescript")({ fg = blue }),
         sym("@lsp.type.property.typescript")({ fg = purple }),
-        sym("@punctuation.delimiter.typescript")({ fg = fg }),
 
         -- Markdown
         sym("@markup")({ fg = fg }), -- For strings considerated text in a markup language.
