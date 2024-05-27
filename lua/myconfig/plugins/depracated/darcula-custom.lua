@@ -31,14 +31,14 @@ local pop = c7
 -- Primary colors: orange, yellow, white
 -- Color palette
 local red = hsl(1, 77, 62) -- #e95653
-local salmon = hsl(10, 90, 70) -- #f7856e
-local orange = hsl(27, 61, 50) -- #cd7832
-local yellow = hsl(37, 100, 71) -- #ffc66b
 local green = hsl(83, 27, 53) -- #8fa867
+local yellow = hsl(37, 100, 71) -- #ffc66b
+local orange = hsl(27, 61, 50) -- #cd7832
 local teal = hsl(150, 40, 50) -- #4db380
 local cyan = hsl(180, 58, 38) -- #299999
 local blue = hsl(215, 80, 67) -- #68a0ee
 local purple = hsl(279, 30, 62) -- #a781bb
+local salmon = hsl(10, 90, 70) -- #f7856e
 local magenta = hsl(310, 40, 70) -- #d194c7
 
 ---@diagnostic disable: undefined-global

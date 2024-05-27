@@ -12,12 +12,11 @@
 
 return {
     {
-        "briones-gabriel/darcula-solid.nvim",
-        dependencies = "rktjmp/lush.nvim",
+        "rktjmp/lush.nvim",
         priority = 1000,
         init = function()
-            -- see ../../../colors/darcula-custom.lua
-            vim.cmd.colorscheme("darcula-custom")
+            -- see ../../lush_theme/darcula-solid.lua
+            vim.cmd.colorscheme("darcula-solid")
         end,
     },
     -- {

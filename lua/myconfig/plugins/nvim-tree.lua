@@ -44,7 +44,7 @@ local plugin = {
         }
 
         -- smart toggle
-        local nvimTreeFocusOrToggle = function()
+        local focusOrToggle = function()
             local currentBuf = vim.api.nvim_get_current_buf()
             local currentBufFt = vim.api.nvim_get_option_value("filetype", { buf = currentBuf })
             if currentBufFt == "NvimTree" then
@@ -81,9 +81,9 @@ local plugin = {
             vim.keymap.set("n", "<C-c>", api.tree.close, opts("Close tree"))
         end
 
-        vim.keymap.set("n", "<C-e>", nvimTreeFocusOrToggle)
+        vim.keymap.set("n", "<C-e>", focusOrToggle)
 
-        tree.setup {
+        tree.setup({
             view = tree_view,
             diagnostics = {
                 enable = true,
@@ -136,7 +136,7 @@ local plugin = {
                 },
             },
             on_attach = on_attach,
-        }
+        })
     end,
 }
 
