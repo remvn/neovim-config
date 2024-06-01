@@ -39,6 +39,8 @@ local salmon = hsl(10, 90, 70) -- #f7856e
 local magenta = hsl(310, 40, 70) -- #d194c7
 local black = "#000000"
 
+local yellow_dark = "#c6b274"
+
 return lush(function(injected_functions)
     local sym = injected_functions.sym
     return {
@@ -188,8 +190,8 @@ return lush(function(injected_functions)
         sym("@constant.builtin")({ Constant, gui = italic }), -- constant that are built in the language: `nil` in Lua.
         sym("@constant.macro")({ Constant, gui = bold }), -- constants that are defined by macros: `NULL` in C.
 
-        sym("@module")({ fg = green }), -- identifiers referring to modules and namespaces.
-        sym("@module.builtin")({ fg = green }), -- identifiers referring to modules and namespaces.
+        sym("@module")({ fg = fg }), -- identifiers referring to modules and namespaces.
+        sym("@module.builtin")({ fg = fg }), -- identifiers referring to modules and namespaces.
         sym("@label")({ Label }),
 
         -- Literals
@@ -221,11 +223,11 @@ return lush(function(injected_functions)
         -- Functions
         sym("@function")({ Function }),
         sym("@function.builtin")({ Function }),
-        sym("@function.call")({ Function }),
+        sym("@function.call")({ fg = yellow_dark }),
         sym("@function.macro")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
 
         sym("@function.method")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
-        sym("@function.method.call")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
+        sym("@function.method.call")({ fg = yellow_dark }), -- macro defined fuctions: each `macro_rules` in Rust
 
         sym("@constructor")({ fg = fg }), -- For constructor: `{}` in Lua and Java constructors.
         sym("@operator")({ Operator }),
