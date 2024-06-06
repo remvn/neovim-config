@@ -33,7 +33,14 @@ return {
                 completeopt = "menu,menuone",
             },
             sources = {
-                { name = "nvim_lsp" },
+                {
+                    name = "nvim_lsp",
+                    option = {
+                        markdown_oxide = {
+                            keyword_pattern = [[\(\k\| \|\/\|#\)\+]],
+                        },
+                    },
+                },
                 { name = "path" },
                 { name = "luasnip", keyword_length = 2 },
             },

@@ -43,6 +43,16 @@ return {
             -- vim.lsp.handlers["textDocument/hover"] =
             --     vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded", max_width = 100 })
 
+            local capabilities = lsp_zero.get_capabilities()
+            capabilities.workspace = {
+                didChangeWatchedFiles = {
+                    dynamicRegistration = true,
+                },
+            }
+            lsp_zero.configure("markdown_oxide", {
+                capabilities = capabilities,
+            })
+
             lsp_zero.set_sign_icons({
                 -- error = "", warn = "", hint = "", info = "",
                 error = "E",

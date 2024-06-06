@@ -262,6 +262,7 @@ return lush(function(injected_functions)
         sym("@markup.list.unchecked")({ fg = comment }), -- todo notes
         markdownCode({ fg = purple }),
         markdownLinkText({ fg = fg }),
+        sym("@lsp.type.class.markdown")({}),
 
         sym("@tag")({ Tag }), -- Tags like html tag names.
         sym("@tag.attribute")({ fg = fg }),
