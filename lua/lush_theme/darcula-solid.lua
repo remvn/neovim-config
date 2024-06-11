@@ -26,6 +26,7 @@ local treebg = hsl(220, 3, 19)
 local mid = c2.lighten(10) -- either foreground or background
 local faded = fg.darken(45) -- non-important text elements
 local pop = c7
+local conceal = hsl(0, 0, 40)
 
 -- Color palette
 local red = hsl(1, 77, 62) -- #e95653
@@ -46,12 +47,12 @@ return lush(function(injected_functions)
     return {
         Normal({ fg = fg, bg = bg }),
         NormalFloat({ fg = fg, bg = overbg }),
-        FloatBorder({ fg = overbg }),
+        FloatBorder({ fg = mid }),
         NormalNC({ fg = fg, bg = bg.da(10) }), -- normal text in non-current windows
 
         Comment({ fg = comment, gui = italic }),
         Whitespace({ fg = mid }), -- 'listchars'
-        Conceal({ fg = "#666666" }),
+        Conceal({ fg = conceal }),
         NonText({ fg = treebg }), -- characters that don't exist in the text
         SpecialKey({ fg = blue }), -- Unprintable characters: text displayed differently from what it really is
 
