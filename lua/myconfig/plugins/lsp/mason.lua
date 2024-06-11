@@ -35,6 +35,56 @@ local function setupVolar()
     return isVueProject
 end
 
+local function setupVolar2()
+    local mason_registry = require("mason-registry")
+    local lspconfig = require("lspconfig")
+
+    -- volar
+    lspconfig.volar.setup({
+        init_options = {
+            vue = {
+                hybridMode = true,
+            },
+        },
+    })
+
+    -- tsserver
+    ---@type lspconfig.options.tsserver
+    local ts_options = {}
+
+    -- vue support through tsserver plugin
+    local has_volar, volar = pcall(mason_registry.get_package, "vue-language-server")
+    if has_volar then
+        local vue_ls_path = volar:get_install_path() .. "/node_modules/@vue/language-server"
+        local vue_plugin = {
+            name = "@vue/typescript-plugin",
+            location = vue_ls_path,
+            languages = { "vue" },
+        }
+
+        local tsserverFiletypes = {
+            "javascript",
+            "typescript",
+            "javascriptreact",
+            "typescriptreact",
+            "javascript.jsx",
+            "typescript.tsx",
+            "vue",
+        }
+
+        ---@type lspconfig.options.tsserver
+        local options = {
+            filetypes = tsserverFiletypes,
+            init_options = {
+                plugins = { vue_plugin },
+            },
+        }
+        ts_options = vim.tbl_deep_extend("force", ts_options, options)
+    end
+
+    lspconfig.tsserver.setup(ts_options)
+end
+
 local plugin = {
     "williamboman/mason.nvim",
     dependencies = {
@@ -49,9 +99,7 @@ local plugin = {
         local lsp_zero = require("lsp-zero")
         local lspconfig = require("lspconfig")
         local mason = require("mason")
-        local mason_registry = require("mason-registry")
         local mason_lsp = require("mason-lspconfig")
-        local neoconf = require("neoconf")
 
         mason.setup()
         mason_lsp.setup({
@@ -76,6 +124,7 @@ local plugin = {
             lsp_zero.default_setup,
             jsonls = lsp_zero.noop,
             volar = lsp_zero.noop,
+            tsserver = lsp_zero.noop,
             markdown_oxide = lsp_zero.noop,
         })
 
@@ -93,11 +142,14 @@ local plugin = {
             capabilities = capabilities,
         })
 
-        -- typescript stuff
-        local hasVolar = setupVolar()
-        if hasVolar == false then
-            lspconfig.tsserver.setup({})
-        end
+        -- volar 1.x
+        -- local hasVolar = setupVolar()
+        -- if hasVolar == false then
+        --     lspconfig.tsserver.setup({})
+        -- end
+
+        -- volar 2.x
+        setupVolar2()
 
         -- jsonls
         lspconfig.jsonls.setup({
@@ -108,51 +160,6 @@ local plugin = {
                 },
             },
         })
-
-        --[[ -- volar
-        lspconfig.volar.setup({
-            init_options = {
-                vue = {
-                    hybridMode = true,
-                },
-            },
-        })
-
-        -- tsserver
-        ---@type lspconfig.options.tsserver
-        local ts_options = {}
-
-        -- vue support through tsserver plugin
-        local has_volar, volar = pcall(mason_registry.get_package, "vue-language-server")
-        if has_volar then
-            local vue_ls_path = volar:get_install_path() .. "/node_modules/@vue/language-server"
-            local vue_plugin = {
-                name = "@vue/typescript-plugin",
-                location = vue_ls_path,
-                languages = { "vue" },
-            }
-
-            local tsserverFiletypes = {
-                "javascript",
-                "typescript",
-                "javascriptreact",
-                "typescriptreact",
-                "javascript.jsx",
-                "typescript.tsx",
-                "vue",
-            }
-
-            ---@type lspconfig.options.tsserver
-            local options = {
-                filetypes = tsserverFiletypes,
-                init_options = {
-                    plugins = { vue_plugin },
-                },
-            }
-            ts_options = vim.tbl_deep_extend("force", ts_options, options)
-        end
-
-        lspconfig.tsserver.setup(ts_options) ]]
     end,
 }
 
