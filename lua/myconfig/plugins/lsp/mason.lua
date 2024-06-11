@@ -15,7 +15,7 @@ local function setupVolar()
 
     local lines = f:read("*a")
     local obj = json.decode(lines)
-    if obj == nil or obj.dependencies == nil then
+    if obj == nil or obj.dependencies == nil or not json.isObject(obj.dependencies) then
         return false
     end
 
