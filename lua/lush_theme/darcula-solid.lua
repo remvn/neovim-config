@@ -46,11 +46,12 @@ return lush(function(injected_functions)
     return {
         Normal({ fg = fg, bg = bg }),
         NormalFloat({ fg = fg, bg = overbg }),
+        FloatBorder({ fg = overbg }),
         NormalNC({ fg = fg, bg = bg.da(10) }), -- normal text in non-current windows
 
         Comment({ fg = comment, gui = italic }),
         Whitespace({ fg = mid }), -- 'listchars'
-        Conceal({ fg = hsl(0, 0, 25) }),
+        Conceal({ fg = "#666666" }),
         NonText({ fg = treebg }), -- characters that don't exist in the text
         SpecialKey({ fg = blue }), -- Unprintable characters: text displayed differently from what it really is
 
