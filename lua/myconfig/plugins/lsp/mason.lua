@@ -1,19 +1,38 @@
 ---@diagnostic disable: missing-fields
+
+--- return true if `pwd` has a package.json that contains **vue** or **nuxt** dependency
+--- @return boolean
 local function setupVolar()
-    local lspconfig = require("lspconfig")
-
-    local f = assert(io.open("package.json", "r"))
-    local lines = f:read("*a")
-
-    print(lines)
-
-    -- TODO: https://theosteiner.de/using-volars-takeover-mode-in-neovims-native-lsp-client
+    -- https://theosteiner.de/using-volars-takeover-mode-in-neovims-native-lsp-client
     -- use neoconf to enable volar & disable tsserver
-    lspconfig.volar.setup({
-        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-    })
+    local lspconfig = require("lspconfig")
+    local json = require("neoconf.json")
+
+    local f = io.open("package.json", "r")
+    if not f then
+        return false
+    end
+
+    local lines = f:read("*a")
+    local obj = json.decode(lines)
+    if obj == nil or obj.dependencies == nil then
+        return false
+    end
+
+    local dependencies = obj.dependencies
+    local isVueProject = false
+    if dependencies.vue ~= nil or dependencies.nuxt ~= nil then
+        isVueProject = true
+    end
+
+    if isVueProject == true then
+        lspconfig.volar.setup({
+            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+        })
+    end
 
     f:close()
+    return isVueProject
 end
 
 local plugin = {
@@ -70,10 +89,15 @@ local plugin = {
             },
         }
         lspconfig.markdown_oxide.setup({
-            capabilities = capabilities, -- again, ensure that capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+            -- again, ensure that capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+            capabilities = capabilities,
         })
 
-        setupVolar()
+        -- typescript stuff
+        local hasVolar = setupVolar()
+        if hasVolar == false then
+            lspconfig.tsserver.setup({})
+        end
 
         -- jsonls
         lspconfig.jsonls.setup({
