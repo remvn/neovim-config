@@ -1,11 +1,29 @@
 ---@diagnostic disable: missing-fields
-return {
+local function setupVolar()
+    local lspconfig = require("lspconfig")
+
+    local f = assert(io.open("package.json", "r"))
+    local lines = f:read("*a")
+
+    print(lines)
+
+    -- TODO: https://theosteiner.de/using-volars-takeover-mode-in-neovims-native-lsp-client
+    -- use neoconf to enable volar & disable tsserver
+    lspconfig.volar.setup({
+        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+    })
+
+    f:close()
+end
+
+local plugin = {
     "williamboman/mason.nvim",
     dependencies = {
         "VonHeikemen/lsp-zero.nvim",
         "neovim/nvim-lspconfig",
         "williamboman/mason-lspconfig.nvim",
         "b0o/schemastore.nvim",
+        "folke/neoconf.nvim",
     },
     lazy = false,
     config = function()
@@ -14,6 +32,7 @@ return {
         local mason = require("mason")
         local mason_registry = require("mason-registry")
         local mason_lsp = require("mason-lspconfig")
+        local neoconf = require("neoconf")
 
         mason.setup()
         mason_lsp.setup({
@@ -38,9 +57,10 @@ return {
             lsp_zero.default_setup,
             jsonls = lsp_zero.noop,
             volar = lsp_zero.noop,
-            tsserver = lsp_zero.noop,
+            markdown_oxide = lsp_zero.noop,
         })
 
+        -- markdown_oxide
         local capabilities = require("cmp_nvim_lsp").default_capabilities(
             vim.lsp.protocol.make_client_capabilities()
         )
@@ -49,16 +69,11 @@ return {
                 dynamicRegistration = true,
             },
         }
-
         lspconfig.markdown_oxide.setup({
             capabilities = capabilities, -- again, ensure that capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
         })
 
-        -- TODO: https://theosteiner.de/using-volars-takeover-mode-in-neovims-native-lsp-client
-        -- use neoconf to enable volar & disable tsserver
-        lspconfig.volar.setup({
-            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-        })
+        setupVolar()
 
         -- jsonls
         lspconfig.jsonls.setup({
@@ -116,3 +131,5 @@ return {
         lspconfig.tsserver.setup(ts_options) ]]
     end,
 }
+
+return plugin

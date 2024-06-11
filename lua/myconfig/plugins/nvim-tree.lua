@@ -69,6 +69,7 @@ local plugin = {
             api.config.mappings.default_on_attach(bufnr)
             vim.keymap.del("n", "<C-x>", { buffer = bufnr })
             vim.keymap.del("n", "<C-e>", { buffer = bufnr })
+            vim.keymap.del("n", "<C-k>", { buffer = bufnr })
 
             vim.keymap.set("n", "<C-s>", api.node.open.horizontal, opts("Open: Horizontal Split"))
             vim.keymap.set("n", "]d", api.node.navigate.diagnostics.next, opts("Next Diagnostic"))

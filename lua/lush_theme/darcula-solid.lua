@@ -223,11 +223,11 @@ return lush(function(injected_functions)
         -- Functions
         sym("@function")({ Function }),
         sym("@function.builtin")({ Function }),
-        sym("@function.call")({ fg = yellow_dark }),
+        sym("@function.call")({ Function }),
         sym("@function.macro")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
 
         sym("@function.method")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
-        sym("@function.method.call")({ fg = yellow_dark }), -- macro defined fuctions: each `macro_rules` in Rust
+        sym("@function.method.call")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
 
         sym("@constructor")({ fg = fg }), -- For constructor: `{}` in Lua and Java constructors.
         sym("@operator")({ Operator }),
