@@ -66,7 +66,7 @@ return lush(function(injected_functions)
         LineNr({ fg = faded }),
         CursorLineNr({ fg = orange }),
         SignColumn({ LineNr }),
-        VertSplit({ fg = overbg, bg = bg }), -- column separating vertically split windows
+        WinSeparator({ fg = overbg, bg = bg }), -- column separating vertically split windows
         Folded({ fg = comment, bg = overbg }),
         FoldColumn({ LineNr }),
 
@@ -195,6 +195,9 @@ return lush(function(injected_functions)
         sym("@module")({ fg = fg }), -- identifiers referring to modules and namespaces.
         sym("@module.builtin")({ fg = fg }), -- identifiers referring to modules and namespaces.
         sym("@label")({ Label }),
+
+        -- language fix
+        sym("@lsp.type.class.vue")({ fg = yellow }),
 
         -- Literals
         sym("@string")({ String }),
