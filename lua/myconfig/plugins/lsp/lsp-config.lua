@@ -61,22 +61,22 @@ return {
                 info = "I",
             })
 
-            local servers = {
-                ["null-ls"] = {
-                    "javascript",
-                    "typescript",
-                    "json",
-                    "jsonc",
-                    "yaml",
-                    "yml",
-                    "vue",
-                    "lua",
-                },
-                ["rust_analyzer"] = { "rust" },
-                ["gopls"] = { "go" },
-            }
-            lsp_zero.format_on_save({ servers = servers })
-            lsp_zero.format_mapping("<leader>f", { servers = servers })
+            -- local servers = {
+            --     ["null-ls"] = {
+            --         "javascript",
+            --         "typescript",
+            --         "json",
+            --         "jsonc",
+            --         "yaml",
+            --         "yml",
+            --         "vue",
+            --         "lua",
+            --     },
+            --     ["rust_analyzer"] = { "rust" },
+            --     ["gopls"] = { "go" },
+            -- }
+            -- lsp_zero.format_on_save({ servers = servers })
+            -- lsp_zero.format_mapping("<leader>f", { servers = servers })
 
             local lsp_command = require("myconfig.lsp-command")
             lsp_zero.on_attach(function(client, bufnr)

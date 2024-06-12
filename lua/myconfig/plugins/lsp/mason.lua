@@ -126,6 +126,7 @@ local plugin = {
             volar = lsp_zero.noop,
             tsserver = lsp_zero.noop,
             markdown_oxide = lsp_zero.noop,
+            tailwindcss = lsp_zero.noop,
         })
 
         -- markdown_oxide
@@ -150,6 +151,14 @@ local plugin = {
 
         -- volar 2.x
         setupVolar2()
+
+        lspconfig.tailwindcss.setup({
+            settings = {
+                tailwindCSS = {
+                    classAttributes = { "class", "className", "ngClass", "class:list", "ui" },
+                },
+            },
+        })
 
         -- jsonls
         lspconfig.jsonls.setup({
