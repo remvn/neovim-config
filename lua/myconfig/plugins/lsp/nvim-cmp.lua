@@ -41,8 +41,8 @@ return {
                         },
                     },
                 },
+                { name = "luasnip", keyword_length = 1 },
                 { name = "path" },
-                { name = "luasnip", keyword_length = 2 },
             },
             window = {
                 -- completion = cmp.config.window.bordered(),
