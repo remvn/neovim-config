@@ -2,7 +2,8 @@ vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 -- xdg browser issue
 -- https://github.com/microsoft/WSL/issues/8892#issuecomment-1772972570
-vim.g.netrw_browsex_viewer = "cmd.exe /C start"
+-- vim.g.netrw_browsex_viewer = "cmd.exe /C start"
+vim.api.nvim_create_user_command("Browse", "silent !xdg-open <q-args>", { nargs = 1 })
 
 vim.opt.number = true
 vim.opt.relativenumber = true
