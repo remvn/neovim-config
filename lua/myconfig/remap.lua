@@ -5,6 +5,9 @@ local tabout = require("myconfig.tabout")
 vim.g.mapleader = " "
 local keymap = vim.keymap
 
+keymap.set("x", "il", "^o$h")
+keymap.set("o", "il", ":norm vil<CR>")
+
 keymap.set("i", "jk", "<Esc>")
 keymap.set("t", "jk", "<C-\\><C-n>") -- terminal
 keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })

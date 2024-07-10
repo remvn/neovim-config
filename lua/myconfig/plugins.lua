@@ -5,4 +5,5 @@ return {
     "wellle/targets.vim",
     "tpope/vim-fugitive",
     "romainl/vim-cool",
+    "tpope/vim-rhubarb",
 }
