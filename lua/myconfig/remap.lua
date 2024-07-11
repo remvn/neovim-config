@@ -6,7 +6,7 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 keymap.set("x", "il", "^o$h")
-keymap.set("o", "il", ":norm vil<CR>")
+keymap.set("o", "il", ":norm vil<CR>", { silent = true })
 
 keymap.set("i", "jk", "<Esc>")
 keymap.set("t", "jk", "<C-\\><C-n>") -- terminal
