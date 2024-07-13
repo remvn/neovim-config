@@ -2,8 +2,8 @@
 return {
     "tpope/vim-surround",
     "tpope/vim-repeat",
-    "wellle/targets.vim",
     "tpope/vim-fugitive",
-    "romainl/vim-cool",
     "tpope/vim-rhubarb",
+    "wellle/targets.vim",
+    "romainl/vim-cool",
 }
