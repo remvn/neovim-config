@@ -39,8 +39,9 @@ return {
             end)
         end
 
-        -- Clone the default Telescope configuration
+        -- Get default vimgrep_arguments
         local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+        -- show hidden files and ignore .git folder
         table.insert(vimgrep_arguments, "--hidden")
         table.insert(vimgrep_arguments, "--glob")
         table.insert(vimgrep_arguments, "!**/.git/*")
