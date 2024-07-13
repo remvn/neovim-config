@@ -3,6 +3,13 @@ return {
     config = function()
         local actions = require("diffview.actions")
 
+        local focusEntry = {
+            "n",
+            "dv",
+            actions.focus_entry,
+            { desc = "Focus right diffsplit of entry under cursor" },
+        }
+
         require("diffview").setup({
             file_panel = {
                 win_config = function()
@@ -15,22 +22,8 @@ return {
                 end,
             },
             keymaps = {
-                file_panel = {
-                    {
-                        "n",
-                        "dv",
-                        actions.focus_entry,
-                        { desc = "Focus right diffsplit of entry under cursor" },
-                    },
-                },
-                file_history_panel = {
-                    {
-                        "n",
-                        "dv",
-                        actions.focus_entry,
-                        { desc = "Focus right diffsplit of entry under cursor" },
-                    },
-                },
+                file_panel = { focusEntry },
+                file_history_panel = { focusEntry },
             },
         })
     end,

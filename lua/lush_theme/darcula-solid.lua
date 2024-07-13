@@ -307,6 +307,12 @@ return lush(function(injected_functions)
         LuaLineDiffDelete({ fg = red }),
         LuaLineDiffChange({ fg = yellow }),
 
+        -- Diffview
+        DiffviewFilePanelInsertions({ DiffAdd }),
+        DiffviewFilePanelDeletions({ DiffDelete }),
+        DiffviewHash({ fg = comment }),
+        DiffviewFilePanelSelected({ fg = orange, gui = "underline" }),
+
         -- Trouble
         TroublePreview({ bg = visual }),
 
