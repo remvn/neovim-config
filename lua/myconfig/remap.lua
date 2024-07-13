@@ -30,6 +30,13 @@ keymap.set(
     "<cmd>tabnew<cr><cmd>LualineRenameTab Fugitive  <cr><cmd>G<cr><C-w>K"
 )
 
+-- 3-way diff
+-- use Gwrite to choose one version entirely
+keymap.set("n", "g2", "<cmd>diffget //2<CR>") -- choose our (target)
+keymap.set("n", "g3", "<cmd>diffget //3<CR>") -- choose their (merge)
+
+keymap.set("n", "<leader>ts", "<cmd>Gitsigns toggle_signs<CR>")
+
 -- disable some default mappings
 keymap.set({ "n", "x" }, "<C-a>", "<nop>")
 keymap.set({ "n", "x" }, "<C-x>", "<nop>")
@@ -48,8 +55,8 @@ vim.cmd("cnoreabbrev tnew tabnew")
 vim.cmd("cnoreabbrev tclose tabclose")
 
 -- move selection
-keymap.set("x", "<A-j>", ":m '>+1<CR>gv=gv")
-keymap.set("x", "<A-k>", ":m '<-2<CR>gv=gv")
+keymap.set("x", "<M-j>", ":m '>+1<CR>gv=gv")
+keymap.set("x", "<M-k>", ":m '<-2<CR>gv=gv")
 
 -- fast navigation
 keymap.set({ "n", "v" }, "<C-k>", "5k")

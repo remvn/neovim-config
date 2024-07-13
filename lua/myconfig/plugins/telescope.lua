@@ -2,7 +2,6 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
-        "folke/trouble.nvim",
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
@@ -30,7 +29,6 @@ return {
         local telescope = require("telescope")
         local actions = require("telescope.actions")
         local telescopeConfig = require("telescope.config")
-        local trouble = require("trouble.providers.telescope")
         local action_state = require("telescope.actions.state")
 
         local delete_buffer = function(prompt_bufnr)
@@ -60,7 +58,6 @@ return {
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
                         ["<C-s>"] = actions.file_split,
-                        ["<C-e>"] = trouble.open_with_trouble,
                         ["<M-q>"] = false,
                     },
                 },
