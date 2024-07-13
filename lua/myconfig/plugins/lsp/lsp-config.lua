@@ -34,7 +34,7 @@ return {
             require("neoconf").setup({})
             require("neodev").setup({})
 
-            -- plugin init func create a LspAttach autocmd to
+            -- init func create a LspAttach autocmd to
             -- call on_attach func
             local lsp_zero = require("lsp-zero")
 
@@ -61,23 +61,6 @@ return {
                 info = "I",
             })
 
-            -- local servers = {
-            --     ["null-ls"] = {
-            --         "javascript",
-            --         "typescript",
-            --         "json",
-            --         "jsonc",
-            --         "yaml",
-            --         "yml",
-            --         "vue",
-            --         "lua",
-            --     },
-            --     ["rust_analyzer"] = { "rust" },
-            --     ["gopls"] = { "go" },
-            -- }
-            -- lsp_zero.format_on_save({ servers = servers })
-            -- lsp_zero.format_mapping("<leader>f", { servers = servers })
-
             local lsp_command = require("myconfig.lsp-command")
             lsp_zero.on_attach(function(client, bufnr)
                 local opts = { buffer = bufnr, remap = false }
@@ -88,15 +71,12 @@ return {
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
                 vim.keymap.set("n", "gH", vim.lsp.buf.references, opts)
                 -- references see: plugins/telescope.lua
-                -- definition see: plugins/trouble.lua
                 vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
                 vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, opts)
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
                 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
                 vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float, opts)
-                vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-                vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
                 vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
             end)
         end,

@@ -1,4 +1,4 @@
-return {
+local plugin = {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -56,9 +56,7 @@ return {
         vim.keymap.set("n", "<A-s>", function()
             harpoon:list():select(4)
         end)
-
-        -- Toggle previous & next buffers stored within Harpoon list
-        -- vim.keymap.set("n", "<A-p>", function() harpoon:list():prev() end)
-        -- vim.keymap.set("n", "<A-n>", function() harpoon:list():next() end)
     end,
 }
+
+return plugin

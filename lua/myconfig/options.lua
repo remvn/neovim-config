@@ -1,13 +1,5 @@
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
--- xdg browser issue
--- https://github.com/microsoft/WSL/issues/8892#issuecomment-1772972570 : add xdg-utils and wsl-utils
--- https://github.com/microsoft/WSL/issues/8952#issuecomment-1568212651 : fix WSLInterop missing
--- vim.api.nvim_create_user_command("Browse", "silent !xdg-open <q-args>", { nargs = 1 })
-vim.api.nvim_create_user_command("Browse", function(opts)
-    local cmd = opts.args:gsub("#", "\\#")
-    vim.cmd("silent !xdg-open " .. cmd)
-end, { nargs = 1 })
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -17,7 +9,8 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = "screenline" -- screenline,number
 vim.opt.termguicolors = true
 vim.opt.wrap = false
-vim.opt.wildcharm = ("\t"):byte() -- macro recogize tab when using cmdline
+vim.opt.wildcharm = ("\t"):byte() -- macro recognize tab when using cmdline
+vim.opt.spell = false
 -- vim.opt.colorcolumn = "80"
 
 vim.opt.splitbelow = true -- put new windows below current

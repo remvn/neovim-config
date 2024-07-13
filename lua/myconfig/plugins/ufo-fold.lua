@@ -1,18 +1,18 @@
 return {
-    'kevinhwang91/nvim-ufo',
+    "kevinhwang91/nvim-ufo",
     dependencies = {
-        'kevinhwang91/promise-async',
-        'nvim-treesitter/nvim-treesitter',
+        "kevinhwang91/promise-async",
+        "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-        vim.o.foldcolumn = '0' -- '0' is not bad
-        vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+        vim.o.foldcolumn = "0" -- '0' is not bad
+        vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
         vim.o.foldlevelstart = 99
         vim.o.foldenable = true
 
         local handler = function(virtText, lnum, endLnum, width, truncate)
             local newVirtText = {}
-            local suffix = (' +——— %d lines ———+'):format(endLnum - lnum)
+            local suffix = (" +——— %d lines ———+"):format(endLnum - lnum)
             local sufWidth = vim.fn.strdisplaywidth(suffix)
             local targetWidth = width - sufWidth
             local curWidth = 0
@@ -28,21 +28,22 @@ return {
                     chunkWidth = vim.fn.strdisplaywidth(chunkText)
                     -- str width returned from truncate() may less than 2nd argument, need padding
                     if curWidth + chunkWidth < targetWidth then
-                        suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+                        suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
                     end
                     break
                 end
                 curWidth = curWidth + chunkWidth
             end
-            table.insert(newVirtText, { suffix, 'UfoLineCount' })
+            table.insert(newVirtText, { suffix, "UfoLineCount" })
             return newVirtText
         end
 
-        require('ufo').setup({
+        ---@diagnostic disable-next-line: missing-fields
+        require("ufo").setup({
             fold_virt_text_handler = handler,
             provider_selector = function(bufnr, filetype, buftype)
-                return { 'treesitter', 'indent' }
+                return { "treesitter", "indent" }
             end,
         })
-    end
+    end,
 }

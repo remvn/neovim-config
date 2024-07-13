@@ -5,12 +5,14 @@ local tabout = require("myconfig.tabout")
 vim.g.mapleader = " "
 local keymap = vim.keymap
 
-keymap.set("x", "il", "^o$h")
-keymap.set("o", "il", ":norm vil<CR>", { silent = true })
-
+-- escape with jk
 keymap.set("i", "jk", "<Esc>")
 keymap.set("t", "jk", "<C-\\><C-n>") -- terminal
-keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Close Neovim" })
+keymap.set("n", "<leader>qq", "<cmd>qa!<cr>")
+
+-- select line without line-break
+keymap.set("x", "il", "^o$h")
+keymap.set("o", "il", ":norm vil<CR>", { silent = true })
 
 -- experimental
 keymap.set("n", "cn", "*``cgn")
@@ -29,6 +31,9 @@ keymap.set(
     "<leader>gs",
     "<cmd>tabnew<cr><cmd>LualineRenameTab Fugitive  <cr><cmd>G<cr><C-w>K"
 )
+
+-- git log with graph
+keymap.set("n", "<leader>gl", "<cmd>Flog<cr>")
 
 -- 3-way diff
 -- use Gwrite to choose one version entirely
@@ -90,6 +95,9 @@ keymap.set("n", "<A-k>", 'O<Esc>0"_Dj')
 
 -- better J
 keymap.set("n", "J", "mzJ`z")
+
+-- opposite of J
+keymap.set("n", "K", [[i<CR><Esc>]])
 
 -- no yank at x
 keymap.set("n", "x", '"_x')
