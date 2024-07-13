@@ -59,7 +59,8 @@ return {
 
         local tabs = {
             "tabs",
-            mode = 3,
+            max_length = 120,
+            mode = 2,
             tabs_color = {
                 active = "lualine_z_insert", -- Color for active tab.
                 inactive = "lualine_a_inactive", -- Color for inactive tab.
@@ -98,7 +99,7 @@ return {
         local progress = { "progress" }
         local location = { "location" }
 
-        require("lualine").setup {
+        require("lualine").setup({
             options = {
                 theme = theme,
                 section_separators = { left = "", right = "" },
@@ -125,7 +126,7 @@ return {
                 lualine_y = { progress },
                 lualine_z = { location },
             },
-        }
+        })
 
         vim.opt.showtabline = 1
     end,
