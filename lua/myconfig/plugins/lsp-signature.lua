@@ -7,7 +7,7 @@ return {
             handler_opts = {
                 border = "rounded",
             },
-            hint_enable = true,
+            hint_enable = false,
         })
     end,
 }
