@@ -8,8 +8,8 @@ local plugin = {
         "MunifTanjim/nui.nvim",
         "nvim-lua/plenary.nvim",
         "folke/trouble.nvim",
-        "nvim-telescope/telescope.nvim"
-    }
+        "nvim-telescope/telescope.nvim",
+    },
 }
 
 return {}
