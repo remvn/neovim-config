@@ -1,4 +1,4 @@
-return {
+local plugin = {
     "onsails/lspkind.nvim",
     dependencies = {
         "hrsh7th/nvim-cmp",
@@ -22,3 +22,5 @@ return {
         })
     end,
 }
+
+return {}

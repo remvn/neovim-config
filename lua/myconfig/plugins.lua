@@ -6,4 +6,5 @@ return {
     "tpope/vim-rhubarb",
     "wellle/targets.vim",
     "romainl/vim-cool",
+    "andymass/vim-matchup",
 }
