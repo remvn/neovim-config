@@ -11,6 +11,7 @@ vim.opt.termguicolors = true
 vim.opt.wrap = false
 vim.opt.wildcharm = ("\t"):byte() -- macro recognize tab when using cmdline
 vim.opt.spell = false
+vim.opt.mousemodel = "extend"
 -- vim.opt.colorcolumn = "80"
 
 vim.opt.splitbelow = true -- put new windows below current
