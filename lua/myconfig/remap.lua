@@ -15,8 +15,8 @@ keymap.set("x", "il", "^o$h")
 keymap.set("o", "il", ":norm vil<CR>", { silent = true })
 
 -- experimental
-keymap.set("n", "cn", "*``cgn")
-keymap.set("n", "cN", "*``cgN")
+-- keymap.set("n", "cn", "*``cgn")
+-- keymap.set("n", "cN", "*``cgN")
 -- store selection in search register and record macro
 keymap.set("x", "qi", [[y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>gvqi]])
 -- select next match and apply macro

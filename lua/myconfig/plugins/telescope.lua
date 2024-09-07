@@ -21,6 +21,13 @@ return {
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
         keymap.set("n", "<leader>pw", builtin.grep_string, {})
+        keymap.set("v", "<leader>lg", function()
+            local vpos = vim.fn.getpos("v")
+            local curpos = vim.fn.getcurpos()
+            local strings = vim.fn.getregion(vpos, curpos, { type = vim.fn.mode() })
+            local text = table.concat(strings, "\n")
+            builtin.grep_string({ search = text })
+        end, {})
 
         -- #lsp-keymap
         keymap.set("n", "gr", builtin.lsp_references, {})
