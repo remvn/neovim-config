@@ -8,7 +8,7 @@ local keymap = vim.keymap
 -- escape with jk
 keymap.set("i", "jk", "<Esc>")
 keymap.set("t", "jk", "<C-\\><C-n>") -- terminal
-keymap.set("n", "<leader>qq", "<cmd>qa!<cr>")
+keymap.set("n", "<leader>qq", "<cmd>silent! wa<cr><cmd>qa!<cr>")
 
 -- select line without line-break
 keymap.set("x", "il", "^o$h")
