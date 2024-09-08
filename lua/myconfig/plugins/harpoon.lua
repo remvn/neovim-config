@@ -39,7 +39,7 @@ local plugin = {
         }
 
         vim.keymap.set("n", "<leader>ma", function()
-            harpoon:list():append()
+            harpoon:list():add()
         end)
         vim.keymap.set("n", "<leader>ms", function()
             harpoon.ui:toggle_quick_menu(harpoon:list(), window_opts)

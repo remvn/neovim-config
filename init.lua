@@ -36,5 +36,5 @@ local function stop_profile()
     print("profiling stopped. output file is: profile.json")
 end
 
-vim.keymap.set("n", "<F1>", start_profile)
-vim.keymap.set("n", "<F2>", stop_profile)
+-- vim.keymap.set("n", "<F1>", start_profile)
+-- vim.keymap.set("n", "<F2>", stop_profile)

@@ -31,6 +31,7 @@ return {
 
         -- #lsp-keymap
         keymap.set("n", "gr", builtin.lsp_references, {})
+        keymap.set("n", "<leader>wd", builtin.diagnostics, {})
     end,
     config = function()
         local telescope = require("telescope")
@@ -68,6 +69,9 @@ return {
                         ["<C-s>"] = actions.file_split,
                         ["<M-q>"] = false,
                     },
+                    n = {
+                        ["<C-c>"] = actions.close,
+                    },
                 },
             },
             pickers = {
@@ -86,6 +90,10 @@ return {
                         i = { ["<c-d>"] = delete_buffer },
                         n = { ["<c-d>"] = delete_buffer },
                     },
+                },
+
+                diagnostics = {
+                    initial_mode = "normal",
                 },
             },
             extensions = {},
