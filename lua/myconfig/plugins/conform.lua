@@ -12,6 +12,7 @@ return {
                 python = { "isort", "black" },
                 javascript = prettiers,
                 typescript = prettiers,
+                yaml = prettiers,
                 vue = prettiers,
                 -- sql = { "sql_formatter" },
             },
