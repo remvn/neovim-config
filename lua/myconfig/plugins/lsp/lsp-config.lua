@@ -73,7 +73,6 @@ return {
                 -- references see: plugins/telescope.lua
                 vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-                vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, opts)
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
                 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
                 vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float, opts)
