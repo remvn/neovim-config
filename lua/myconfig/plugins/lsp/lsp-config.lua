@@ -3,6 +3,16 @@
 -- nvim-lspconfig & cmp
 -- mason (config lsp servers with mason)
 
+local function vimConfigEnvSetup()
+    local f = io.open("NVIM_CONFIG", "r")
+    if not f then
+        return false
+    end
+    require("neoconf").setup({})
+    require("neodev").setup({})
+    f:close()
+end
+
 return {
     -- lsp utils functions
     {
@@ -31,8 +41,7 @@ return {
             "folke/neoconf.nvim",
         },
         config = function()
-            require("neoconf").setup({})
-            require("neodev").setup({})
+            vimConfigEnvSetup()
 
             -- init func create a LspAttach autocmd to
             -- call on_attach func

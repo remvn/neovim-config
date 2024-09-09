@@ -59,8 +59,6 @@ local function setupVolar2()
             "javascriptreact",
             "typescriptreact",
             "vue",
-            -- "javascript.jsx",
-            -- "typescript.tsx",
         }
 
         ---@type lspconfig.options.tsserver
@@ -92,7 +90,6 @@ local plugin = {
         "neovim/nvim-lspconfig",
         "williamboman/mason-lspconfig.nvim",
         "b0o/schemastore.nvim",
-        "folke/neoconf.nvim",
     },
     lazy = false,
     config = function()
