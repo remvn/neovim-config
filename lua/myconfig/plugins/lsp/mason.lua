@@ -39,15 +39,6 @@ local function setupVolar2()
     local mason_registry = require("mason-registry")
     local lspconfig = require("lspconfig")
 
-    -- volar
-    lspconfig.volar.setup({
-        init_options = {
-            vue = {
-                hybridMode = true,
-            },
-        },
-    })
-
     -- ts_ls
     ---@type lspconfig.options.tsserver
     local ts_options = {}
@@ -67,9 +58,9 @@ local function setupVolar2()
             "typescript",
             "javascriptreact",
             "typescriptreact",
-            "javascript.jsx",
-            "typescript.tsx",
             "vue",
+            -- "javascript.jsx",
+            -- "typescript.tsx",
         }
 
         ---@type lspconfig.options.tsserver
@@ -83,6 +74,15 @@ local function setupVolar2()
     end
 
     lspconfig.ts_ls.setup(ts_options)
+
+    -- volar
+    lspconfig.volar.setup({
+        -- init_options = {
+        --     vue = {
+        --         hybridMode = true,
+        --     },
+        -- },
+    })
 end
 
 local plugin = {
@@ -110,6 +110,7 @@ local plugin = {
                 "gopls",
                 "golangci_lint_ls",
                 "bashls",
+                "jsonls",
             },
             automatic_installation = true,
         })
