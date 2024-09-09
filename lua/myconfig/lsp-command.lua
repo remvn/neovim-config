@@ -1,8 +1,8 @@
 local M = {}
 local METHOD = "workspace/executeCommand"
 
-local tsserver = {}
-function tsserver.organize_imports(bufnr)
+local ts_util = {}
+function ts_util.organize_imports(bufnr)
     local params = {
         command = "_typescript.organizeImports",
         arguments = { vim.api.nvim_buf_get_name(bufnr) },
@@ -14,9 +14,9 @@ function tsserver.organize_imports(bufnr)
 end
 
 function M.register_lsp_cmd(client, bufnr)
-    if client.name == "tsserver" then
+    if client.name == "ts_ls" then
         vim.api.nvim_create_user_command("OrganizeImports", function()
-            tsserver.organize_imports(bufnr)
+            ts_util.organize_imports(bufnr)
         end, { desc = "Organize Imports" })
     end
 end

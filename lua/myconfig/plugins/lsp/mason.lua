@@ -4,7 +4,7 @@
 --- @return boolean
 local function setupVolar()
     -- https://theosteiner.de/using-volars-takeover-mode-in-neovims-native-lsp-client
-    -- use neoconf to enable volar & disable tsserver
+    -- use neoconf to enable volar & disable ts_ls
     local lspconfig = require("lspconfig")
     local json = require("neoconf.json")
 
@@ -48,11 +48,11 @@ local function setupVolar2()
         },
     })
 
-    -- tsserver
+    -- ts_ls
     ---@type lspconfig.options.tsserver
     local ts_options = {}
 
-    -- vue support through tsserver plugin
+    -- vue support through ts_ls (tsserver) plugin
     local has_volar, volar = pcall(mason_registry.get_package, "vue-language-server")
     if has_volar then
         local vue_ls_path = volar:get_install_path() .. "/node_modules/@vue/language-server"
@@ -62,7 +62,7 @@ local function setupVolar2()
             languages = { "vue" },
         }
 
-        local tsserverFiletypes = {
+        local ts_ls_file_types = {
             "javascript",
             "typescript",
             "javascriptreact",
@@ -74,7 +74,7 @@ local function setupVolar2()
 
         ---@type lspconfig.options.tsserver
         local options = {
-            filetypes = tsserverFiletypes,
+            filetypes = ts_ls_file_types,
             init_options = {
                 plugins = { vue_plugin },
             },
@@ -82,7 +82,7 @@ local function setupVolar2()
         ts_options = vim.tbl_deep_extend("force", ts_options, options)
     end
 
-    lspconfig.tsserver.setup(ts_options)
+    lspconfig.ts_ls.setup(ts_options)
 end
 
 local plugin = {
@@ -104,7 +104,7 @@ local plugin = {
         mason.setup()
         mason_lsp.setup({
             ensure_installed = {
-                "tsserver",
+                "ts_ls",
                 "volar",
                 "lua_ls",
                 "gopls",
@@ -124,7 +124,7 @@ local plugin = {
             lsp_zero.default_setup,
             jsonls = lsp_zero.noop,
             volar = lsp_zero.noop,
-            tsserver = lsp_zero.noop,
+            ts_ls = lsp_zero.noop,
             markdown_oxide = lsp_zero.noop,
             tailwindcss = lsp_zero.noop,
         })
@@ -146,7 +146,7 @@ local plugin = {
         -- volar 1.x
         -- local hasVolar = setupVolar()
         -- if hasVolar == false then
-        --     lspconfig.tsserver.setup({})
+        --     lspconfig.ts_ls.setup({})
         -- end
 
         -- volar 2.x
