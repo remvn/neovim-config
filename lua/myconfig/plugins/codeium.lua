@@ -10,7 +10,7 @@ return {
         vim.keymap.set("i", "<C-g>", function()
             return vim.fn["codeium#Accept"]()
         end, { expr = true, silent = true })
-        vim.keymap.set("n", "<F1>", function()
+        vim.keymap.set("n", "<F2>", function()
             vim.g.codeium_enabled = not vim.g.codeium_enabled
         end)
     end,

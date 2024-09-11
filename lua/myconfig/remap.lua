@@ -121,3 +121,5 @@ local function toggle_qf()
     end
 end
 keymap.set("n", "<leader>qf", toggle_qf)
+
+keymap.set("n", "<F1>", "<Cmd>GoImports<CR>")
