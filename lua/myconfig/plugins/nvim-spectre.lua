@@ -4,6 +4,22 @@ return {
         "nvim-lua/plenary.nvim",
     },
     config = function()
+        local spectre = require("spectre")
+        spectre.setup({
+            mapping = {
+                ["run_current_replace"] = {
+                    map = "r",
+                    cmd = "<cmd>lua require('spectre.actions').run_current_replace()<CR>",
+                    desc = "replace current line",
+                },
+                ["run_replace"] = {
+                    map = "<leader>ra",
+                    cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
+                    desc = "replace all",
+                },
+            },
+        })
+
         vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").toggle()<CR>', {
             desc = "Spectre: toggle",
         })
