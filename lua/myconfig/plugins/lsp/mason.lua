@@ -125,6 +125,7 @@ local plugin = {
             ts_ls = lsp_zero.noop,
             markdown_oxide = lsp_zero.noop,
             tailwindcss = lsp_zero.noop,
+            lua_ls = lsp_zero.noop,
         })
 
         -- markdown_oxide
@@ -158,7 +159,6 @@ local plugin = {
             },
         })
 
-        -- jsonls
         lspconfig.jsonls.setup({
             settings = {
                 json = {
@@ -166,6 +166,19 @@ local plugin = {
                     validate = { enable = true },
                 },
             },
+        })
+
+        lspconfig.lua_ls.setup({
+            root_dir = lspconfig.util.root_pattern(
+                ".luarc.json",
+                ".luarc.jsonc",
+                ".luacheckrc",
+                ".stylua.toml",
+                "stylua.toml",
+                "selene.toml",
+                "selene.yml",
+                ".git"
+            ),
         })
     end,
 }
