@@ -14,13 +14,6 @@ return {
         local lspkind = require("lspkind")
         local cmp = require("cmp")
 
-        -- local lsp_zero = require("lsp-zero")
-        -- lsp_zero.extend_cmp({
-        --     set_mappings = false,
-        --     set_lsp_source = false,
-        --     use_luasnip = false, -- expand luasnip
-        -- })
-
         cmp.setup({
             formatting = {
                 expandable_indicator = true,
@@ -47,14 +40,7 @@ return {
                 completeopt = "menu,menuone",
             },
             sources = {
-                {
-                    name = "nvim_lsp",
-                    option = {
-                        markdown_oxide = {
-                            keyword_pattern = [[\(\k\| \|\/\|#\)\+]],
-                        },
-                    },
-                },
+                { name = "nvim_lsp" },
                 { name = "luasnip", keyword_length = 1 },
                 { name = "path" },
             },

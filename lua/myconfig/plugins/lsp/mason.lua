@@ -123,23 +123,8 @@ local plugin = {
             jsonls = lsp_zero.noop,
             volar = lsp_zero.noop,
             ts_ls = lsp_zero.noop,
-            markdown_oxide = lsp_zero.noop,
             tailwindcss = lsp_zero.noop,
             lua_ls = lsp_zero.noop,
-        })
-
-        -- markdown_oxide
-        local capabilities = require("cmp_nvim_lsp").default_capabilities(
-            vim.lsp.protocol.make_client_capabilities()
-        )
-        capabilities.workspace = {
-            didChangeWatchedFiles = {
-                dynamicRegistration = true,
-            },
-        }
-        lspconfig.markdown_oxide.setup({
-            -- again, ensure that capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
-            capabilities = capabilities,
         })
 
         -- volar 1.x
