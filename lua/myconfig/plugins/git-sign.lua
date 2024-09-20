@@ -10,7 +10,7 @@ return {
                 add = { text = "+" },
                 change = { text = "~" },
             },
-            signcolumn = false,
+            signcolumn = true,
             numhl = false,
         })
     end,
