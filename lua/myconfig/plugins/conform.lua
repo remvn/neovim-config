@@ -15,7 +15,7 @@ return {
                 typescript = prettiers,
                 yaml = prettiers,
                 vue = prettiers,
-                -- sql = { "sql_formatter" },
+                html = prettiers,
             },
             format_on_save = {
                 timeout_ms = 500,
