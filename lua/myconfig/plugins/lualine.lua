@@ -86,10 +86,6 @@ return {
         local diff = { "diff" }
         local branch = { "branch", icon = "" }
         local filetype = { "filetype" }
-        local function get_codium_status()
-            return "󰘦 " .. vim.api.nvim_call_function("codeium#GetStatusString", {})
-        end
-        local codium_status = { get_codium_status }
 
         local lsp_status = {
             "lspstatus",
@@ -124,7 +120,6 @@ return {
                 lualine_x = {
                     diff,
                     branch,
-                    codium_status,
                     filetype,
                     lsp_status,
                 },
