@@ -108,6 +108,7 @@ local plugin = {
                 "golangci_lint_ls",
                 "bashls",
                 "jsonls",
+                "yamlls",
             },
             automatic_installation = true,
         })
@@ -121,6 +122,7 @@ local plugin = {
             -- under the hood. (I guess)
             lsp_zero.default_setup,
             jsonls = lsp_zero.noop,
+            yamlls = lsp_zero.noop,
             volar = lsp_zero.noop,
             ts_ls = lsp_zero.noop,
             tailwindcss = lsp_zero.noop,
@@ -149,6 +151,18 @@ local plugin = {
                 json = {
                     schemas = require("schemastore").json.schemas(),
                     validate = { enable = true },
+                },
+            },
+        })
+
+        lspconfig.yamlls.setup({
+            settings = {
+                yaml = {
+                    schemaStore = {
+                        enable = false,
+                        url = "",
+                    },
+                    schemas = require("schemastore").yaml.schemas(),
                 },
             },
         })
