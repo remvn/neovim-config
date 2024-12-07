@@ -35,7 +35,7 @@ require("lazy").setup({
         { import = "myconfig.plugins.lsp" },
     },
     change_detection = { notify = false },
-    checker = { enabled = true },
+    checker = { enabled = false },
 })
 
 -- -- Profiling nvim performance
