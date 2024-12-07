@@ -14,14 +14,6 @@ keymap.set("n", "<leader>qq", "<cmd>silent! wa<cr><cmd>qa!<cr>")
 keymap.set("x", "il", "^o$h")
 keymap.set("o", "il", ":norm vil<CR>", { silent = true })
 
--- experimental
--- keymap.set("n", "cn", "*``cgn")
--- keymap.set("n", "cN", "*``cgN")
--- store selection in search register and record macro
-keymap.set("x", "qi", [[y<cmd>let @/=substitute(escape(@", '/'), '\n', '\\n', 'g')<cr>gvqi]])
--- select next match and apply macro
-keymap.set("n", "<F8>", "gn@i")
-
 -- jump out of bracket with tab
 tabout:set_keymap()
 
