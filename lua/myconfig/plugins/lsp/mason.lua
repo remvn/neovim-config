@@ -1,40 +1,5 @@
 ---@diagnostic disable: missing-fields
 
---- return true if `pwd` has a package.json that contains **vue** or **nuxt** dependency
---- @return boolean
-local function setupVolar()
-    -- https://theosteiner.de/using-volars-takeover-mode-in-neovims-native-lsp-client
-    -- use neoconf to enable volar & disable ts_ls
-    local lspconfig = require("lspconfig")
-    local json = require("neoconf.json")
-
-    local f = io.open("package.json", "r")
-    if not f then
-        return false
-    end
-
-    local lines = f:read("*a")
-    local obj = json.decode(lines)
-    if obj == nil or obj.dependencies == nil or not json.isObject(obj.dependencies) then
-        return false
-    end
-
-    local dependencies = obj.dependencies
-    local isVueProject = false
-    if dependencies.vue ~= nil or dependencies.nuxt ~= nil then
-        isVueProject = true
-    end
-
-    if isVueProject == true then
-        lspconfig.volar.setup({
-            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-        })
-    end
-
-    f:close()
-    return isVueProject
-end
-
 local function setupVolar2()
     local mason_registry = require("mason-registry")
     local lspconfig = require("lspconfig")
@@ -128,12 +93,6 @@ local plugin = {
             tailwindcss = lsp_zero.noop,
             lua_ls = lsp_zero.noop,
         })
-
-        -- volar 1.x
-        -- local hasVolar = setupVolar()
-        -- if hasVolar == false then
-        --     lspconfig.ts_ls.setup({})
-        -- end
 
         -- volar 2.x
         setupVolar2()
