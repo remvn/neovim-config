@@ -1,8 +1,8 @@
 -- follow this guide to build jsregexp on Windows
 -- https://github.com/L3MON4D3/LuaSnip/issues/1190#issuecomment-2171656749
 local function buildStr()
-    local sysname = require("myconfig.os"):getSysName()
-    if sysname == "Windows_NT" then
+    local platform = require("myconfig.platform")
+    if platform:isWindows() then
         return "pwsh " .. vim.fn.stdpath("config") .. "/luasnip_jsregexp_build.ps1"
     else
         return "make install_jsregexp"
