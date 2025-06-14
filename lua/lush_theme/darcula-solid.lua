@@ -295,6 +295,7 @@ return lush(function(injected_functions)
         sym("@lsp.type.property.typescript")({ fg = purple }),
 
         -- Misc
+        LspSignatureActiveFix({ bg = visual }),
         LspSignatureActiveParameter({ bg = visual }),
         UfoLineCount({ fg = purple }),
         BqfPreviewFloat({ bg = bg, blend = 0 }),

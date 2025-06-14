@@ -12,7 +12,7 @@ local plugin = {
         local mason_lspconf = require("mason-lspconfig")
 
         vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("my.lsp", {}),
+            group = vim.api.nvim_create_augroup("myconfig.lsp", {}),
             callback = function(args)
                 local opts = { buffer = args.buf, remap = false }
                 local windowOptions = { border = "rounded" }
@@ -39,20 +39,13 @@ local plugin = {
 
         -- local capabilities = vim.lsp.protocol.make_client_capabilities()
         -- vim.tbl_deep_extend("force", capabilities, cmp_nvim.default_capabilities())
+
         local cmp_nvim = require("cmp_nvim_lsp")
         local capabilities = cmp_nvim.default_capabilities()
         vim.lsp.config("*", {
             capabilities = capabilities,
         })
 
-        -- vim.lsp.config("jsonls", {
-        --     settings = {
-        --         json = {
-        --             schemas = require("schemastore").json.schemas(),
-        --             validate = { enable = true },
-        --         },
-        --     },
-        -- })
         -- TODO lua_ls missing .git root_markers
 
         mason.setup()

@@ -7,6 +7,10 @@ return {
             handler_opts = {
                 border = "rounded",
             },
+            -- workaround for this plugin
+            -- keep overriding LspSignatureActiveParameter
+            -- on lsp attach
+            hi_parameter = "LspSignatureActiveFix",
             hint_enable = false,
         })
     end,
