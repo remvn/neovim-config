@@ -41,6 +41,14 @@ local plugin = {
             capabilities = capabilities,
         })
 
+        -- vim.lsp.config("jsonls", {
+        --     settings = {
+        --         json = {
+        --             schemas = require("schemastore").json.schemas(),
+        --             validate = { enable = true },
+        --         },
+        --     },
+        -- })
         -- TODO lua_ls missing .git root_markers
 
         mason.setup()

@@ -2,16 +2,18 @@
 
 ---@type vim.lsp.ClientConfig
 return {
+    settings = {
+        yaml = {
+            schemaStore = {
+                enable = false,
+                url = "",
+            }
+        }
+    },
     before_init = function(_, config)
-        config.settings = vim.tbl_deep_extend("force", config.settings, {
-            yaml = {
-                schemaStore = {
-                    enable = false,
-                    url = "",
-                },
-                schemas = require("schemastore").yaml.schemas(),
-            },
-        })
+        -- can't assign new table because of
+        -- https://github.com/neovim/neovim/issues/27740#issuecomment-1978629315
+        config.settings.yaml.schemas = require("schemastore").yaml.schemas()
     end,
 }
 
