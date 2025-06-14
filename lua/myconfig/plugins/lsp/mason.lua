@@ -20,13 +20,17 @@ local plugin = {
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
                 vim.keymap.set("n", "gH", vim.lsp.buf.references, opts)
                 -- references see: plugins/telescope.lua
-                vim.keymap.set("n", "gh", function()
-                    vim.lsp.buf.hover(windowOptions)
-                end, opts)
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
                 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
-                vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float, opts)
+
+                -- use gr to view references in telescope
+                vim.keymap.set("n", "gh", function()
+                    vim.lsp.buf.hover(windowOptions)
+                end, opts)
+                vim.keymap.set("n", "<leader>of", function()
+                    vim.diagnostic.open_float(windowOptions)
+                end, opts)
                 vim.keymap.set("i", "<C-k>", function()
                     vim.lsp.buf.signature_help(windowOptions)
                 end, opts)
