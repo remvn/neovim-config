@@ -1,5 +1,6 @@
 return {
     "ray-x/lsp_signature.nvim",
+    dir = "~/forks/lsp_signature.nvim/",
     event = "VeryLazy",
     config = function()
         require("lsp_signature").setup({
@@ -10,7 +11,7 @@ return {
             -- workaround for this plugin
             -- keep overriding LspSignatureActiveParameter
             -- on lsp attach
-            hi_parameter = "LspSignatureActiveFix",
+            -- hi_parameter = "LspSignatureActiveFix",
             hint_enable = false,
         })
     end,
