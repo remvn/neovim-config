@@ -11,6 +11,13 @@ local plugin = {
         local mason = require("mason")
         local mason_lspconf = require("mason-lspconfig")
 
+        -- remove default lsp keymap
+        -- https://neovim.io/doc/user/news-0.11.html#_defaults
+        vim.keymap.del("n", "gri")
+        vim.keymap.del("n", "grr")
+        vim.keymap.del({ "n", "x" }, "gra")
+        vim.keymap.del("n", "grn")
+
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("myconfig.lsp", {}),
             callback = function(args)
