@@ -17,6 +17,7 @@ local plugin = {
         vim.keymap.del("n", "grr")
         vim.keymap.del({ "n", "x" }, "gra")
         vim.keymap.del("n", "grn")
+        vim.keymap.del({ "i", "s" }, "<C-s>")
 
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("myconfig.lsp", {}),
@@ -38,7 +39,7 @@ local plugin = {
                 vim.keymap.set("n", "<leader>of", function()
                     vim.diagnostic.open_float(windowOptions)
                 end, opts)
-                vim.keymap.set("i", "<C-k>", function()
+                vim.keymap.set("i", "<C-b>", function()
                     vim.lsp.buf.signature_help(windowOptions)
                 end, opts)
             end,
