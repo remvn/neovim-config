@@ -234,7 +234,9 @@ return lush(function(injected_functions)
         sym("@function.method")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
         sym("@function.method.call")({ Function }), -- macro defined fuctions: each `macro_rules` in Rust
 
-        sym("@constructor")({ fg = fg }), -- For constructor: `{}` in Lua and Java constructors.
+        sym("@constructor")({ Constant }),
+        sym("@constructor.lua")({ fg = fg }), -- {}
+        sym("@constructor.go")({ Function }), -- new, make functions
         sym("@operator")({ Operator }),
 
         -- Keywords
