@@ -14,7 +14,7 @@ return {
         keymap.set("n", "<leader>pf", builtin.git_files, {})
         keymap.set("n", "<leader>ls", builtin.buffers, {})
         keymap.set("n", "<leader>ps", builtin.current_buffer_fuzzy_find, {})
-        keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, {})
+        keymap.set("n", "<leader>pd", builtin.lsp_document_symbols, {})
         keymap.set("n", "<leader>vh", builtin.help_tags, {})
         keymap.set("n", "<leader>lg", builtin.live_grep, {})
         keymap.set("n", "<leader>pw", function()
