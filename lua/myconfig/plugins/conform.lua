@@ -16,14 +16,22 @@ local plugin = {
                 yaml = prettiers,
                 vue = prettiers,
                 html = prettiers,
+                svelte = prettiers,
+                css = prettiers,
                 c = { "clang-format" },
             },
-            format_on_save = function(bufnr)
+            format_after_save = function(bufnr)
                 if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
                     return
                 end
-                return { timeout_ms = 500, lsp_format = "fallback" }
+                return { async = true, lsp_format = "fallback" }
             end,
+            -- format_on_save = function(bufnr)
+            --     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            --         return
+            --     end
+            --     return { timeout_ms = 2500, lsp_format = "fallback" }
+            -- end,
         })
     end,
 }

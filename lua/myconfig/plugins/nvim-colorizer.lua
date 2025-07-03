@@ -3,12 +3,12 @@ return {
     config = function()
         require("colorizer").setup({
             filetypes = {
-                "javascript",
-                "typescript",
-                "vue",
-                "css",
                 "lua",
-                "go",
+                -- "javascript",
+                -- "typescript",
+                -- "vue",
+                -- "css",
+                -- "go",
             },
             user_default_options = {
                 names = false,
