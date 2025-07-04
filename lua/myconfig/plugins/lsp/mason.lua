@@ -59,7 +59,6 @@ local plugin = {
         mason.setup()
         mason_lspconf.setup({
             ensure_installed = {
-                "ts_ls",
                 "vue_ls",
                 "lua_ls",
                 "gopls",
@@ -70,6 +69,8 @@ local plugin = {
             },
             automatic_enable = true,
         })
+
+        vim.lsp.enable({ "vtsls" })
     end,
 }
 
