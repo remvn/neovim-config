@@ -24,7 +24,6 @@ return {
             fade = "#898b8d",
             editor_bg = "#303031",
             text = "#d6d9dc",
-            -- white     = "#e2e5e9",
             white = "#ffffff",
             black = "#000000",
             green = "#9db871",
@@ -62,7 +61,7 @@ return {
             max_length = 120,
             mode = 2,
             tabs_color = {
-                active = "lualine_z_insert", -- Color for active tab.
+                active = "lualine_z_insert",     -- Color for active tab.
                 inactive = "lualine_a_inactive", -- Color for inactive tab.
             },
             symbols = {
@@ -79,7 +78,6 @@ return {
         local diagnostics = {
             "diagnostics",
             sources = { "nvim_diagnostic" },
-            -- symbols = { error = " ", warn = " ", hint = " ", info = " ", },
             symbols = { error = "E:", warn = "W:", info = "I:", hint = "H:" },
         }
 
