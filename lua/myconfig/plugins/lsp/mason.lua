@@ -59,6 +59,7 @@ local plugin = {
         mason.setup()
         mason_lspconf.setup({
             ensure_installed = {
+                "vtsls",
                 "vue_ls",
                 "lua_ls",
                 "gopls",
