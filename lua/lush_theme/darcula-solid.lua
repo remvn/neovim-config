@@ -118,6 +118,7 @@ return lush(function(injected_functions)
         LspReferenceText({ bg = mid }), -- highlighting "text" references
         LspReferenceRead({ bg = mid }), -- highlighting "read" references
         LspReferenceWrite({ bg = mid }), -- highlighting "write" references
+        LspInlayHint({ fg = faded }),
 
         DiagnosticError({ fg = red }),
         DiagnosticWarn({ fg = yellow }),

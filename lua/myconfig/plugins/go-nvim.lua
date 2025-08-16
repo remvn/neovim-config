@@ -12,6 +12,9 @@ local plugin = {
         require("go").setup({
             tag_options = '',
             textobjects = false,
+            lsp_inlay_hints = {
+                enable = false,
+            }
         })
     end,
 }
