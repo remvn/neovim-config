@@ -198,7 +198,7 @@ return lush(function(injected_functions)
         sym("@label")({ Label }),
 
         -- language fix
-        sym("@lsp.type.class.vue")({ fg = yellow }),
+        -- sym("@lsp.type.class.vue")({ fg = yellow }),
 
         -- Literals
         sym("@string")({ String }),
@@ -273,8 +273,8 @@ return lush(function(injected_functions)
         sym("@lsp.type.class.markdown")({}),
 
         sym("@tag")({ Tag }), -- Tags like html tag names.
+        sym("@tag.delimiter")({ Tag }),
         sym("@tag.attribute")({ fg = fg }),
-        sym("@tag.delimiter")({ fg = yellow }),
 
         -- Undefined
         sym("@repeat")({ Repeat }),
