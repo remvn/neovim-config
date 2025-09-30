@@ -1,8 +1,9 @@
----@diagnostic disable: undefined-global
+---@diagnostic disable: undefined-global, unused-local
 local lush = require("lush")
 local hsl = lush.hsl
 
-local bold, italic, underline = "bold", "italic", "underline"
+-- GUI options
+local bf, it, un = "bold", "italic", "underline"
 
 -- Base colors
 local c0 = hsl(240, 1, 15)
@@ -21,26 +22,30 @@ local subtle = c2 -- out-of-buffer elements
 
 local fg = hsl(210, 7, 82)
 local comment = hsl(0, 0, 54) -- comments
-local visual = hsl(220, 54, 28) -- visual mode
+local folder = hsl(202, 9, 57)
 local treebg = hsl(220, 3, 19)
 local mid = c2.lighten(10) -- either foreground or background
 local faded = fg.darken(45) -- non-important text elements
 local pop = c7
-local conceal = hsl(0, 0, 40)
 
 -- Color palette
 local red = hsl(1, 77, 62) -- #e95653
-local green = hsl(83, 27, 53) -- #8fa867
-local yellow = hsl(37, 100, 71) -- #ffc66b
+local salmon = hsl(10, 90, 70) -- #f7856e
 local orange = hsl(27, 61, 50) -- #cd7832
+local yellow = hsl(37, 100, 71) -- #ffc66b
+
+local green = hsl(83, 27, 53) -- #8fa867
 local teal = hsl(150, 40, 50) -- #4db380
+local cyan = hsl(180, 58, 38) -- #299999
+
 local blue = hsl(215, 80, 67) -- #68a0ee
 local purple = hsl(279, 30, 62) -- #a781bb
-local salmon = hsl(10, 90, 70) -- #f7856e
 local magenta = hsl(310, 40, 70) -- #d194c7
-local black = "#000000"
 
-local yellow_dark = "#c6b274"
+-- Custom colors
+local conceal = hsl(0, 0, 40)
+local visual = hsl(220, 54, 28) -- visual mode
+local black = "#000000"
 
 return lush(function(injected_functions)
     local sym = injected_functions.sym
@@ -50,7 +55,7 @@ return lush(function(injected_functions)
         FloatBorder({ fg = mid }),
         NormalNC({ fg = fg, bg = bg.da(10) }), -- normal text in non-current windows
 
-        Comment({ fg = comment, gui = italic }),
+        Comment({ fg = comment, gui = it }),
         Whitespace({ fg = mid }), -- 'listchars'
         Conceal({ fg = conceal }),
         NonText({ fg = treebg }), -- characters that don't exist in the text
@@ -106,12 +111,12 @@ return lush(function(injected_functions)
         DiffAdd({ fg = green.da(20) }),
         DiffDelete({ fg = red }),
         DiffChange({ fg = yellow.da(20) }),
-        DiffText({ DiffChange, gui = underline }),
+        DiffText({ DiffChange, gui = un }),
 
-        SpellBad({ fg = red, gui = underline }),
-        SpellCap({ fg = magenta, gui = underline }),
-        SpellLocal({ fg = orange, gui = underline }),
-        SpellRare({ fg = yellow, gui = underline }),
+        SpellBad({ fg = red, gui = un }),
+        SpellCap({ fg = magenta, gui = un }),
+        SpellLocal({ fg = orange, gui = un }),
+        SpellRare({ fg = yellow, gui = un }),
 
         ---- Language Server Protocol highlight groups ---------------------------------
 
@@ -126,11 +131,11 @@ return lush(function(injected_functions)
         DiagnosticHint({ fg = fg }),
         DiagnosticOk({ fg = green }),
 
-        DiagnosticUnderlineError({ gui = underline }),
-        DiagnosticUnderlineWarn({ gui = underline }),
-        DiagnosticUnderlineInfo({ gui = underline }),
-        DiagnosticUnderlineHint({ gui = underline }),
-        DiagnosticUnderlineOk({ gui = underline }),
+        DiagnosticUnderlineError({ gui = un }),
+        DiagnosticUnderlineWarn({ gui = un }),
+        DiagnosticUnderlineInfo({ gui = un }),
+        DiagnosticUnderlineHint({ gui = un }),
+        DiagnosticUnderlineOk({ gui = un }),
 
         ---- Standard highlight groups -------------------------------------------------
         -- See :help group-name
@@ -171,12 +176,12 @@ return lush(function(injected_functions)
         SpecialComment({ Special }), -- special things inside a comment
         Debug({ Special }), -- debugging statements
 
-        Underlined({ gui = underline }),
-        Bold({ gui = bold }),
-        Italic({ gui = italic }),
+        Underlined({ gui = un }),
+        Bold({ gui = bf }),
+        Italic({ gui = it }),
         Ignore({ fg = faded }), --  left blank, hidden  |hl-Ignore|
         Error({ fg = red }), --  any erroneous construct
-        Todo({ gui = bold }), -- anything that needs extra attention
+        Todo({ gui = bf }), -- anything that needs extra attention
 
         ---- Treesitter ----------------------------------------------------------------
         -- see: https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
@@ -190,24 +195,21 @@ return lush(function(injected_functions)
         sym("@variable.member")({ fg = purple }),
 
         sym("@constant")({ Constant }),
-        sym("@constant.builtin")({ Constant, gui = italic }), -- constant that are built in the language: `nil` in Lua.
-        sym("@constant.macro")({ Constant, gui = bold }), -- constants that are defined by macros: `NULL` in C.
+        sym("@constant.builtin")({ Constant, gui = it }), -- constant that are built in the language: `nil` in Lua.
+        sym("@constant.macro")({ Constant, gui = bf }), -- constants that are defined by macros: `NULL` in C.
 
         sym("@module")({ fg = fg }), -- identifiers referring to modules and namespaces.
         sym("@module.builtin")({ fg = fg }), -- identifiers referring to modules and namespaces.
         sym("@label")({ Label }),
 
-        -- language fix
-        -- sym("@lsp.type.class.vue")({ fg = yellow }),
-
         -- Literals
         sym("@string")({ String }),
         sym("@string.documentaion")({ String }),
         sym("@string.regexp")({ Character }),
-        sym("@string.escape")({ fg = yellow, gui = bold }),
-        sym("@string.special")({ fg = green, gui = italic }), -- other special strings (e.g. dates)
+        sym("@string.escape")({ fg = yellow, gui = bf }),
+        sym("@string.special")({ fg = green, gui = it }), -- other special strings (e.g. dates)
         sym("@string.special.url")({ fg = blue }), -- URIs (e.g. hyperlinks)
-        sym("@string.special.symbol")({ fg = green, gui = italic }), -- symbols or atoms
+        sym("@string.special.symbol")({ fg = green, gui = it }), -- symbols or atoms
         sym("@string.special.path")({ fg = fg }), -- symbols or atoms
 
         sym("@character")({ Character }),
@@ -282,16 +284,6 @@ return lush(function(injected_functions)
         sym("@annotation")({ PreProc }), -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information
         sym("@include")({ PreProc }), -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
 
-        -- DEPRECATED
-        -- sym("@text")({ fg = fg }),
-        -- sym("@text.emphasis")({ fg = fg, gui = italic }),
-        -- sym("@text.underline")({ fg = fg, gui = underline }),
-        -- sym("@text.strike")({ Comment, gui = underline }),
-        -- sym("@text.strong")({ fg = fg, gui = bold }),
-        -- sym("@text.title")({ fg = orange }), -- Text that is part of a title
-        -- sym("@text.literal")({ String }), -- Literal text
-        -- sym("@text.uri")({ fg = green, gui = italic }), -- Any URI like a link or email
-
         -- Typescript
         sym("@lsp.type.type.typescript")({ fg = blue }),
         sym("@lsp.type.class.typescript")({ fg = blue }),
@@ -323,8 +315,8 @@ return lush(function(injected_functions)
         -- Harpoon
         HarpoonActive({ fg = black, bg = blue }),
         HarpoonInactive({ fg = fg, bg = overbg }),
-        HarpoonNumberActive({ HarpoonActive, gui = bold }),
-        HarpoonNumberInactive({ HarpoonInactive, gui = bold }),
+        HarpoonNumberActive({ HarpoonActive, gui = bf }),
+        HarpoonNumberInactive({ HarpoonInactive, gui = bf }),
 
         -- Cmp
         CmpItemAbbrMatch({ fg = blue }),
