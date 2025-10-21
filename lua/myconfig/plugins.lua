@@ -6,5 +6,11 @@ return {
     "tpope/vim-rhubarb",
     "wellle/targets.vim",
     "romainl/vim-cool",
-    "andymass/vim-matchup",
+    -- {
+    --     "andymass/vim-matchup",
+    --     init = function()
+    --         vim.g.matchup_treesitter_disable_virtual_text = true
+    --         vim.g.matchup_matchparen_offscreen = {}
+    --     end,
+    -- },
 }
