@@ -70,6 +70,8 @@ local plugin = {
                 "bashls",
                 "jsonls",
                 "yamlls",
+                "cssls",
+                "tailwindcss",
             },
             automatic_enable = true,
         })
