@@ -12,7 +12,7 @@ end
 function M:exec()
     local _, col = unpack(vim.api.nvim_win_get_cursor(0))
     local char = vim.api.nvim_get_current_line():sub(col + 1, col + 1)
-    local arr = { [["]], [[']], "`", ")", "]", "}", ",", ";" }
+    local arr = { [["]], [[']], "`", "(", ")", "[", "]", "{", "}", ",", ";" }
     local right = vim.api.nvim_replace_termcodes("<right>", true, false, true)
     if has_value(arr, char) then
         vim.api.nvim_feedkeys(right, "i", false)
