@@ -46,6 +46,9 @@ return {
                 vim.api.nvim_feedkeys(esc, "nx", false)
                 api.toggle.blockwise(vim.fn.visualmode())
             end)
+
+            local ft = require("Comment.ft")
+            ft.set("caddy", "#%s")
         end,
     },
 }

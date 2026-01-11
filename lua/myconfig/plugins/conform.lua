@@ -7,6 +7,13 @@ local plugin = {
         local conform = require("conform")
         local prettier = { "prettier" }
         conform.setup({
+            formatters = {
+                caddy = {
+                    command = "caddy",
+                    args = { "fmt", "-" },
+                    stdin = true,
+                },
+            },
             formatters_by_ft = {
                 lua = { "stylua" },
                 python = { "isort", "black" },
@@ -20,6 +27,7 @@ local plugin = {
                 css = prettier,
                 scss = prettier,
                 c = { "clang-format" },
+                caddy = { "caddy" },
             },
             format_after_save = function(bufnr)
                 if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then

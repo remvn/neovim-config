@@ -1,5 +1,6 @@
 require("myconfig.remap")
 require("myconfig.options")
+require("myconfig.filetype")
 
 -- highlight when yanking
 local augroup = vim.api.nvim_create_augroup
