@@ -9,7 +9,7 @@ local languages = {
     "typescript",
     "html",
     "css",
-    "makefile",
+    "make",
     "sql",
 }
 local ignore_langs = require("lib.set").new()

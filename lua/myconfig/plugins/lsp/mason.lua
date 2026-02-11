@@ -50,20 +50,18 @@ local plugin = {
 
         -- local capabilities = vim.lsp.protocol.make_client_capabilities()
         -- vim.tbl_deep_extend("force", capabilities, cmp_nvim.default_capabilities())
-
         local cmp_nvim = require("cmp_nvim_lsp")
         local capabilities = cmp_nvim.default_capabilities()
         vim.lsp.config("*", {
             capabilities = capabilities,
         })
 
-        -- TODO lua_ls missing .git root_markers
-
         mason.setup()
         mason_lspconf.setup({
             ensure_installed = {
                 "vtsls",
                 "vue_ls",
+                "eslint",
                 "lua_ls",
                 "gopls",
                 "golangci_lint_ls",
@@ -75,8 +73,6 @@ local plugin = {
             },
             automatic_enable = true,
         })
-
-        vim.lsp.enable({ "vtsls" })
     end,
 }
 
