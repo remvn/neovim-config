@@ -71,6 +71,10 @@ local plugin = {
                 "cssls",
                 "tailwindcss",
             },
+            -- maybe use this https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
+            -- to auto install linters and formatters
+            -- prettier
+            -- stylua
             automatic_enable = true,
         })
     end,
