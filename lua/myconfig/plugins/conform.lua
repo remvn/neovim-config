@@ -5,6 +5,10 @@ local plugin = {
     cmd = { "ConformInfo" },
     config = function()
         local conform = require("conform")
+        conform.formatters.prettier = {
+            append_args = { "--ignore-path", "null" },
+        }
+
         local prettier = { "prettier" }
         conform.setup({
             formatters = {
