@@ -1,6 +1,8 @@
 -- disable netrw at startup
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+-- remap, options
+require("myconfig")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -25,9 +27,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- remap, options
-require("myconfig")
-
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
@@ -37,6 +36,8 @@ require("lazy").setup({
     change_detection = { notify = false },
     checker = { enabled = false },
 })
+
+require("myconfig.lsp-file-operation")
 
 -- -- Profiling nvim performance
 -- local function start_profile()

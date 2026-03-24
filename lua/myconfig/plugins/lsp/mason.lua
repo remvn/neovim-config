@@ -48,10 +48,22 @@ local plugin = {
             end,
         })
 
-        -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-        -- vim.tbl_deep_extend("force", capabilities, cmp_nvim.default_capabilities())
+        local capabilities = {
+            workspace = {
+                fileOperations = {
+                    didCreate = true,
+                    didDelete = true,
+                    didRename = true,
+                    willCreate = true,
+                    willDelete = true,
+                    willRename = true,
+                },
+            },
+        }
         local cmp_nvim = require("cmp_nvim_lsp")
-        local capabilities = cmp_nvim.default_capabilities()
+        capabilities =
+            vim.tbl_deep_extend("force", capabilities, vim.lsp.protocol.make_client_capabilities())
+        capabilities = vim.tbl_deep_extend("force", capabilities, cmp_nvim.default_capabilities())
         vim.lsp.config("*", {
             capabilities = capabilities,
         })
