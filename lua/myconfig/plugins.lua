@@ -6,6 +6,13 @@ return {
     "tpope/vim-rhubarb",
     "wellle/targets.vim",
     "romainl/vim-cool",
+    {
+        dir = vim.fn.stdpath("config") .. "/lua/vendor/copy-reference",
+        name = "copy-reference",
+        config = function()
+            require("vendor.copy-reference").setup()
+        end,
+    },
     -- {
     --     "andymass/vim-matchup",
     --     init = function()
