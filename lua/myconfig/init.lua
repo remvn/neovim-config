@@ -17,7 +17,7 @@ autocmd("TextYankPost", {
     end,
 })
 
-local platform = require("myconfig.platform")
+local platform = require("lib.platform")
 if platform:isWSL() then
     -- xdg-open browser issue
     -- https://github.com/microsoft/WSL/issues/8892#issuecomment-1772972570 : add xdg-utils and wsl-utils
