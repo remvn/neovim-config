@@ -4,6 +4,10 @@ local tabout = require("myconfig.tabout")
 
 vim.g.mapleader = " "
 local keymap = vim.keymap
+local all_modes = { "n", "v", "x", "s", "o", "i", "l", "c", "t" }
+
+-- remove suspended binding
+keymap.set(all_modes, "<C-z>", "<nop>")
 
 -- escape with jk
 keymap.set("i", "jk", "<Esc>")
