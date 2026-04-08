@@ -10,7 +10,9 @@ return {
         dir = vim.fn.stdpath("config") .. "/lua/vendor/copy-reference",
         name = "copy-reference",
         config = function()
-            require("vendor.copy-reference").setup({})
+            require("vendor.copy-reference").setup({
+                use_mention_format = true,
+            })
         end,
     },
     -- {

@@ -1,24 +1,21 @@
 local M = {}
 
----@class CopyReferenceConfig
----@field register string
----@field use_absolute_path boolean
----@field use_git_root boolean
-
 ---@class CopyReferenceOptions
 ---@field register? string
 ---@field use_absolute_path? boolean
 ---@field use_git_root? boolean
+---@field use_mention_format? boolean
 
 ---@class CopyReferenceRange
 ---@field start_line integer
 ---@field end_line integer
 
----@type CopyReferenceConfig
+---@type CopyReferenceOptions
 M.config = {
     register = "+",
     use_absolute_path = false,
     use_git_root = true,
+    use_mention_format = false,
 }
 
 ---@param opts? CopyReferenceOptions
@@ -89,15 +86,18 @@ function M.copy(include_lines, range)
         return
     end
 
-    local reference = path
+    local reference = M.config.use_mention_format and ("@" .. path) or path
     if include_lines ~= false then
         if range and range.start_line and range.end_line then
             local start_line = math.min(range.start_line, range.end_line)
             local end_line = math.max(range.start_line, range.end_line)
-            reference = start_line == end_line and (path .. ":" .. start_line)
-                or (path .. ":" .. start_line .. "-" .. end_line)
-        else
-            reference = reference .. ":" .. vim.fn.line(".")
+            if M.config.use_mention_format then
+                reference = start_line == end_line and ("@" .. path .. "#" .. start_line)
+                    or ("@" .. path .. "#" .. start_line .. "-" .. end_line)
+            else
+                reference = start_line == end_line and (path .. ":" .. start_line)
+                    or (path .. ":" .. start_line .. "-" .. end_line)
+            end
         end
     end
 
