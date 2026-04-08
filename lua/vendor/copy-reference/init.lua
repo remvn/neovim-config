@@ -1,19 +1,39 @@
 local M = {}
 
+---@class CopyReferenceConfig
+---@field register string
+---@field use_absolute_path boolean
+---@field use_git_root boolean
+
+---@class CopyReferenceOptions
+---@field register? string
+---@field use_absolute_path? boolean
+---@field use_git_root? boolean
+
+---@class CopyReferenceRange
+---@field start_line integer
+---@field end_line integer
+
+---@type CopyReferenceConfig
 M.config = {
     register = "+",
+    use_absolute_path = false,
     use_git_root = true,
 }
 
+---@param opts? CopyReferenceOptions
+---@return nil
 function M.setup(opts)
     M.config = vim.tbl_extend("force", M.config, opts or {})
 
     -- Create command with subcommands
+    ---@param args vim.api.keyset.create_user_command.command_args
     vim.api.nvim_create_user_command("CopyReference", function(args)
         local subcommand = args.args:lower()
         if subcommand == "file" then
             M.copy(false)
         elseif subcommand == "line" or subcommand == "" then
+            ---@type CopyReferenceRange?
             local range = nil
             if args.range > 0 then
                 range = { start_line = args.line1, end_line = args.line2 }
@@ -32,10 +52,15 @@ function M.setup(opts)
     })
 end
 
+---@return string?
 local function get_path()
     local path = vim.fn.expand("%:p")
     if path == "" then
         return nil
+    end
+
+    if M.config.use_absolute_path then
+        return path
     end
 
     if M.config.use_git_root then
@@ -54,6 +79,9 @@ local function get_path()
     return path
 end
 
+---@param include_lines? boolean
+---@param range? CopyReferenceRange
+---@return nil
 function M.copy(include_lines, range)
     local path = get_path()
     if not path then
