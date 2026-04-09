@@ -1,3 +1,4 @@
+---@type vim.lsp.ClientConfig
 return {
     filetypes = { 'css', 'scss', 'less', "vue" },
     root_dir = function(bufnr, on_dir)
