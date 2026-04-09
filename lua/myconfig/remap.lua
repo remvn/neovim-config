@@ -121,7 +121,6 @@ keymap.set("n", "<leader>qf", toggle_qf)
 keymap.set("n", "<F1>", "<Cmd>GoImports<CR>")
 
 local function toggle_wrap()
-    ---@diagnostic disable-next-line: undefined-field
-    vim.opt.wrap = not vim.opt.wrap:get()
+    vim.wo.wrap = not vim.wo.wrap
 end
 keymap.set("n", "<F12>", toggle_wrap)
