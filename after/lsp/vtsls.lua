@@ -20,6 +20,7 @@ end
 
 ---@type vim.lsp.ClientConfig
 return {
+    -- https://github.com/yioneko/vtsls/blob/main/packages/service/configuration.schema.json
     settings = {
         vtsls = {
             tsserver = {
@@ -36,12 +37,6 @@ return {
     },
     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
     on_attach = function(_, bufnr)
-        vim.keymap.set(
-            "n",
-            "<leader>oi",
-            organize_imports,
-            { buffer = bufnr, desc = "Organize Imports" }
-        )
         vim.api.nvim_buf_create_user_command(bufnr, "OrganizeImports", organize_imports, {
             desc = "Organize Imports",
         })
