@@ -28,6 +28,11 @@ return {
                 },
             },
         },
+        typescript = {
+            preferences = {
+                importModuleSpecifier = "non-relative",
+            },
+        },
     },
     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
     on_attach = function(_, bufnr)
