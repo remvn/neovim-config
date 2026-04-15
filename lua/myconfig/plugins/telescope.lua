@@ -37,6 +37,7 @@ return {
 
         -- #lsp-keymap
         keymap.set("n", "gr", builtin.lsp_references, {})
+        keymap.set("n", "gI", builtin.lsp_implementations, {})
         keymap.set("n", "<leader>wd", builtin.diagnostics, {})
     end,
     config = function()

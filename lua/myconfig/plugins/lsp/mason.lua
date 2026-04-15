@@ -26,7 +26,7 @@ local plugin = {
                 local windowOptions = { border = "rounded" }
 
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "gH", vim.lsp.buf.references, opts)
+                vim.keymap.set("n", "gR", vim.lsp.buf.references, opts)
                 -- references see: plugins/telescope.lua
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
