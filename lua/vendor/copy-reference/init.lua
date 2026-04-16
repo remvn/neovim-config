@@ -1,89 +1,102 @@
 local M = {}
 
----@class CopyReferenceOptions
+---@alias CopyFormat "plain"|"mention"|"markdown"
+
+---@class Options
 ---@field register? string
 ---@field use_absolute_path? boolean
 ---@field use_git_root? boolean
----@field format? "plain"|"mention"|"markdown"
+---@field format? CopyFormat
 
----@class CopyReferenceRange
+---@class Config
+---@field register string
+---@field use_absolute_path boolean
+---@field use_git_root boolean
+---@field format CopyFormat
+
+---@class CopyRange
 ---@field start_line integer
 ---@field end_line integer
 
----@type CopyReferenceOptions
+---@type Config
 M.config = {
     register = "+",
     use_absolute_path = false,
     use_git_root = true,
-    format = "plain",
+    format = "markdown",
 }
 
----@param opts? CopyReferenceOptions
+---@param opts? Options
 ---@return nil
 function M.setup(opts)
     M.config = vim.tbl_extend("force", M.config, opts or {})
-
-    if
-        M.config.format ~= "plain"
-        and M.config.format ~= "mention"
-        and M.config.format ~= "markdown"
-    then
-        vim.notify("Invalid copy-reference format. Using 'plain'", vim.log.levels.WARN)
-        M.config.format = "plain"
-    end
 
     -- Create command with subcommands
     ---@param args vim.api.keyset.create_user_command.command_args
     vim.api.nvim_create_user_command("CopyReference", function(args)
         local subcommand = args.args:lower()
-        if subcommand == "file" then
-            M.copy(false)
-        elseif subcommand == "line" or subcommand == "" then
-            ---@type CopyReferenceRange?
-            local range = nil
-            if args.range > 0 then
-                range = { start_line = args.line1, end_line = args.line2 }
-            end
-            M.copy(true, range)
+
+        local use_git_root = M.config.use_git_root
+        local use_absolute_path = M.config.use_absolute_path
+        if subcommand == "absolute" then
+            use_absolute_path = true
+        elseif subcommand == "relative" then
+            use_absolute_path = false
+        elseif subcommand == "" then
+            use_absolute_path = M.config.use_absolute_path
         else
-            vim.notify("Invalid subcommand. Use 'line' or 'file'", vim.log.levels.ERROR)
+            vim.notify("Invalid subcommand. Use 'absolute' or 'relative'", vim.log.levels.ERROR)
+            return
         end
+
+        ---@type CopyRange?
+        local range = nil
+        if args.range > 0 then
+            range = { start_line = args.line1, end_line = args.line2 }
+        end
+        M.copy({
+            format = M.config.format,
+            use_git_root = use_git_root,
+            use_absolute_path = use_absolute_path,
+            range = range,
+        })
     end, {
         nargs = "?",
         range = true,
         complete = function(ArgLead, CmdLine, CursorPos)
-            return { "line", "file" }
+            return { "absolute", "relative" }
         end,
-        desc = "Copy file reference with optional subcommand (line/file)",
+        desc = "Copy file reference with optional subcommand (absolute/relative)",
     })
 end
 
 ---@param value string
+---@param format CopyFormat
 ---@return string
-local function apply_format(value)
-    if M.config.format == "mention" then
+local function apply_format(value, format)
+    if format == "mention" then
         return "@" .. value
     end
-
-    if M.config.format == "markdown" then
+    if format == "markdown" then
         return "`" .. value .. "`"
     end
-
     return value
 end
 
+---@param use_absolute_path boolean
+---@param use_git_root boolean
 ---@return string?
-local function get_path()
+local function get_path(use_absolute_path, use_git_root)
     local path = vim.fn.expand("%:p")
     if path == "" then
         return nil
     end
 
-    if M.config.use_absolute_path then
+    if use_absolute_path then
         return path
     end
 
-    if M.config.use_git_root then
+    if use_git_root then
         local git_root = vim.fn.system("git rev-parse --show-toplevel 2>/dev/null"):gsub("\n", "")
         if git_root ~= "" and vim.v.shell_error == 0 then
             -- Make path relative to git root
@@ -99,18 +112,24 @@ local function get_path()
     return path
 end
 
----@param include_lines? boolean
----@param range? CopyReferenceRange
+---@class CopyParams
+---@field range? CopyRange
+---@field use_absolute_path boolean
+---@field use_git_root boolean
+---@field format CopyFormat
+
+---@param params CopyParams
 ---@return nil
-function M.copy(include_lines, range)
-    local path = get_path()
+function M.copy(params)
+    local path = get_path(params.use_absolute_path, params.use_git_root)
     if not path then
         vim.notify("No file to copy", vim.log.levels.WARN)
         return
     end
 
+    local range = params.range
     local reference = path
-    if include_lines ~= false then
+    if range ~= nil then
         if range and range.start_line and range.end_line then
             local start_line = math.min(range.start_line, range.end_line)
             local end_line = math.max(range.start_line, range.end_line)
@@ -124,7 +143,7 @@ function M.copy(include_lines, range)
             end
         end
     end
-    reference = apply_format(reference)
+    reference = apply_format(reference, params.format)
 
     vim.fn.setreg(M.config.register, reference)
     vim.notify("Copied: " .. reference)
