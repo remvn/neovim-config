@@ -4,7 +4,7 @@ local M = {}
 ---@field register? string
 ---@field use_absolute_path? boolean
 ---@field use_git_root? boolean
----@field use_mention_format? boolean
+---@field format? "plain"|"mention"|"markdown"
 
 ---@class CopyReferenceRange
 ---@field start_line integer
@@ -15,13 +15,22 @@ M.config = {
     register = "+",
     use_absolute_path = false,
     use_git_root = true,
-    use_mention_format = false,
+    format = "plain",
 }
 
 ---@param opts? CopyReferenceOptions
 ---@return nil
 function M.setup(opts)
     M.config = vim.tbl_extend("force", M.config, opts or {})
+
+    if
+        M.config.format ~= "plain"
+        and M.config.format ~= "mention"
+        and M.config.format ~= "markdown"
+    then
+        vim.notify("Invalid copy-reference format. Using 'plain'", vim.log.levels.WARN)
+        M.config.format = "plain"
+    end
 
     -- Create command with subcommands
     ---@param args vim.api.keyset.create_user_command.command_args
@@ -47,6 +56,20 @@ function M.setup(opts)
         end,
         desc = "Copy file reference with optional subcommand (line/file)",
     })
+end
+
+---@param value string
+---@return string
+local function apply_format(value)
+    if M.config.format == "mention" then
+        return "@" .. value
+    end
+
+    if M.config.format == "markdown" then
+        return "`" .. value .. "`"
+    end
+
+    return value
 end
 
 ---@return string?
@@ -86,20 +109,22 @@ function M.copy(include_lines, range)
         return
     end
 
-    local reference = M.config.use_mention_format and ("@" .. path) or path
+    local reference = path
     if include_lines ~= false then
         if range and range.start_line and range.end_line then
             local start_line = math.min(range.start_line, range.end_line)
             local end_line = math.max(range.start_line, range.end_line)
-            if M.config.use_mention_format then
-                reference = start_line == end_line and ("@" .. path .. "#" .. start_line)
-                    or ("@" .. path .. "#" .. start_line .. "-" .. end_line)
+
+            if M.config.format == "mention" then
+                reference = start_line == end_line and (path .. "#" .. start_line)
+                    or (path .. "#" .. start_line .. "-" .. end_line)
             else
                 reference = start_line == end_line and (path .. ":" .. start_line)
                     or (path .. ":" .. start_line .. "-" .. end_line)
             end
         end
     end
+    reference = apply_format(reference)
 
     vim.fn.setreg(M.config.register, reference)
     vim.notify("Copied: " .. reference)

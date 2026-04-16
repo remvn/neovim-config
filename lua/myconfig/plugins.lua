@@ -11,7 +11,7 @@ return {
         name = "copy-reference",
         config = function()
             require("vendor.copy-reference").setup({
-                use_mention_format = true,
+                format = "markdown",
             })
         end,
     },
