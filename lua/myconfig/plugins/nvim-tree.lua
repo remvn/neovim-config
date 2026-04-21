@@ -66,7 +66,7 @@ local plugin = {
                 }
             end
 
-            api.config.mappings.default_on_attach(bufnr)
+            api.map.on_attach.default(bufnr)
             vim.keymap.del("n", "<C-x>", { buffer = bufnr })
             vim.keymap.del("n", "<C-e>", { buffer = bufnr })
             vim.keymap.del("n", "<C-k>", { buffer = bufnr })
@@ -105,7 +105,7 @@ local plugin = {
                 enable = true,
             },
             renderer = {
-                highlight_git = true,
+                highlight_git = "name",
                 indent_markers = {
                     enable = true,
                     inline_arrows = false,
