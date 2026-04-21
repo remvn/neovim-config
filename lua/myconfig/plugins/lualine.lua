@@ -15,7 +15,7 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
     end
 end
 
-return {
+local plugin = {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
@@ -67,6 +67,9 @@ return {
             symbols = {
                 modified = " [+]", -- Text to show when the file is modified.
             },
+            cond = function()
+                return #vim.api.nvim_list_tabpages() >= 2
+            end
         }
 
         local filename = {
@@ -102,10 +105,11 @@ return {
                 theme = theme,
                 section_separators = { left = "", right = "" },
                 component_separators = { left = "", right = "" },
+                always_show_tabline = false
             },
             tabline = {
                 lualine_a = {
-                    tabs,
+                    tabs
                 },
             },
             sections = {
@@ -125,7 +129,6 @@ return {
                 lualine_z = { location },
             },
         })
-
-        vim.opt.showtabline = 1
     end,
 }
+return plugin
