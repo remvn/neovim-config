@@ -1,4 +1,4 @@
-local languages = {
+local preinstall = {
     "c",
     "lua",
     "vim",
@@ -12,7 +12,28 @@ local languages = {
     "make",
     "sql",
 }
-local ignore_langs = require("lib.set").new()
+
+---@param buf integer
+---@param language string
+local function treesitter_try_attach(buf, language)
+    -- check if parser exists and load it
+    if not vim.treesitter.language.add(language) then
+        return false
+    end
+    -- enables syntax highlighting and other treesitter features
+    vim.treesitter.start(buf, language)
+
+    -- enables treesitter based folds
+    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.wo.foldmethod = "expr"
+    -- ensure folds are open to begin with
+    vim.o.foldlevel = 99
+
+    -- enables treesitter based indentation
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+    return true
+end
 
 local treesitter = {
     "nvim-treesitter/nvim-treesitter",
@@ -20,39 +41,25 @@ local treesitter = {
     build = ":TSUpdate",
     lazy = false,
     config = function()
-        local ts = require("nvim-treesitter")
-        ts.install(languages)
+        local nvim_treesitter = require("nvim-treesitter")
+        nvim_treesitter.install(preinstall)
 
+        local installable_parsers = nvim_treesitter.get_available()
         vim.api.nvim_create_autocmd("FileType", {
-            pattern = { "*" },
-            desc = "treesitter highlight autocmd",
             callback = function(args)
-                local language = vim.treesitter.language.get_lang(args.match)
-                if not language or ignore_langs:has(language) then
+                local buf, filetype = args.buf, args.match
+                local language = vim.treesitter.language.get_lang(filetype)
+                if not language then
                     return
                 end
 
-                ---@param buf integer
-                ---@param lang string
-                local function start(buf, lang)
-                    vim.treesitter.start()
-                    vim.wo[0][0].foldmethod = "expr"
-                    vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-                end
-
-                local installed_list = ts.get_installed()
-                if not vim.list_contains(installed_list, language) then
-                    local available_list = ts.get_available()
-                    if vim.list_contains(available_list, language) then
-                        ts.install(language):await(function()
-                            start(args.buf, language)
+                if not treesitter_try_attach(buf, language) then
+                    if vim.tbl_contains(installable_parsers, language) then
+                        -- not already installed, so try to install them via nvim-treesitter if possible
+                        nvim_treesitter.install(language):await(function()
+                            treesitter_try_attach(buf, language)
                         end)
-                    else
-                        ignore_langs:add(language)
-                        return
                     end
-                else
-                    start(args.buf, language)
                 end
             end,
         })
