@@ -31,7 +31,7 @@ local plugin = {
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
                 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
-                vim.keymap.set("n", "gj", function()
+                vim.keymap.set("n", "gp", function()
                     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
                 end, opts)
 

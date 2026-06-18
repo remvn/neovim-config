@@ -30,6 +30,7 @@ local plugin = {
                 svelte = prettier,
                 css = prettier,
                 scss = prettier,
+                markdown = prettier,
                 c = { "clang-format" },
                 caddy = { "caddy" },
             },
