@@ -31,6 +31,7 @@ local plugin = {
                 css = prettier,
                 scss = prettier,
                 markdown = prettier,
+                json = prettier,
                 c = { "clang-format" },
                 caddy = { "caddy" },
             },
